@@ -1,5 +1,5 @@
-var cadController = angular.module("CadastroController", [] );
-cadController.controller("CadastroController", function ($scope, $http){
+var cadController = angular.module("cadastroController", [] );
+cadController.controller("cadastroController", function ($scope, $http){
     //ID PROFISSIONAL DE TESTE
     $scope.id_profissional = 1;
 

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 // angular.module('MainApp', ['ionic', 'PacienteController', 'EspecialistaController'])
-angular.module('MainApp', ['ui.router', 'MainController', 'CadastroController', 'EspecialistaController'])
+angular.module('MainApp', ['ui.router', 'MainController', 'cadastroController', 'EspecialistaController'])
 
 
 
@@ -30,7 +30,7 @@ angular.module('MainApp', ['ui.router', 'MainController', 'CadastroController', 
     }).state('cadastro',{
         url: "/cadastro",
         templateUrl: 'views/cadastro.html',
-        controller: "EspecialistaController",
+        controller: "cadastroController",
            resolve:{
             init :function(){
                 if('abrirModal' in window){abrirModal();}
