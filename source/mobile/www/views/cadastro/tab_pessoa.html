@@ -1,0 +1,75 @@
+<ul id="box_paciente" class="collapsible " data-collapsible="accordion">
+    <li class="z-depth-2">
+        <div class="collapsible-header light-primary-color flow-text active">Dados pessoais</div>
+        <div class="collapsible-body">
+            <div class="card grey lighten-4">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <div class="input-field">
+                                <input id="nome" type="text" class="validate" ng-model="paciente.nome">
+                                <label for="nome" class="flow-text">Nome</label>
+                            </div>
+                        </div>
+                        <div class="col s12 m12">
+                            <div class="input-field">
+                                <input id="nome" type="text" class="validate" ng-model="paciente.nome">
+                                <label for="nome" class="flow-text">Cpf</label>
+                            </div>
+                        </div>
+                      
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <input id="nascimento" type="text" class="datepicker" ng-model="paciente.nascimento">
+                                <label for="nascimento" class="flow-text">Data de Nascimento</label>
+                            </div>
+                        </div>
+                      
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <select id="slct_sexo" ng-model="paciente.sexo">
+                                     <option value="" disabled selected>Escolaridade</option>
+                                    <option value="m">Masculino</option>
+                                    <option value="f">Feminino</option>
+                                </select>
+                                <label for="slct_sexo" class="flow-text">Sexo</label>
+                            </div>
+                        </div>
+                        <div class="col s12 m12">
+                            <div class="input-field">
+                                <input id="Email" type="text" class="validate" ng-model="paciente.nome">
+                                <label for="Email" class="flow-text">Email</label>
+                            </div>
+                        </div>
+                        <div class="col s12 m12">
+                            <div class="input-field">
+                                <input id="Senha" type="text" class="validate" ng-model="paciente.nome">
+                                <label for="Senha" class="flow-text">Senha</label>
+                            </div>
+                        </div>
+                        <div class="col s12 m12">
+                            <div class="input-field">
+                                <input id="telefone" type="text" class="validate" ng-model="paciente.nome">
+                                <label for="telefone" class="flow-text">Telefone</label>
+                            </div>
+                        </div>
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <select id="slct_escol" ng-model="paciente.escolaridade">
+                                    <option value="" disabled selected>Selecione</option>
+                                    <option value="analf">Analfabeto</option>
+                                    <option value="menor_4">&lsaquo; 4 anos</option>
+                                    <option value="4_8">4 a 8 anos</option>
+                                    <option value="maior_8">&rsaquo; 8 anos</option>
+                                    <option value="sup">Superior completo</option>
+                                    <option value="pos">Pós graduado</option>
+                                </select>
+                                <label for="slct_escol" class="flow-text">Escolaridade</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

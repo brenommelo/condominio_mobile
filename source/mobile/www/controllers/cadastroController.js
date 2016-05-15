@@ -24,20 +24,15 @@ cadController.controller("cadastroController", function ($scope, $http){
 
     include('controllers/sql/sql-builder.js');
 
-    $scope.selecionarReceita = function() {
+    $scope.selecionarPessoa = function() {
     $('#tab1').attr('style','display: block; padding: 0')
     $('#tab2').attr('style','display: none')
-    $('#tab3').attr('style','display: none')
+
     }
-    $scope.selecionarDespesas = function() {
+    $scope.selecionarCondominio = function() {
     $('#tab1').attr('style','display: none')
     $('#tab2').attr('style','display: block; padding: 0')
-    $('#tab3').attr('style','display: none')
-    }
-    $scope.selecionarExtrato = function() {
-    $('#tab1').attr('style','display: none')
-    $('#tab2').attr('style','display: none')
-    $('#tab3').attr('style','display: block; padding: 0')
+
     }
 
     $scope.get_db = function() {

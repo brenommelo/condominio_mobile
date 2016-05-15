@@ -60,24 +60,24 @@ progress::-webkit-progress-bar {
     <div class="row" style="margin-bottom: 0;">
       <ul class="tabs" data-collapsible="accordion">
         <li class="tab">
-          <a href="#tab1" id="ctrl_tab1" ng-click="selecionarReceita()" data-page="1" class="light-primary-color primary-text-color">Dados pessoais</a>
+          <a href="#tab1" id="ctrl_tab1" ng-click="selecionarPessoa()" data-page="1" class="light-primary-color primary-text-color">Dados pessoais</a>
         </li>
    
         <li class="tab" name="mobilidade">
-          <a href="#tab4" id="ctrl_tab2"  data-page="2" ng-click="selecionarDespesas()" class="light-primary-color primary-text-color">Condominio</a>
+          <a href="#tab4" id="ctrl_tab2"  data-page="2" ng-click="selecionarCondominio()" class="light-primary-color primary-text-color">Condominio</a>
         </li>
      
      
       </ul>
-      <div id="tab1"  class="col s12 m12" style="padding: 0;">
-        <div ng-include="'views/cadastro/tab_paciente.html'"></div>
+      <div id="tab1"  class="col s12 m12">
+        <div ng-include="'views/cadastro/tab_pessoa.html'"></div>
       </div>
       <div id="tab2" class="col s12 m12">
-        <div ng-include="'views/financas/despesas.html'"></div>
+        <div ng-include="'views/cadastro/tab_condominio.html'"
+        onload="load_scripts_padrao(); selecionarCondominio()">
       </div>
-       <div id="tab3"  class="col s12 m12" style="padding: 0 !important">
-        <div ng-include="'views/financas/extrato.html'" onload="load_scripts_padrao(); selecionarExtrato()"></div>
       </div>
+      
      
   </div>
 </div>
