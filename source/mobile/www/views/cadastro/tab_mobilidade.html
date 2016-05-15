@@ -1,0 +1,139 @@
+<ul id="box_dist_marcha" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header active light-primary-color flow-text">Distúrbio de marcha</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Você tem dificuldades para caminhar capaz de impedir a realização de alguma atividade do cotidiano?</label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_f" ng-model="mobilidade.dificuldade_caminhar" type="radio" id="wiz_f_sim" value="sim" />
+                                <label for="wiz_f_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_f" ng-model="mobilidade.dificuldade_caminhar" type="radio" id="wiz_f_nao" value="nao" />
+                                <label for="wiz_f_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_quedas_ant" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Quedas anteriores</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Quedas anteriores</label>
+                                </p>
+                            </div>
+                            <div class="col offset-m1 offset-s1 s6 m4">
+                                <input class="with-gap" name="wiz_g" ng-model="mobilidade.quedas_anteriores" type="radio" id="wiz_g_nenhuma" value="nenhuma" />
+                                <label for="wiz_g_nenhuma" class="flow-text">Nenhuma</label>
+                            </div>
+                            <div class="col offset-s1 s6 m3">
+                                <input class="with-gap" name="wiz_g" ng-model="mobilidade.quedas_anteriores" type="radio" id="wiz_g_uma" value="1" />
+                                <label for="wiz_g_uma" class="flow-text">Uma</label>
+                            </div>
+                            <div class="col offset-s1 s6 m4">
+                                <input class="with-gap" name="wiz_g" ng-model="mobilidade.quedas_anteriores" type="radio" id="wiz_g_mais_2" value="2_ou_mais" />
+                                <label for="wiz_g_mais_2" class="flow-text">&ge;2 quedas</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_alcance_pinca" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Alcance / Preensão e pinça</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">1) Você incapaz de elevar os braços acima do nível do ombro?</label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_h_1" ng-model="mobilidade.incapaz_elevar_bracos" type="radio" id="wiz_h_1_sim" value="sim" />
+                                <label for="wiz_h_1_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_h_1" ng-model="mobilidade.incapaz_elevar_bracos" type="radio" id="wiz_h_1_nao" value="nao" />
+                                <label for="wiz_h_1_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">2) Você incapaz de manusear ou segurar pequenos objetos?</label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_h_2" ng-model="mobilidade.incapaz_manusear_pequenos_obj" type="radio" id="wiz_h_2_sim" value="sim" />
+                                <label for="wiz_h_2_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_h_2" ng-model="mobilidade.incapaz_manusear_pequenos_obj" type="radio" id="wiz_h_2_nao" value="nao" />
+                                <label for="wiz_h_2_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_incont_urin_fec" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Incontinência urinária / fecal</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Você perde urina ou fezes, sem querer, em algum momento?</label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_i" ng-model="mobilidade.incontinencia_urinaria" type="radio" id="wiz_i_sim" value="sim" />
+                                <label for="wiz_i_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_i" ng-model="mobilidade.incontinencia_urinaria" type="radio" id="wiz_i_nao" value="nao" />
+                                <label for="wiz_i_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_hipot_post" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Hipotensão postural</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Hipotensão postural</label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_l" ng-model="mobilidade.hipotensao_postural" type="radio" id="wiz_l_sim" value="sim" />
+                                <label for="wiz_l_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_l" ng-model="mobilidade.hipotensao_postural" type="radio" id="wiz_l_nao" value="nao" />
+                                <label for="wiz_l_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_perda_pond" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Perda ponderal não intencional</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Você teve perda de peso não intencional de 4,5 kg ou 5% do peso corporal no último ano ou 6 kg nos últimos 6 meses ou 3 kg no último mês?</label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_s" ng-model="mobilidade.perda_ponderal_nao_intencional" type="radio" id="wiz_s_sim" value="sim" />
+                                <label for="wiz_s_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_s" ng-model="mobilidade.perda_ponderal_nao_intencional" type="radio" id="wiz_s_nao" value="nao" />
+                                <label for="wiz_s_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>

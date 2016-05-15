@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="MainApp">
+
+<head >
+    <meta charset="UTF-8">
+    <title>Cuidado Idoso</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+
+    <style>
+    /* following three (cascaded) are equivalent to above three meta viewport statements */
+    /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+    /* see http://dev.w3.org/csswg/css-device-adapt/ */
+    @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+    @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+    /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+    </style>
+
+
+    <link rel="stylesheet" type="text/css" href="lib/materialize/css/materialize.min.css" />
+    <link rel="stylesheet" type="text/css" href="lib/material-design-web-font/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" type="text/css" href="lib/custom-icons/css/custom-icons.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/app-style.css" />
+
+    <!-- ionic/angularjs js -->
+    <!-- // <script src="lib/ionic/js/ionic.bundle.js"></script> -->
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- // <script src="controllers/controllers.js"></script> -->
+</head>
+
+<body>
+    <div id="afui" class="ios android light" >
+        <nav>
+            <div class="nav-wrapper dark-primary-color">
+                <!-- <a style="margin-left: 10px" href="#" data-activates="mobile_menu" class="button-collapse"><i class="mdi mdi-menu"></i></a> -->
+                <span class="brand-logo center strong">Condominio mobile</span>
+                <ul class="side-nav" id="mobile_menu">
+                    <li><a class="secondary-text-color" href="#main" onclick="$.afui.clearHistory()">Inicio</a></li>
+                    <li><a class="secondary-text-color" href="#page2" onclick="$.afui.clearHistory()">Meus dados {{nome}}</a></li>
+                    <div class="divider"></div>
+                    <li><a class="secondary-text-color" href="#" onclick="exitFromApp()">Sair</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="view" ui-view></div>
+        <!-- <div ng-include="'views/components/loading.html'"></div> -->
+    </div>
+
+    <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/ionic/js/angular/angular.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/ionic/js/angular-ui/angular-ui-router.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/materialize/js/materialize.min.js"></script>
+    <!-- your app's js -->
+    <script src="controllers/app.js"></script>
+    <script type="text/javascript" charset="utf-8" src="controllers/mainController.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="controllers/pacienteController.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="controllers/especialistaController.js" ></script>
+    <script type="text/javascript">
+        $(".button-collapse").sideNav();
+        function onDeviceReady(){
+            console.log("Device is ready");
+            $('#btn_init_db').click();
+            $('#modal_loading').closeModal();
+            // clear();
+        }
+        document.addEventListener("deviceready", onDeviceReady, true);
+
+        function abrirModal(){
+            // $('#modal_loading').openModal();
+        }
+
+        function fecharModal(){
+            $('#modal_loading').closeModal();
+        }
+</script>
+
+</body>
+</html>

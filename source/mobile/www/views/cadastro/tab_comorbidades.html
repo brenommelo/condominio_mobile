@@ -1,0 +1,250 @@
+            <ul id="box_doenc_cron" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header active light-primary-color flow-text">Doenças crônicas</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row checkboxes-row">
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.has" id="wiz_c_has" value="has" />
+                                <label for="wiz_c_has" class="flow-text">HAS</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.dislipidemia" id="wiz_c_dislip" value="dislip" />
+                                <label for="wiz_c_dislip" class="flow-text">Dislipidemia</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.diabetes" id="wiz_c_diabet" value="diabet" />
+                                <label for="wiz_c_diabet" class="flow-text">Diabetes</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.tabagista_ativo" id="wiz_c_tab_ativ" value="tab_ativ" />
+                                <label for="wiz_c_tab_ativ" class="flow-text">Tabagista ativo</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.ex_tabagista" id="wiz_c_ex_tab" value="ex_tab" />
+                                <label for="wiz_c_ex_tab" class="flow-text">Ex-tabagista</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.etilismo_ativo" id="wiz_c_etil_ativ" value="etil_ativ" />
+                                <label for="wiz_c_etil_ativ" class="flow-text">Etilismo ativo</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.etilismo_previo" id="wiz_c_etil_prev" value="etil_prev"/>
+                                <label for="wiz_c_etil_prev" class="flow-text">Etilismo prévio</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.avc_previo" id="wiz_c_avc_prev" value="avc_prev" />
+                                <label for="wiz_c_avc_prev" class="flow-text">AVC prévio</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.osteosporose" id="wiz_c_osteosp" value="osteosp" />
+                                <label for="wiz_c_osteosp" class="flow-text">Osteosporose</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.osteoartrose_joelhos_quadril" id="wiz_c_osteoart" value="osteoart" />
+                                <label for="wiz_c_osteoart" class="flow-text">Osteoartrose (joelhos e quadril)</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.dpoc" id="wiz_c_dpoc" value="dpoc" />
+                                <label for="wiz_c_dpoc" class="flow-text">DPOC</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.asma" id="wiz_c_asma" value="asma" />
+                                <label for="wiz_c_asma" class="flow-text">Asma</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.insuficiencia_cardiaca" id="wiz_c_insuf_card" value="insuf_card" />
+                                <label for="wiz_c_insuf_card" class="flow-text">Insuficiência cardíaca</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.arritmia"  id="wiz_c_arritmia" value="arritmia" />
+                                <label for="wiz_c_arritmia" class="flow-text">Arritmia (Fibrilação atrial, flutter)</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.sincope_previa"  id="wiz_c_sinc_prev" value="sinc_prev" />
+                                <label for="wiz_c_sinc_prev" class="flow-text">Síncope prévia</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.dor_cronica"  id="wiz_c_dor_cron" value="dor_cron" />
+                                <label for="wiz_c_dor_cron" class="flow-text">Dor crônica</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.transtorno_psquiatrico"  id="wiz_c_transt_psq" value="transt_psq" />
+                                <label for="wiz_c_transt_psq" class="flow-text">Transtorno psquiátrico</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.doencas_reumatologicas"  id="wiz_c_doenc_reumat" value="doenc_reumat" />
+                                <label for="wiz_c_doenc_reumat" class="flow-text">Doenças reumatológicas</label><br>
+                            </div>
+                            <div class="col s12 m6">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.outros" id="wiz_c_outros"  value="outros" />
+                                <label for="wiz_c_outros" class="flow-text">Outros</label><br>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_internacao" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Internação</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Apresentou alguma internação nos últimos 06 meses?</label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_r" ng-model="comorbidades.internacao_recente" type="radio" id="wiz_r_sim" value="sim" />
+                                <label for="wiz_r_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_r" ng-model="comorbidades.internacao_recente" type="radio" id="wiz_r_nao" value="nao" checked />
+                                <label for="wiz_r_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_acuid_visual" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Redução da acuidade visual</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Você tem problemas de visão capazes de impedir a realização de alguma atividade do cotidiano? <i>É permitido o uso de óculos ou lentes de contato</i></label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_d" ng-model="comorbidades.reducao_acuidade_visual" value="sim" type="radio" id="wiz_d_sim" />
+                                <label for="wiz_d_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_d" ng-model="comorbidades.reducao_acuidade_visual" value="nao" type="radio" id="wiz_d_nao" />
+                                <label for="wiz_d_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_acuid_audit" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Redução da acuidade auditiva</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Você tem problemas de audição capazes de impedir a realização de alguma atividade do cotidiano? <i>É permitido o uso de aparelhos de audição</i></label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_e" ng-model="comorbidades.reducao_acuidade_auditiva" type="radio" id="wiz_e_sim" value="sim" />
+                                <label for="wiz_e_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_e" ng-model="comorbidades.reducao_acuidade_auditiva" type="radio" id="wiz_e_nao" value="nao" />
+                                <label for="wiz_e_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <!-- Medicamentos -->
+
+            <ul id="box_medic_uso" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Número de medicamentos em uso</div>
+                    <div class="collapsible-body">
+                        <div class="card grey lighten-4">
+                            <div class="card-content">
+                                <div class="input-field">
+                                    <input id="wiz_m_num_medic" ng-model="comorbidades.med_numero" min='0' type="number" class="validate" />
+                                    <label for="wiz_m_num_medic" class="flow-text">Número de medicamentos em uso</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_uso_diuret" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Uso de diuréticos</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Uso de diuréticos</label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_n" ng-model="comorbidades.med_diureticos" type="radio" id="wiz_n_sim" value="sim" />
+                                <label for="wiz_n_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_n" ng-model="comorbidades.med_diureticos" type="radio" id="wiz_n_nao" value="nao" />
+                                <label for="wiz_n_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_uso_psicotrop" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Uso de psicotrópicos</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Uso de psicotrópicos</label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_o" ng-model="comorbidades.med_psicotropicos" type="radio" id="wiz_o_sim" value="sim" />
+                                <label for="wiz_o_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_o" ng-model="comorbidades.med_psicotropicos" type="radio" id="wiz_o_nao" value="nao" />
+                                <label for="wiz_o_nao" class="flow-text">Não</label>
+                            </div>
+                            <div id="dv_wix_o_b" class="col offset-s1 s11">
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.med_benzodiazepinicos" id="wiz_0_b_benzodiazepinicos" value="benzodiazepinicos" />
+                                <label for="wiz_0_b_benzodiazepinicos" class="flow-text">Benzodiazepínicos</label>
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.med_antidepressivos" id="wiz_0_b_antidepressivos" value="antidepressivos" />
+                                <label for="wiz_0_b_antidepressivos" class="flow-text">Antidepressivos</label>
+                                <input class="filled-in" type="checkbox" ng-model="comorbidades.med_neurolepticos" id="wiz_0_b_neurolepticos" value="neurolepticos" />
+                                <label for="wiz_0_b_neurolepticos" class="flow-text">Neurolepticos</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_uso_vitamina_d" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Uso de vitamina D</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Uso de vitamina D</label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_p" ng-model="comorbidades.med_vitamina_d" type="radio" id="wiz_p_sim" value="sim" />
+                                <label for="wiz_p_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_p" ng-model="comorbidades.med_vitamina_d" type="radio" id="wiz_p_nao" value="nao" />
+                                <label for="wiz_p_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="box_uso_carbonato_calcio" class="collapsible" data-collapsible="accordion">
+                <li class="z-depth-2">
+                    <div class="collapsible-header light-primary-color flow-text">Uso de carbonato de cálcio</div>
+                    <div class="collapsible-body grey lighten-4">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label class="flow-text">Uso de carbonato de cálcio</label>
+                                </p>
+                            </div>
+                            <div class="col offset-s1 s11">
+                                <input class="with-gap" name="wiz_q" ng-model="comorbidades.med_carbonato_calcio" type="radio" id="wiz_q_sim" value="sim" />
+                                <label for="wiz_q_sim" class="flow-text">Sim</label>
+                                <input class="with-gap" name="wiz_q" ng-model="comorbidades.med_carbonato_calcio" type="radio" id="wiz_q_nao" value="nao" />
+                                <label for="wiz_q_nao" class="flow-text">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>

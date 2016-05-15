@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--<property name="hibernate.connection.datasource">jdbc/TeleMobile</property>-->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+            <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/PRO_SIND</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">senha</property>
+        <!--<property name="hibernate.connection.password">123456</property>-->
+ 
+    
+    
+        <!-- Exibe comandos SQL na saida padrao. -->  
+        <!--<property name="hibernate.show_sql">true</property>-->  
+        <property name="hibernate.show_sql">false</property>  
+        <property name="hibernate.use_sql_comments">false</property>  
+        <property name="hibernate.hibernate.format_sql">true</property>  
+        <!--<property name="hibernate.current_session_context_class">jta</property>--> 
+        <property name="hibernate.current_session_context_class">thread</property> 
+        <!--<property name="hibernate.hbm2ddl.auto">none</property>-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+    
+       
+
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Usuario"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Alerta"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Assembleia"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Condominio"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Duvidas"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Endereco"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.EspacoComum"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.SeparacaoContabil"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Receita"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Despesa"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.PagamentoTaxa"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.TaxaCondominial"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.PautaItens"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Reserva"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.RespostasDuvida"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.SolicitacaoAoSindico"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.VisualizacaoAlerta"/>
+        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.RespostaSolicitacao"/>
+
+ 
+    
+    </session-factory>
+</hibernate-configuration>

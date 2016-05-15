@@ -1,0 +1,272 @@
+.dark-primary-color {
+	background: #00796B !important;
+}
+.default-primary-color {
+	background: #009688;
+}
+.light-primary-color {
+	background: #B2DFDB !important;
+}
+.text-primary-color {
+	color: #FFFFFF !important;
+}
+.accent-color {
+	background: #FF5252 !important;
+}
+.primary-text-color {
+	color: #212121 !important;
+}
+.disabled .primary-text-color {
+	color: #929292 !important;
+}
+.secondary-text-color {
+	color: #727272 !important;
+}
+.dark-primary-text-color {
+	color: #00796B !important;
+}
+.divider-color {
+	border-color: #B6B6B6;
+}
+.deep-orange-color {
+	background: #FF5722 !important;
+}
+.button-color{
+	background: #8BC34A !important;
+}
+
+.indicator {
+	background-color: #1F897F !important;
+}
+
+.height-5 {
+    height: 3rem;
+}
+
+.margin-top-bottom-10 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.margin-1 {
+	margin: 1rem 0.7rem 1rem 0.7rem;
+}
+
+.margin-top-1 {
+	margin-top: 1rem;
+}
+
+.margin-top-10{
+	margin-top: 10px;
+}
+
+.margin-bottom-10{
+	margin-bottom: 10px;
+}
+
+.margin-07{
+	margin-right: 0.7rem;
+}
+
+.margin-top-15{
+	margin-top: 15px;
+}
+
+.btn-block{
+	width: 100%;
+}
+
+span.badge.new:after{
+	content: ""
+}
+
+.card {
+	margin: 0;
+}
+
+.card-title{
+	font-size: 20px !important;
+	line-height: 20px !important;
+}
+
+.card-title-exercicios{
+	line-height: 35px !important;
+}
+
+.card>.card-action{
+	padding: 2px;
+}
+
+.card>.card-action>button{
+	padding: 0;
+}
+
+.card>.card-action>a {
+	width: 100%;
+}
+
+.card>.card-action>a:not(.btn):not(.btn-large):not(.btn-floating) {
+	margin-right: 0;
+}
+
+.card-action>a>i{
+	font-size: 25px;
+	float: right;
+}
+
+.collapsible{
+	box-shadow: inherit;
+	border: none;
+    margin: 0.5rem 0.7rem 1rem 0.7rem;
+}
+
+.collapsible-header{
+	font-weight: bold;
+}
+
+.collapsible>li{
+	margin-bottom: 15px;
+}
+
+.watermark{
+	position: absolute;
+	opacity: 0.2;
+	z-index: 99;
+	font-size: 65px;
+}
+
+.word-wrap{
+	word-wrap: break-word;
+}
+
+.telefones-collapsible>.row>div>button{
+	border-radius: 20px;
+	top: 15px;
+}
+.telefones-collapsible>.row>div>button>i{
+	font-size: 40px;
+}
+
+label, .input-field>label{
+	color: #000000;
+}
+
+div.row{
+	margin-bottom: 0;
+}
+
+a.filters{
+	font-weight: bold;
+	width: 100%;
+}
+
+/*IDs*/
+#btn_filtrar{
+	margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+#box_doenc_cron .checkboxes-row{
+	padding-top: 10px;
+}
+
+span.new.badge{
+	border-radius: 10px; font-size: 20px;
+}
+
+div.col[name="btn-med"], div.col[name="btn-comorb"] {
+	margin: 0 0rem .75rem 0rem;
+}
+
+div.col[name="btn-med"] > button, div.col[name="btn-comorb"] > button {
+	width: 100% !important;
+	margin: 0;
+	padding: 0;
+    line-height: 1.5rem;
+}
+
+/*Media Queries*/
+@media (max-width: 767px) {
+	span.brand-logo{
+		font-size: 1.7rem;
+	}
+
+	span.new.badge{
+		top: 15px; line-height: 25px;
+	}
+
+	p.valign, b.valign{
+	    vertical-align: middle;
+	}
+
+	.collapsible-header .valign{
+	    padding: 0.5rem 0 0 0 !important;
+	}
+
+	.block-height{
+	    height: 4rem;
+	}
+
+	div.col[name="btn-med"] > button, div.col[name="btn-comorb"] > button {
+	    font-size: 0.8rem;
+	}
+
+	.input-field.custom {
+		margin-top: -1.5rem;
+	}
+
+	.label-md, [type="radio"]:not(:checked)+label.label-md, [type="radio"]:checked+label.label-md {
+		font-size: 1.2rem !important;
+	}
+}
+
+@media (min-width: 768px) {
+	span.new.badge{
+		top: 20px; line-height: 30px;
+	}
+
+	p.valign, b.valign{
+	    vertical-align: middle;
+	    padding: 0.6rem;
+	}
+
+	.collapsible-header .valign{
+	    padding: 1rem 0 0 0 !important;
+	}
+
+	.block-height{
+	    height: 5rem;
+	}
+
+	div.col[name="btn-med"] > button, div.col[name="btn-comorb"] > button {
+		height: 5rem;
+	}
+
+	.label-md, [type="radio"]:not(:checked)+label.label-md, [type="radio"]:checked+label.label-md {
+		font-size: 1.1rem !important;
+	}
+}
+
+@media only screen and (min-width: 993px) {
+ 	nav a.button-collapse {
+       display: block;
+    }
+}
+
+.strong{
+	font-weight: bold;
+}
+
+.input-field > label.active {
+	font-size: 1.2rem !important;
+	margin-top: 1rem !important;
+}
+
+.thumb.active {
+	display: none;
+}
+
+.label_campo_obrigatorio::before{
+    content:'*';
+    color: red;
+}
