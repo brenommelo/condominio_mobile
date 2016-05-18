@@ -28,6 +28,16 @@ angular.module('MainApp', ['ui.router', 'MainController', 'cadastroController', 
             }
         }
 
+    }).state('solicitacao',{
+        url: "/solicitacao",
+        templateUrl: 'views/solicitacao.html',
+        controller: "cadastroController",
+           resolve:{
+            init :function(){
+                if('abrirModal' in window){abrirModal();}
+            }
+        }
+
     }).state('especialista_notificacoes',{
         url: "/notificacoes",
         templateUrl: 'views/notificacoes.html',

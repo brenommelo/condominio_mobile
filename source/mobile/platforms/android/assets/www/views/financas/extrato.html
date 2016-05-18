@@ -1,0 +1,58 @@
+<ul id="box_paciente" class="collapsible " data-collapsible="accordion">
+    <li class="z-depth-2">
+        <div class="collapsible-header light-primary-color flow-text active">Extrato</div>
+        <div class="collapsible-body">
+            <div class="card grey lighten-4">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <div class="input-field">
+                                <input id="nome" type="text" class="validate" ng-model="paciente.nome">
+                                <label for="nome" class="flow-text">Descrição</label>
+                            </div>
+                        </div><div class="col s12 m12">
+                            <div class="input-field">
+                                <input id="nome" type="text" class="validate" ng-model="paciente.nome">
+                                <label for="nome" class="flow-text">Valor</label>
+                            </div>
+                        </div>
+                        
+                    
+                      
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <select id="slct_usr" ng-model="paciente.centro_saude">
+                                    <option value="" disabled selected></option>
+                                    <option value="ubs">Taxa apto 101</option>
+                                    <option value="ubs">Taxa apto 102</option>
+                                    <option value="ubs">Taxa apto 201</option>
+                                    <option value="ubs">Taxa apto 202</option>
+                                    <option value="ubs">Outros</option>
+                                    
+                                </select>
+                                <label for="slct_usr" class="flow-text">Origem</label>
+                            </div>
+                        </div>     
+                         <div class="col s12 m6">
+                            <div class="input-field">
+                                <select id="slct_separacao" ng-model="paciente.centro_saude">
+                                    <option value="" disabled selected></option>
+                                    <option value="ubs">Ordinárias</option>
+                                    <option value="ubs">Fundo reserva</option>
+                                    <option value="ubs">Taxa extra</option>
+                                    <option value="ubs">Provisões</option>
+                                                               
+                                </select>
+                                <label for="slct_separacao" class="flow-text">Separação contábil</label>
+                            </div>
+                        </div>
+                          <button class="btn btn-large right waves-effect wizard" ng-click="salvar_paciente()" data-direction="right">
+            Salvar
+          </button>
+                       
+                      
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
