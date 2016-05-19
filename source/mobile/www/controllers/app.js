@@ -1,5 +1,13 @@
 
-angular.module('MainApp', ['ui.router', 'MainController', 'cadastroController', 'EspecialistaController'])
+angular.module('MainApp', 
+    ['ui.router', 
+    'MainController', 
+    'cadastroController', 
+    'EspecialistaController', 
+    'financeiroController',
+    'solicitacaoController',
+    'notificacaoController'
+    ])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -11,7 +19,7 @@ angular.module('MainApp', ['ui.router', 'MainController', 'cadastroController', 
     }).state('financas',{
         url: "/financas",
         templateUrl: 'views/financeiro.html',
-        controller: "EspecialistaController",
+        controller: "financeiroController",
            resolve:{
             init :function(){
                 if('abrirModal' in window){abrirModal();}
@@ -31,7 +39,7 @@ angular.module('MainApp', ['ui.router', 'MainController', 'cadastroController', 
     }).state('solicitacao',{
         url: "/solicitacao",
         templateUrl: 'views/solicitacao.html',
-        controller: "cadastroController",
+        controller: "solicitacaoController",
            resolve:{
             init :function(){
                 if('abrirModal' in window){abrirModal();}
@@ -41,7 +49,7 @@ angular.module('MainApp', ['ui.router', 'MainController', 'cadastroController', 
     }).state('especialista_notificacoes',{
         url: "/notificacoes",
         templateUrl: 'views/notificacoes.html',
-        controller: "EspecialistaController"
+        controller: "notificacaoController"
 
     });
   $urlRouterProvider.otherwise('/');

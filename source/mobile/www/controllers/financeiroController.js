@@ -1,45 +1,39 @@
-var cadController = angular.module("cadastroController", [] );
-cadController.controller("cadastroController", function ($scope, $http){
+var cadController = angular.module("financeiroController", [] );
+cadController.controller("financeiroController", function ($scope, $http){
+    //ID PROFISSIONAL DE TESTE
     $scope.id_profissional = 1;
-    $scope.pessoa =novaPessoa();
-    $scope.condominio =novaCondominio();
-    $scope.apartamentos = [];
-    $scope.apartamento = novoApartamento();
+    
+    $scope.receita= nova_receita();
+    $scope.despesa = nova_despesa();
 
-    $scope.salvarPessoa = function(){
-        console.log($scope.pessoa)
+    $scope.gravarReceita = function(){
+        console.log($scope.receita);
     }
-    $scope.salvarCondominio = function(){
-        console.log($scope.condominio);
-    }
-    $scope.salvarApartamentos = function(){
-        console.log($scope.apartamentos);
+    $scope.gravarDespesa = function(){
+        console.log($scope.despesa);
     }
 
-$scope.adicionarApartametno = function(){
-    $scope.apartamentos.push($scope.apartamento);
-     $scope.apartamento = novoApartamento();
-    
-    }
-    
-    $scope.selecionarPessoa = function() {
+
+        $scope.selecionarReceita = function() {
     $('#tab1').attr('style','display: block; padding: 0')
     $('#tab2').attr('style','display: none')
     $('#tab3').attr('style','display: none')
-
     }
-    $scope.selecionarApartamento = function() {
-    $('#tab1').attr('style','display: none')
-    $('#tab2').attr('style','display: none')
-    $('#tab3').attr('style','display: block; padding: 0')
-
-    }
-    $scope.selecionarCondominio = function() {
+    $scope.selecionarDespesas = function() {
     $('#tab1').attr('style','display: none')
     $('#tab2').attr('style','display: block; padding: 0')
     $('#tab3').attr('style','display: none')
-
     }
+    $scope.selecionarExtrato = function() {
+    $('#tab1').attr('style','display: none')
+    $('#tab2').attr('style','display: none')
+    $('#tab3').attr('style','display: block; padding: 0')
+    }
+
+
+
+   
+
 
 
     $scope.set_scripts = function(script){
@@ -64,46 +58,28 @@ $scope.adicionarApartametno = function(){
     }
 
     $scope.load_data();
-    // Quando o angular finalizar o carregamento o metodo abaixo e executado
     $scope.$on('$viewContentLoaded', function() {});
 });
 
-function novoApartamento() {
+function nova_receita() {
     return {
         id: null,
         idSync: null,
+        descricao: null,
+        valor: null,
         inclusao: null,
-        descicao: null,
-        fracaoIdeal: null,
-        cpf: null
-    };
-}function novaPessoa() {
-    return {
-        id: null,
-        idSync: null,
-        inclusao: null,
-        nome: null,
-        cpf: null,
-        nascimento: null,
-        sexo: 'M',
-        email: null,
-        senha: null,
-        telefone: null
+        separacaoContabil: null,
+        origem: null
     };
 }
-function novaCondominio () {
+function nova_despesa() {
     return {
         id: null,
         idSync: null,
+        descricao: null,
+        valor: null,
         inclusao: null,
-        nome: null,
-        cep: null,
-        rua: null,
-        numero: null,
-        bairro: null,
-        cidade: null,
-        estado: null,
-        tipo:{descricao:null}
+        separacaoContabil: null
     };
 }
 
@@ -114,24 +90,6 @@ function include(destination) {
     window.document.body.appendChild(e);
 }
 
-
-function validaTelefone (tel) {
-    if (tel === undefined || tel === null || tel.numero === null) {
-        return false;
-    }
-
-    var patt = /\d?\(?(\d{2})?\)?\d{4,5}\-?\d{4,5}/;
-
-    var str = '';
-
-    if (typeof tel === 'object') {
-        str = tel.numero.replace(/ /g, '');
-    } else {
-        str = tel.replace(/ /g, '');
-    }
-
-    return patt.test(str);
-}
 
 function validaString (arg) {
     return arg !== undefined && arg !== null && arg.replace(' ', '') !== '';

@@ -16,40 +16,34 @@
 			    <li>
 		      		<div class="collapsible-header light-primary-color">
 		      			<div class="row">
-		      			
-		      				
 				      			<select id="slct_ordem">
 				      				<option value="" disabled selected>Ordernar por</option>
 				      				<option value="nome">Nome</option>
-				      				
 				      				<option value="inclusao">Inclusão</option>
 				      				<option value="tp_ocorrencia">Prioridade</option>
-				      	
 				      			</select>
-		      			
 		      			</div>
 		      		</div>
-		     
 			    </li>
 		  	</ul>
 		</div>
         <div class="col s12 m6" ng-repeat="not in listaNotificacoes">
-          <div class="card" ng-class="{'red lighten-4': not.tipo.codigo == 'Q', 'orange lighten-4': not.tipo.codigo == 'H', 'blue lighten-4': not.tipo.codigo == 'O'}">
+          <div class="card" ng-class="{'red lighten-4': not.prioridade.codigo == 'U', 
+           'blue lighten-4': not.prioridade.codigo == 'N'}">
             <div class="card-content">
             	<div class="watermark">
-            		<i ng-class="{'custom-injurie': not.tipo.codigo == 'Q', 'mdi mdi-hospital': not.tipo.codigo == 'H', 'mdi mdi-information': not.tipo.codigo == 'O'}"></i>
+            		<i ng-class="{'custom-injurie': not.prioridade.codigo == 'U', 
+            		 'mdi mdi-information': not.prioridade.codigo == 'N'}"></i>
 	            </div>
-	            <div class="row">
-	          		<span class="card-title flow-text">{{not.paciente.nome}}</span>
-	          	</div>
 	          	<div class="row">
 	          		<span class="truncate flow-text">{{not.descricao}}</span>
 	          	</div>
             </div>
             <div class="card-action">
-            	<button data-dialog-open="telessaude-dialog" class="btn waves-effect right" style="width: 100%;" ng-class="{'red lighten-4': not.tipo.codigo == 'Q', 'orange lighten-4': not.tipo.codigo == 'H', 'blue lighten-4': not.tipo.codigo == 'O'}">
+            	<button data-dialog-open="telessaude-dialog" class="btn waves-effect right" style="width: 100%;" ng-class="{'red lighten-4': not.prioridade.codigo == 'U', 
+            	'blue lighten-4': not.prioridade.codigo == 'N'}">
             		<i style="font-size: 25px; float: right;" class="mdi mdi-forward dark-primary-text-color"></i>
-            		<!-- <i style="font-size: 25px; float: right;" class="mdi mdi-headphones dark-primary-text-color" ng-if="not.audio"></i> -->
+          
         		</button>
 				<div class="clearfix"></div>
             </div>

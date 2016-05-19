@@ -4,50 +4,52 @@
       <ul class="tabs" data-collapsible="accordion">
         <li class="tab">
           <a data-page="1" class="light-primary-color primary-text-color">Nova solicitação</a>
-  
+
         </li>
       </ul>
-  </div>
-  <div class="row">
-              <div class="col s12 m12">
-      <ul class="collapsible" data-collapsible="accordion">
+    </div>
+    <div class="row">
+      <div class="col s12 m12">
+        <ul class="collapsible" data-collapsible="accordion">
           <li>
-              <div>
-                <div class="row"  style="padding-top:15px">
-                
-                  <div class="col s12 m12">
-                    <select id="slct_ordem" ng-model="paciente.escolaridade"  style="display: block;">
-                      <option value="" disabled selected>Tipo solicitação</option>
-                      <option value="nome">Nome</option>
-                      
-                      <option value="inclusao">Inclusão</option>
-                      <option value="tp_ocorrencia">Prioridade</option>
-                
-                    </select>
-                  </div>
-                  </div>
-                   <div class="row" style="padding-top:15px">
-                         
-                      <div class="col s12 m12">
-                            <div >
-                                <textarea placeholder="Digite sua solicitação aqui... (max. 1000 caracteres)" maxlength="1000" type="text" style="height: 150px;" class="validate" ng-model="paciente.nome">
-                            </div>
-                        </div>
+            <div>
+              <div class="row"  style="padding-top:15px">
+
+                <div class="col s12 m12">
+                  <select id="slct_ordem" ng-model="solicitacao.tipo"  style="display: block;">
+                    <option value="" disabled selected>Tipo solicitação</option>
+                    <option value="barulho">Barulho</option>
+                    <option value="manutencao">Manutenção </option>
+                    <option value="calculoTaxa">Duvida calculos de taxas</option>
+                    <option value="prestacaoContas">Duvida prestação contas</option>
+                    <option value="duvidas">Duvidas gerais</option>
+
+                  </select>
                 </div>
               </div>
-         
-          </li>
-        </ul>
-    </div>   
-    </div>   
-                     
-                 
-                      
-                     
-       
-   
+              <div class="row" style="padding-top:15px">
 
-      
-     
-</div>
-</div>
+                <div class="col s12 m12">
+                  <div >
+                    <textarea placeholder="Digite sua solicitação aqui... (max. 1000 caracteres)" maxlength="1000" type="text" style="height: 150px;" class="validate" ng-model="solicitacao.descricao"/>
+                    </div>
+                  </div>
+                
+                </div>
+                 <div class="row" style="padding-top:15px">
+                 <button class="btn btn-large right waves-effect" ng-click="salvarSolicitacao()">
+                        Salvar
+                    </button>
+              </div>
+
+              </div>
+
+
+            </li>
+          </ul>
+        </div>  
+
+      </div>   
+                   
+    </div>
+  </div>
