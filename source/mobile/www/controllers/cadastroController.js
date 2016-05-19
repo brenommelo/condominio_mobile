@@ -103,6 +103,8 @@ function novaCondominio () {
         bairro: null,
         cidade: null,
         estado: null,
+        juros: null,
+        multa: null,
         tipo:{descricao:null}
     };
 }

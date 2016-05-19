@@ -11,7 +11,7 @@
                                 <label for="nome" class="flow-text">Nome condomínio</label>
                             </div>
                         </div>
-                    
+                        
                         <div class="col s12 m6">
                             <div class="input-field">
                                 <input id="idade" type="number" class="validate" ng-model="condominio.cep">
@@ -47,7 +47,7 @@
                                 <label for="idade" class="flow-text">Bairro</label>
                             </div>
                         </div>
-                          <div class="col s12 m6">
+                        <div class="col s12 m6">
                             <div class="input-field">
                                 <select id="slct_sexo" ng-model="condominio.cidade">
                                     <option value="" disabled selected>Cidade</option>
@@ -58,7 +58,7 @@
                                 
                             </div>
                         </div>
-                          <div class="col s12 m6">
+                        <div class="col s12 m6">
                             <div class="input-field">
                                 <select id="slct_sexo" ng-model="condominio.estado">
                                     <option value="" disabled selected>Estado</option>
@@ -69,12 +69,24 @@
                                 
                             </div>
                         </div>
-                    
-                         <button class="btn btn-large right waves-effect " ng-click="salvarCondominio()">
-            Salvar
-          </button>
-                                </div>
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <input id="idade" type="number" class="validate" ng-model="condominio.juros">
+                                <label for="idade" class="flow-text">Juros (mensal)</label>
+                            </div>
+                        </div>
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <input id="idade" type="number" class="validate" ng-model="condominio.multa">
+                                <label for="idade" class="flow-text">Multa (mensal)</label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-large right waves-effect " ng-click="salvarCondominio()">
+                            Salvar
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </li>
-</ul>
+        </li>
+    </ul>
