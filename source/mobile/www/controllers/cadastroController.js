@@ -73,7 +73,7 @@ function novoApartamento() {
         id: null,
         idSync: null,
         inclusao: null,
-        descicao: null,
+        nome: null,
         fracaoIdeal: null,
         cpf: null
     };
@@ -105,7 +105,7 @@ function novaCondominio () {
         estado: null,
         juros: null,
         multa: null,
-        tipo:{descricao:null}
+        tipo:{nome:null}
     };
 }
 

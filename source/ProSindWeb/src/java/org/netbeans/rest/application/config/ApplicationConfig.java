@@ -35,13 +35,9 @@ public class ApplicationConfig extends Application {
      * out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(br.ufmg.hc.telessaude.webservices.mobile.resources.AlertasResources.class);
-        resources.add(br.ufmg.hc.telessaude.webservices.mobile.resources.AlertasSindicoResources.class);
-        resources.add(br.ufmg.hc.telessaude.webservices.mobile.resources.DuvidaResources.class);
-        resources.add(br.ufmg.hc.telessaude.webservices.mobile.resources.FinancasResources.class);
-        resources.add(br.ufmg.hc.telessaude.webservices.mobile.resources.SolicitacaoResources.class);
-        resources.add(br.ufmg.hc.telessaude.webservices.mobile.resources.UsuarioResources.class);
-    
+        resources.add(br.com.una.pa.condominio.mobile.resource.ConfiguracaoResources.class);
+        resources.add(br.com.una.pa.condominio.mobile.resource.FinanceiroResources.class);
+        resources.add(br.com.una.pa.condominio.mobile.resource.NotificacaoResources.class);
     }
 
 }

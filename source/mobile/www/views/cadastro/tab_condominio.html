@@ -20,7 +20,7 @@
                         </div>
                         <div class="col s12 m6">
                             <div class="input-field">
-                                <select id="slct_sexo" ng-model="condominio.tipo.descricao">
+                                <select id="slct_sexo" ng-model="condominio.tipo.nome">
                                     <option value="" disabled selected>Tipo</option>
                                     <option value="residencial">Residencial</option>
                                     <option value="comercial">Comercial</option>
@@ -79,6 +79,11 @@
                             <div class="input-field">
                                 <input id="idade" type="number" class="validate" ng-model="condominio.multa">
                                 <label for="idade" class="flow-text">Multa (mensal)</label>
+                            </div>
+                        </div> <div class="col s12 m6">
+                            <div class="input-field">
+                                <input id="idade" type="number" class="validate" ng-model="condominio.multa">
+                                <label for="idade" class="flow-text">Data vencimento boleto</label>
                             </div>
                         </div>
                         

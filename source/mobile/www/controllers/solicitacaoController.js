@@ -39,7 +39,7 @@ function novaSolicitacao() {
         id: null,
         idSync: null,
         inclusao: null,
-        descicao: null,
+        descricao: null,
         titulo: null
     };
 }

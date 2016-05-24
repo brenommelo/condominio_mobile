@@ -22,28 +22,24 @@
         <!--<property name="hibernate.hbm2ddl.auto">none</property>-->
         <property name="hibernate.hbm2ddl.auto">update</property>
     
-       
 
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Usuario"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Alerta"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Assembleia"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Condominio"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Duvidas"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Endereco"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.EspacoComum"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.SeparacaoContabil"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Receita"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Despesa"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.PagamentoTaxa"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.TaxaCondominial"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.PautaItens"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.Reserva"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.RespostasDuvida"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.SolicitacaoAoSindico"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.VisualizacaoAlerta"/>
-        <mapping class="br.ufmg.hc.telessaude.webservices.mobile.entidades.RespostaSolicitacao"/>
-
- 
-    
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Condominio"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.CondominioTaxa"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Despesa"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Endereco"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Estado"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Municipio"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Notificacao"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Perfil"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Pessoa"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.PessoaUnidade"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Receita"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.SeparacaoContabil"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Taxa"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.TipoCondominio"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.TipoNotificacao"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Unidade"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.UnidadeTaxa"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Usuario"/>
     </session-factory>
 </hibernate-configuration>

@@ -65,7 +65,7 @@ function nova_receita() {
     return {
         id: null,
         idSync: null,
-        descricao: null,
+        nome: null,
         valor: null,
         inclusao: null,
         separacaoContabil: null,
@@ -76,7 +76,7 @@ function nova_despesa() {
     return {
         id: null,
         idSync: null,
-        descricao: null,
+        nome: null,
         valor: null,
         inclusao: null,
         separacaoContabil: null
