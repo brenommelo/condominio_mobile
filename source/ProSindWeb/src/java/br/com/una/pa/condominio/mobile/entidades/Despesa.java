@@ -37,6 +37,10 @@ public class Despesa {
     private Date realizacao;
     private String nome;
     private Float valor;
+  
+    @JoinColumn(name = "id_previsao_financeira")
+    @ManyToOne(optional = true)
+    private PrevisaoFinanceira previsaoFinanceira;
     @JoinColumn(name = "id_separacao_contabil")
     @ManyToOne(optional = false)
     private SeparacaoContabil separacaoContabil;
@@ -114,5 +118,14 @@ public class Despesa {
     public void setCondominio(Condominio condominio) {
         this.condominio = condominio;
     }
+
+    public PrevisaoFinanceira getPrevisaoFinanceira() {
+        return previsaoFinanceira;
+    }
+
+    public void setPrevisaoFinanceira(PrevisaoFinanceira previsaoFinanceira) {
+        this.previsaoFinanceira = previsaoFinanceira;
+    }
+
 
 }

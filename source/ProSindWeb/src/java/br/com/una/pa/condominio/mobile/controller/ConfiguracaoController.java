@@ -9,10 +9,14 @@ import br.com.una.pa.condominio.mobile.dao.impl.DespesaDAOImpl;
 import br.com.una.pa.condominio.mobile.dao.impl.EstadoDAOImpl;
 import br.com.una.pa.condominio.mobile.dao.impl.MunicipioDAOImpl;
 import br.com.una.pa.condominio.mobile.dao.impl.ReceitaDAOImpl;
+import br.com.una.pa.condominio.mobile.dao.impl.TipoCondominioDAOImpl;
+import br.com.una.pa.condominio.mobile.dao.impl.TipoUnidadeDAOImpl;
 import br.com.una.pa.condominio.mobile.entidades.Despesa;
 import br.com.una.pa.condominio.mobile.entidades.Estado;
 import br.com.una.pa.condominio.mobile.entidades.Municipio;
 import br.com.una.pa.condominio.mobile.entidades.Receita;
+import br.com.una.pa.condominio.mobile.entidades.TipoCondominio;
+import br.com.una.pa.condominio.mobile.entidades.TipoUnidade;
 import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +31,8 @@ public class ConfiguracaoController {
 
     MunicipioDAOImpl municipioDAOImpl = new MunicipioDAOImpl();
     EstadoDAOImpl estadoDAOImpl = new EstadoDAOImpl();
+    TipoCondominioDAOImpl tipoCondominioDAOImpl = new TipoCondominioDAOImpl();
+    TipoUnidadeDAOImpl tipoUnidadeDAOImpl = new TipoUnidadeDAOImpl();
 
     public ConfiguracaoController() {
     }
@@ -43,6 +49,24 @@ public class ConfiguracaoController {
     public List<Municipio> listarMunicipios(Long idEstado) {
         try {
             return municipioDAOImpl.listarMunicipios(idEstado);
+        } catch (DAOException ex) {
+            Logger.getLogger(ConfiguracaoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<TipoCondominio> listarTipoCondominio() {
+        try {
+            return tipoCondominioDAOImpl.findAll();
+        } catch (DAOException ex) {
+            Logger.getLogger(ConfiguracaoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<TipoUnidade> listarTipoUnidade() {
+        try {
+            return tipoUnidadeDAOImpl.findAll();
         } catch (DAOException ex) {
             Logger.getLogger(ConfiguracaoController.class.getName()).log(Level.SEVERE, null, ex);
         }
