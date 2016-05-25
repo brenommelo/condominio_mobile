@@ -35,6 +35,7 @@ public class ApplicationConfig extends Application {
      * out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(br.com.una.pa.condominio.mobile.resource.CadastroResources.class);
         resources.add(br.com.una.pa.condominio.mobile.resource.ConfiguracaoResources.class);
         resources.add(br.com.una.pa.condominio.mobile.resource.FinanceiroResources.class);
         resources.add(br.com.una.pa.condominio.mobile.resource.NotificacaoResources.class);

@@ -6,6 +6,7 @@
 package br.com.una.pa.condominio.mobile.entidades;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -44,6 +46,9 @@ public class Condominio {
     @JoinColumn(name = "id_endereco")
     @ManyToOne(optional = false)
     private Endereco endereco;
+
+    @Transient
+    private List<PessoaUnidade> listaPessoaUnidade;
 
     public Condominio() {
     }
@@ -122,6 +127,14 @@ public class Condominio {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public List<PessoaUnidade> getListaPessoaUnidade() {
+        return listaPessoaUnidade;
+    }
+
+    public void setListaPessoaUnidade(List<PessoaUnidade> listaPessoaUnidade) {
+        this.listaPessoaUnidade = listaPessoaUnidade;
     }
 
 }
