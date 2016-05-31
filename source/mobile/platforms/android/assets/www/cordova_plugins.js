@@ -28,7 +28,8 @@ module.exports.metadata =
     "cordova-plugin-device": "1.1.1",
     "cordova-plugin-splashscreen": "3.2.0",
     "cordova-sqlite-storage": "1.2.2",
-    "cordova-plugin-crosswalk-webview": "1.6.1"
+    "cordova-plugin-crosswalk-webview": "1.6.1",
+    "cordova-plugin-whitelist": "1.2.2"
 };
 // BOTTOM OF METADATA
 });

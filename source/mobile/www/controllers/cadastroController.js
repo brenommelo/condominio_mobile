@@ -1,5 +1,6 @@
 var cadController = angular.module("cadastroController", [] );
 cadController.controller("cadastroController", function ($scope, $http){
+    var urlPrincipal ="//150.164.192.63:8080/ProSindWeb/condominioservices/";
     $scope.id_profissional = 1;
     $scope.pessoa =novaPessoa();
     $scope.condominio =novaCondominio();
@@ -13,6 +14,7 @@ cadController.controller("cadastroController", function ($scope, $http){
         console.log($scope.condominio);
     }
     $scope.salvarApartamentos = function(){
+      
         console.log($scope.apartamentos);
     }
 

@@ -34,7 +34,7 @@ public class NotificacaoController {
 
     public Notificacao salvarNotificacao(Notificacao notificacao) {
         try {
-            if (validarNotificacao(notificacao)) {
+            if (!validarNotificacao(notificacao)) {
                 return notificacaoDAOImpl.saveOrUpdate(notificacao);
             }
         } catch (DAOException ex) {

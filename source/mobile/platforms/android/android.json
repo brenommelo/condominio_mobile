@@ -39,6 +39,10 @@
                         {
                             "xml": "<preference default=\"true\" name=\"xwalkMultipleApk\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -71,6 +75,9 @@
         },
         "cordova-plugin-crosswalk-webview": {
             "PACKAGE_NAME": "com.ionicframework.smsos599428"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.smsos599428"
         }
     },
     "dependent_plugins": {},
@@ -101,6 +108,7 @@
         "cordova-plugin-device": "1.1.1",
         "cordova-plugin-splashscreen": "3.2.0",
         "cordova-sqlite-storage": "1.2.2",
-        "cordova-plugin-crosswalk-webview": "1.6.1"
+        "cordova-plugin-crosswalk-webview": "1.6.1",
+        "cordova-plugin-whitelist": "1.2.2"
     }
 }

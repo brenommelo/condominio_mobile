@@ -39,11 +39,11 @@ function load_config(){
     $('select').material_select();
     $('.modal-trigger').leanModal();
     $('ul.tabs').tabs();
-    $('.wizard').on('click', function () {
-        var tab = $('li>a.active');
-        var pagina = $('li>a.active').attr('data-page');
-        var direcao = $(this).attr('data-direction');
-        var nextTab = $("li>a[data-page='" + (direcao === 'right' ? parseInt(pagina)+1 : parseInt(pagina)-1) + "']");
-        $('ul.tabs').tabs('select_tab', nextTab.attr('href').replace('#', ''));
-    });
+    // $('.wizard').on('click', function () {
+    //     var tab = $('li>a.active');
+    //     var pagina = $('li>a.active').attr('data-page');
+    //     var direcao = $(this).attr('data-direction');
+    //     var nextTab = $("li>a[data-page='" + (direcao === 'right' ? parseInt(pagina)+1 : parseInt(pagina)-1) + "']");
+    //     $('ul.tabs').tabs('select_tab', nextTab.attr('href').replace('#', ''));
+    // });
 }

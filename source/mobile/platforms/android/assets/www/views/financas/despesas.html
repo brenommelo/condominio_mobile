@@ -7,19 +7,19 @@
                     <div class="row">
                         <div class="col s12 m12">
                             <div class="input-field">
-                                <input id="nome" type="text" class="validate" ng-model="paciente.nome">
+                                <input id="nome" type="text" data-required="true" class="validate" ng-model="despesa.nome">
                                 <label for="nome" class="flow-text">Descrição</label>
                             </div>
                         </div><div class="col s12 m12">
                             <div class="input-field">
-                                <input id="nome" type="text" class="validate" ng-model="paciente.nome">
+                                <input id="nome" type="text" class="validate" ng-model="despesa.valor">
                                 <label for="nome" class="flow-text">Valor</label>
                             </div>
                         </div>
                          
                          <div class="col s12 m6">
                             <div class="input-field">
-                                <select id="slct_separacao" ng-model="paciente.centro_saude">
+                                <select id="slct_separacao" ng-model="despesa.separacaoContabil">
                                     <option value="" disabled selected></option>
                                     <option value="ubs">Ordinárias</option>
                                     <option value="ubs">Fundo reserva</option>
@@ -30,7 +30,7 @@
                                 <label for="slct_separacao" class="flow-text">Separação contábil</label>
                             </div>
                         </div>
-                          <button class="btn btn-large right waves-effect wizard" ng-click="salvar_paciente()" data-direction="right">
+                          <button class="btn btn-large right waves-effect wizard" ng-click="gravarDespesa()">
             Salvar
           </button>
                        

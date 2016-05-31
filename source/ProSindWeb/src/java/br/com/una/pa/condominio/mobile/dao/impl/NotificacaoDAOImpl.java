@@ -33,7 +33,7 @@ public class NotificacaoDAOImpl extends DaoBase<Notificacao> implements Notifica
 
     public Boolean verificarDuplicidade(Notificacao notificacao) throws DAOException {
         Integer quantidade = this.countByRestrictions(
-                Restrictions.eq("condominio.id", notificacao.getId()),
+                Restrictions.eq("condominio.id", notificacao.getCondominio().getId()),
                 Restrictions.eq("descricao", notificacao.getDescricao()),
                 Restrictions.eq("tipoNotificacao.id", notificacao.getTipoNotificacao().getId())
         );

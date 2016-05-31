@@ -63,8 +63,8 @@ public class ConfiguracaoResources extends CustomResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String retornarTipoUnidade(final String objetoJson) {
         List<TipoUnidade> lista = configuracaoController.listarTipoUnidade();
-
-        return GsonUtils.getSimpleInstance().toJson(lista, TipoUnidade[].class);
+        
+        return GsonUtils.getSimpleInstance().toJson(lista.toArray(), TipoUnidade[].class);
     }
 
 }

@@ -13,6 +13,7 @@ import br.com.una.pa.condominio.mobile.entidades.Notificacao;
 import br.ufmg.hc.telessaude.webservices.mobile.utils.GsonUtils;
 import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -51,7 +52,7 @@ public class NotificacaoResources extends CustomResources {
         Notificacao notificacao = GsonUtils.getSimpleInstance().fromJson(objetoJson, Notificacao.class);
         Notificacao retorno = notificacaoController.salvarNotificacao(notificacao);
 
-        return GsonUtils.getSimpleInstance().toJson(retorno, Notificacao[].class);
+        return GsonUtils.getSimpleInstance().toJson(retorno, Notificacao.class);
     }
 
 }

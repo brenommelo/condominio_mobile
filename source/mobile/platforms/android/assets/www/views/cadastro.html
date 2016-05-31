@@ -1,58 +1,3 @@
-<style type="text/css">
-.select-wrapper+label{
-    font-size: 1rem;
-}
-#toast-container{
-    top: 0%;
-    bottom: 100%;
-}
-p{
-    padding: 10px !important;
-}
-.offset-s1  .flow-text{
-    margin-left: 40px;
-}
-.determinate{
-    z-index: 0;
-}
-
-.progress_value{
-    z-index: 10;
-    position: absolute;
-    font-weight: bold;
-    width: 100%;
-}
-
-progress[value] {
-    /* Reset the default appearance */
-    -webkit-appearance: none;
-    appearance: none;
-
-    width: 100%;
-    height: 20px;
-}
-
-progress {
-    /* Reset the default appearance */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    width: 100%;
-    height: 30px;
-
-    /* Firefox */
-    border: none;
-    background: #acece6;
-    border-radius: 3px;
-}
-
-progress::-webkit-progress-bar {
-    background: #acece6;
-    border-radius: 3px;
-}
-
-</style>
 
 <div class="row margin-top-15">
 
@@ -60,11 +5,17 @@ progress::-webkit-progress-bar {
     <div class="row" style="margin-bottom: 0;">
       <ul class="tabs" data-collapsible="accordion">
         <li class="tab">
-          <a href="#tab1" id="ctrl_tab1" ng-click="selecionarPessoa()" data-page="1" class="light-primary-color primary-text-color">Dados pessoais</a>
+          <a href="#tab1" id="ctrl_tab1" ng-click="selecionarPessoa()" data-page="1" 
+          class="light-primary-color primary-text-color">Dados</a>
         </li>
    
         <li class="tab" name="mobilidade">
-          <a href="#tab4" id="ctrl_tab2"  data-page="2" ng-click="selecionarCondominio()" class="light-primary-color primary-text-color">Condominio</a>
+          <a href="#tab2" id="ctrl_tab2"  data-page="2" ng-click="selecionarCondominio()" 
+          class="light-primary-color primary-text-color">Condominio</a>
+        </li> 
+        <li class="tab" name="unidades">
+          <a href="#tab3" id="ctrl_tab3"  data-page="3" ng-click="selecionarApartamento()" 
+          class="light-primary-color primary-text-color">Unidades</a>
         </li>
      
      
@@ -74,7 +25,12 @@ progress::-webkit-progress-bar {
       </div>
       <div id="tab2" class="col s12 m12">
         <div ng-include="'views/cadastro/tab_condominio.html'"
-        onload="load_scripts_padrao(); selecionarCondominio()">
+        >
+      </div> 
+      </div> 
+      <div id="tab3" class="col s12 m12">
+        <div ng-include="'views/cadastro/tab_apartamento.html'"
+        onload="load_scripts_padrao(); selecionarPessoa()">
       </div>
       </div>
       
