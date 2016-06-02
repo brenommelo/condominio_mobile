@@ -1,7 +1,42 @@
 var especController = angular.module("notificacaoController", [] );
 especController.controller("notificacaoController", function ($scope, $http){
+ var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
+    $scope.solicitacao = novaSolicitacao();
+    
+ var sindico = false;
+     var idCondominio = 1;
+    
+retornar_notificacoes();
+    // $scope.retornarNotificacoes = retornar_notificacoes();
 
-    $scope.listaNotificacoes = test_notificacoes();
+    function retornar_notificacoes(){
+   $scope.solicitacao.solicitacaoSindico = sindico;
+                  $scope.solicitacao.condominio.id = idCondominio;
+             
+        $http.post(urlPrincipal+"notificacao/retornar_notificacoes", $scope.solicitacao)
+            .success(function(data) {
+                console.log(data);
+                $scope.listaNotificacoes = data;
+                // $scope.introducao_data = data;
+                console.log('sucesso');
+             }).error(function(data,status,error,config){
+                console.log("erro");
+            });
+    }
+
+function novaSolicitacao() {
+    return {
+        id: null,
+        inclusao: null,
+        descricao: null,
+        solicitacaoSindico: false,
+        
+        condominio:{id:0}
+    };
+}
+
+    // $scope.listaNotificacoes = test_notificacoes();
+    // $scope.listaNotificacoes = retornar_notificacoes();
 
     $scope.set_scripts = function(script){
         $scope.page = script;
@@ -33,14 +68,14 @@ function test_notificacoes(){
     return [{
         id: 1,
         audio: true,
-        descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat dictum ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Nunc imperdiet turpis at metus suscipit tristique. Donec eu rhoncus arcu. Nulla sed cursus velit, nec dapibus ligula. Suspendisse accumsan vel nisi sit amet rutrum. Nam elementum tortor nec mauris mollis, nec suscipit augue tempor. Vestibulum faucibus erat vel ex hendrerit, ut facilisis libero tempor. Nam sodales iaculis dignissim. Ut sed nulla in ante condimentum dictum. In hac habitasse platea dictumst. Cras pulvinar molestie libero, at cursus diam gravida eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a lorem erat. Nam quis felis sit amet dolor volutpat facilisis.",
+        descricao: "Deu ruim.",
         prioridade: {
-            id: 3,
+            prioridade: 3,
             codigo: 'U',
             descricao: 'Outro'
         },
-        tipo: {
-            id: 3,
+        tipoNotificacao: {
+            prioridade: 1,
             codigo: 'N',
             descricao: 'Outro'
         }
@@ -49,45 +84,31 @@ function test_notificacoes(){
         id: 2,
         audio: true,
         descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat dictum ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Nunc imperdiet turpis at metus suscipit tristique. Donec eu rhoncus arcu. Nulla sed cursus velit, nec dapibus ligula. Suspendisse accumsan vel nisi sit amet rutrum. Nam elementum tortor nec mauris mollis, nec suscipit augue tempor. Vestibulum faucibus erat vel ex hendrerit, ut facilisis libero tempor. Nam sodales iaculis dignissim. Ut sed nulla in ante condimentum dictum. In hac habitasse platea dictumst. Cras pulvinar molestie libero, at cursus diam gravida eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a lorem erat. Nam quis felis sit amet dolor volutpat facilisis.",
-        tipo: {
-            id: 2,
+        tipoNotificacao: {
+            prioridade: 2,
             codigo: 'Q',
             descricao: 'Queda'
-        },
-          prioridade: {
-            id: 3,
-            codigo: 'U',
-            descricao: 'Outro'
         }
+        
     },
     {
         id: 3,
         audio: false,
         descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat dictum ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Nunc imperdiet turpis at metus suscipit tristique. Donec eu rhoncus arcu. Nulla sed cursus velit, nec dapibus ligula. Suspendisse accumsan vel nisi sit amet rutrum. Nam elementum tortor nec mauris mollis, nec suscipit augue tempor. Vestibulum faucibus erat vel ex hendrerit, ut facilisis libero tempor. Nam sodales iaculis dignissim. Ut sed nulla in ante condimentum dictum. In hac habitasse platea dictumst. Cras pulvinar molestie libero, at cursus diam gravida eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a lorem erat. Nam quis felis sit amet dolor volutpat facilisis.",
-        tipo: {
-            id: 2,
+        tipoNotificacao: {
+            prioridade: 2,
             codigo: 'Q',
             descricao: 'Queda'
-        },
-          prioridade: {
-            id: 3,
-            codigo: 'N',
-            descricao: 'Outro'
         }
     },
     {
         id: 4,
         audio: false,
         descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat dictum ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Nunc imperdiet turpis at metus suscipit tristique. Donec eu rhoncus arcu. Nulla sed cursus velit, nec dapibus ligula. Suspendisse accumsan vel nisi sit amet rutrum. Nam elementum tortor nec mauris mollis, nec suscipit augue tempor. Vestibulum faucibus erat vel ex hendrerit, ut facilisis libero tempor. Nam sodales iaculis dignissim. Ut sed nulla in ante condimentum dictum. In hac habitasse platea dictumst. Cras pulvinar molestie libero, at cursus diam gravida eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a lorem erat. Nam quis felis sit amet dolor volutpat facilisis.",
-        tipo: {
-            id: 1,
+        tipoNotificacao: {
+            prioridade: 1,
             codigo: 'H',
             descricao: 'Hospitalização'
-        },
-          prioridade: {
-            id: 3,
-            codigo: 'U',
-            descricao: 'Outro'
         }
     }];
 }

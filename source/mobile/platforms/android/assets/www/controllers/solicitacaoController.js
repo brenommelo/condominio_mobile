@@ -2,11 +2,16 @@ var cadController = angular.module("solicitacaoController", [] );
 cadController.controller("solicitacaoController", function ($scope, $http){
      var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
      $scope.id_profissional = 1;
+     var sindico = true;
+     var idCondominio = 1;
+     var idUnidade = 1;
     $scope.solicitacao =novaSolicitacao();
 
 
     $scope.salvarSolicitacao = function(){
-                  
+                  $scope.solicitacao.solicitacaoSindico = sindico;
+                  $scope.solicitacao.condominio.id = idCondominio;
+                  $scope.solicitacao.unidade.id = idUnidade;
         $http.post(urlPrincipal+"notificacao/salvar_notificacao", $scope.solicitacao)
             .success(function(data) {
                 // $scope.introducao_data = data;
@@ -48,9 +53,9 @@ function novaSolicitacao() {
         id: null,
         inclusao: null,
         descricao: null,
-        solicitacaoSindico: true,
-        unidade:{id:1},
-        condominio:{id:1},
+        solicitacaoSindico: false,
+        unidade:{id:0},
+        condominio:{id:0},
         tipoNotificacao:{id:0}
     };
 }

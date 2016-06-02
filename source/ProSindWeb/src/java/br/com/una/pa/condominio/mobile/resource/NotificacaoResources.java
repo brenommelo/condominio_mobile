@@ -5,15 +5,11 @@
  */
 package br.com.una.pa.condominio.mobile.resource;
 
-import br.com.una.pa.condominio.mobile.controller.ConfiguracaoController;
 import br.com.una.pa.condominio.mobile.controller.NotificacaoController;
-import br.com.una.pa.condominio.mobile.entidades.Estado;
-import br.com.una.pa.condominio.mobile.entidades.Municipio;
 import br.com.una.pa.condominio.mobile.entidades.Notificacao;
 import br.ufmg.hc.telessaude.webservices.mobile.utils.GsonUtils;
 import java.util.List;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -35,13 +31,13 @@ public class NotificacaoResources extends CustomResources {
     public String retornarNotificacao(final String objetoJson) {
         Notificacao notificacao = GsonUtils.getSimpleInstance().fromJson(objetoJson, Notificacao.class);
         List<Notificacao> lista = notificacaoController.retornarNotificacoes(
-                notificacao.getCondominio().getId(),
-                notificacao.getUnidade().getId(),
-                notificacao.getTipoNotificacao().getId(),
-                notificacao.getSolicitacaoSindico()
+                notificacao.getCondominio()!=null?notificacao.getCondominio().getId():null,
+                notificacao.getUnidade()!=null?notificacao.getUnidade().getId():null,
+                notificacao.getTipoNotificacao()!=null?notificacao.getTipoNotificacao().getId():null,
+                notificacao.getSolicitacaoSindico()!=null?notificacao.getSolicitacaoSindico():null
         );
 
-        return GsonUtils.getSimpleInstance().toJson(lista, Notificacao[].class);
+        return GsonUtils.getSimpleInstance().toJson(lista.toArray(), Notificacao[].class);
     }
 
     @POST

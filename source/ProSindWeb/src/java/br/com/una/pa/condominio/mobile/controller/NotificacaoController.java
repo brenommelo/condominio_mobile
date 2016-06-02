@@ -8,6 +8,7 @@ package br.com.una.pa.condominio.mobile.controller;
 import br.com.una.pa.condominio.mobile.dao.impl.NotificacaoDAOImpl;
 import br.com.una.pa.condominio.mobile.entidades.Notificacao;
 import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +36,7 @@ public class NotificacaoController {
     public Notificacao salvarNotificacao(Notificacao notificacao) {
         try {
             if (!validarNotificacao(notificacao)) {
+                notificacao.setInclusao(Calendar.getInstance().getTime());
                 return notificacaoDAOImpl.saveOrUpdate(notificacao);
             }
         } catch (DAOException ex) {
