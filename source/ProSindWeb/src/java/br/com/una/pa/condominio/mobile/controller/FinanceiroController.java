@@ -10,6 +10,7 @@ import br.com.una.pa.condominio.mobile.dao.impl.ReceitaDAOImpl;
 import br.com.una.pa.condominio.mobile.entidades.Despesa;
 import br.com.una.pa.condominio.mobile.entidades.Receita;
 import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -29,7 +30,11 @@ public class FinanceiroController {
 
     public Receita salvarReceita(Receita receita) {
         try {
+                if(receita.getRealizacao()==null){
+                    receita.setRealizacao(receita.getInclusao());
+                }
             if (!receitaDAOImpl.validarDuplicidade(receita)) {
+                receita.setInclusao(Calendar.getInstance().getTime());
                 return receitaDAOImpl.saveOrUpdate(receita);
             }
         } catch (DAOException ex) {

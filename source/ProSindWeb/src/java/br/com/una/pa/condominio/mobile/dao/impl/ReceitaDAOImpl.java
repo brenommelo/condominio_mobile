@@ -25,7 +25,8 @@ public class ReceitaDAOImpl extends DaoBase<Receita> implements ReceitaDAO {
     public Boolean validarDuplicidade(Receita receita) throws DAOException {
         List<Receita> lista = this.findByRestrictions(0,
                 Restrictions.eq("realizacao", receita.getRealizacao()),
-                Restrictions.ilike("nome", receita.getNome()),
+                receita.getNome()!=null?Restrictions.ilike("nome", receita.getNome()):null,
+                receita.getUnidade()!=null?Restrictions.eq("unidade", receita.getUnidade()):null,
                 Restrictions.eq("valor", receita.getValor()),
                 Restrictions.eq("condominio.id", receita.getCondominio().getId())
         );

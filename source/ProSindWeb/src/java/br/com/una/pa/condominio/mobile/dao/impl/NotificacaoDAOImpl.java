@@ -25,7 +25,7 @@ public class NotificacaoDAOImpl extends DaoBase<Notificacao> implements Notifica
         return this.findByRestrictions(0,
                 idCond != null ? Restrictions.eq("condominio.id", idCond) : null,
                 idUnidade != null ? Restrictions.eq("unidade.id", idUnidade) : null,
-                sindico != null ? Restrictions.eq("solicitacaoSindico", sindico) : null,
+                sindico != null && !sindico ? Restrictions.eq("solicitacaoSindico", sindico) : null,
                 idTipo != null ? Restrictions.eq("tipoNotificacao.id", idTipo) : null
         );
 

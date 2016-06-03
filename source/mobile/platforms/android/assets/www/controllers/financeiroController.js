@@ -1,13 +1,23 @@
 var cadController = angular.module("financeiroController", [] );
 cadController.controller("financeiroController", function ($scope, $http){
+
+      var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
     //ID PROFISSIONAL DE TESTE
-    $scope.id_profissional = 1;
+    var idCondominio = 1;
     
     $scope.receita= nova_receita();
     $scope.despesa = nova_despesa();
 
     $scope.gravarReceita = function(){
-        console.log($scope.receita);
+        // console.log($scope.receita);
+        $scope.receita.condominio.id =idCondominio;
+           $http.post(urlPrincipal+"financeiro/salvar_receita", $scope.receita)
+            .success(function(data) {
+                // $scope.introducao_data = data;
+                console.log('sucesso');
+             }).error(function(data,status,error,config){
+                console.log("erro");
+            });
     }
     $scope.gravarDespesa = function(){
         console.log($scope.despesa);
@@ -63,23 +73,21 @@ cadController.controller("financeiroController", function ($scope, $http){
 
 function nova_receita() {
     return {
-        id: null,
-        idSync: null,
         nome: null,
         valor: null,
-        inclusao: null,
-        separacaoContabil: null,
-        origem: null
+        separacaoContabil:{id:null},
+        unidade: null,
+        realizacao:null,
+        condominio:{id:null}
     };
 }
 function nova_despesa() {
     return {
-        id: null,
-        idSync: null,
         nome: null,
         valor: null,
-        inclusao: null,
-        separacaoContabil: null
+        realizacao:null,
+        separacaoContabil:{id:null},
+        condominio:{id:null}
     };
 }
 

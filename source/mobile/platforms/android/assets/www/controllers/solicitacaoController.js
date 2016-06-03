@@ -2,7 +2,7 @@ var cadController = angular.module("solicitacaoController", [] );
 cadController.controller("solicitacaoController", function ($scope, $http){
      var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
      $scope.id_profissional = 1;
-     var sindico = true;
+     var sindico = false;
      var idCondominio = 1;
      var idUnidade = 1;
     $scope.solicitacao =novaSolicitacao();

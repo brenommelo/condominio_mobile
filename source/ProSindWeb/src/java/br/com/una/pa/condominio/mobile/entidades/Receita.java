@@ -36,6 +36,8 @@ public class Receita {
     @Column(columnDefinition = "timestamp default current_timestamp")
     private Date realizacao;
     private String nome;
+    //se o id for nulo significa que nao foi uma taxa de condominio
+    private Long unidade;
     private Float valor;
       @JoinColumn(name = "id_separacao_contabil")
     @ManyToOne(optional = false)
@@ -113,6 +115,14 @@ public class Receita {
 
     public void setCondominio(Condominio condominio) {
         this.condominio = condominio;
+    }
+
+    public Long getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(Long unidade) {
+        this.unidade = unidade;
     }
 
 }

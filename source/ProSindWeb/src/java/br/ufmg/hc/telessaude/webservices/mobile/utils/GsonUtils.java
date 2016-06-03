@@ -54,7 +54,8 @@ public class GsonUtils {
                             data = new SimpleDateFormat("MMM dd, yyyy").parse(data_str);
                         } else if (data_str.length() == 11) {
                             data = new SimpleDateFormat("MMM d, yyyy").parse(data_str);
-
+                        }else if(data_str.length() == 10){
+                             data = new SimpleDateFormat("dd/MM/yyyy").parse(data_str);
                         } else {
 
                             data = sdf.parse(data_str);

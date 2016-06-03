@@ -16,10 +16,15 @@
                                 <label for="nome" class="flow-text">Valor</label>
                             </div>
                         </div>
-                         
+                            <div class="col s12 m12">
+                            <div class="input-field">
+                                <input id="realizacao" type="text" class="datepicker" ng-model="despesa.realizacao">
+                                <label for="realizacao" class="flow-text">Data da despesa</label>
+                            </div>
+                        </div>
                          <div class="col s12 m6">
                             <div class="input-field">
-                                <select id="slct_separacao" ng-model="despesa.separacaoContabil">
+                                <select id="slct_separacao" ng-model="despesa.separacaoContabil.id">
                                     <option value="" disabled selected></option>
                                     <option value="ubs">Ordinárias</option>
                                     <option value="ubs">Fundo reserva</option>

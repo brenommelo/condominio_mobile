@@ -39,10 +39,8 @@ public class FinanceiroResources extends CustomResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String salvarReceita(final String receitaJson) {
 
-        Receita receita = GsonUtils.getSimpleInstance().fromJson(receitaJson, Receita.class);
-        if (receita == null || receita.getCondominio() == null
-                || receita.getCondominio().getId() == null || receita.getValor() == null
-                || receita.getNome() == null || receita.getNome().isEmpty()) {
+        Receita receita = GsonUtils.getInstanceWithStringDateAdapter().fromJson(receitaJson, Receita.class);
+        if (receita == null || receita.getCondominio() == null || receita.getCondominio().getId() == null || receita.getValor() == null) {
             return null;
         } else {
             financeiroController.salvarReceita(receita);

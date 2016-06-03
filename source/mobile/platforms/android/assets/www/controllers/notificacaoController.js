@@ -3,7 +3,7 @@ especController.controller("notificacaoController", function ($scope, $http){
  var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
     $scope.solicitacao = novaSolicitacao();
     
- var sindico = false;
+ var sindico = true;
      var idCondominio = 1;
     
 retornar_notificacoes();
@@ -64,54 +64,54 @@ function novaSolicitacao() {
     $scope.$on('$viewContentLoaded', function() {});
 });
 
-function test_notificacoes(){
-    return [{
-        id: 1,
-        audio: true,
-        descricao: "Deu ruim.",
-        prioridade: {
-            prioridade: 3,
-            codigo: 'U',
-            descricao: 'Outro'
-        },
-        tipoNotificacao: {
-            prioridade: 1,
-            codigo: 'N',
-            descricao: 'Outro'
-        }
-    },
-    {
-        id: 2,
-        audio: true,
-        descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat dictum ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Nunc imperdiet turpis at metus suscipit tristique. Donec eu rhoncus arcu. Nulla sed cursus velit, nec dapibus ligula. Suspendisse accumsan vel nisi sit amet rutrum. Nam elementum tortor nec mauris mollis, nec suscipit augue tempor. Vestibulum faucibus erat vel ex hendrerit, ut facilisis libero tempor. Nam sodales iaculis dignissim. Ut sed nulla in ante condimentum dictum. In hac habitasse platea dictumst. Cras pulvinar molestie libero, at cursus diam gravida eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a lorem erat. Nam quis felis sit amet dolor volutpat facilisis.",
-        tipoNotificacao: {
-            prioridade: 2,
-            codigo: 'Q',
-            descricao: 'Queda'
-        }
+// function test_notificacoes(){
+//     return [{
+//         id: 1,
+//         audio: true,
+//         descricao: "Deu ruim.",
+//         prioridade: {
+//             prioridade: 3,
+//             codigo: 'U',
+//             descricao: 'Outro'
+//         },
+//         tipoNotificacao: {
+//             prioridade: 1,
+//             codigo: 'N',
+//             descricao: 'Outro'
+//         }
+//     },
+//     {
+//         id: 2,
+//         audio: true,
+//         descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat dictum ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Nunc imperdiet turpis at metus suscipit tristique. Donec eu rhoncus arcu. Nulla sed cursus velit, nec dapibus ligula. Suspendisse accumsan vel nisi sit amet rutrum. Nam elementum tortor nec mauris mollis, nec suscipit augue tempor. Vestibulum faucibus erat vel ex hendrerit, ut facilisis libero tempor. Nam sodales iaculis dignissim. Ut sed nulla in ante condimentum dictum. In hac habitasse platea dictumst. Cras pulvinar molestie libero, at cursus diam gravida eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a lorem erat. Nam quis felis sit amet dolor volutpat facilisis.",
+//         tipoNotificacao: {
+//             prioridade: 2,
+//             codigo: 'Q',
+//             descricao: 'Queda'
+//         }
         
-    },
-    {
-        id: 3,
-        audio: false,
-        descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat dictum ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Nunc imperdiet turpis at metus suscipit tristique. Donec eu rhoncus arcu. Nulla sed cursus velit, nec dapibus ligula. Suspendisse accumsan vel nisi sit amet rutrum. Nam elementum tortor nec mauris mollis, nec suscipit augue tempor. Vestibulum faucibus erat vel ex hendrerit, ut facilisis libero tempor. Nam sodales iaculis dignissim. Ut sed nulla in ante condimentum dictum. In hac habitasse platea dictumst. Cras pulvinar molestie libero, at cursus diam gravida eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a lorem erat. Nam quis felis sit amet dolor volutpat facilisis.",
-        tipoNotificacao: {
-            prioridade: 2,
-            codigo: 'Q',
-            descricao: 'Queda'
-        }
-    },
-    {
-        id: 4,
-        audio: false,
-        descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat dictum ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Nunc imperdiet turpis at metus suscipit tristique. Donec eu rhoncus arcu. Nulla sed cursus velit, nec dapibus ligula. Suspendisse accumsan vel nisi sit amet rutrum. Nam elementum tortor nec mauris mollis, nec suscipit augue tempor. Vestibulum faucibus erat vel ex hendrerit, ut facilisis libero tempor. Nam sodales iaculis dignissim. Ut sed nulla in ante condimentum dictum. In hac habitasse platea dictumst. Cras pulvinar molestie libero, at cursus diam gravida eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a lorem erat. Nam quis felis sit amet dolor volutpat facilisis.",
-        tipoNotificacao: {
-            prioridade: 1,
-            codigo: 'H',
-            descricao: 'Hospitalização'
-        }
-    }];
-}
+//     },
+//     {
+//         id: 3,
+//         audio: false,
+//         descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat dictum ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Nunc imperdiet turpis at metus suscipit tristique. Donec eu rhoncus arcu. Nulla sed cursus velit, nec dapibus ligula. Suspendisse accumsan vel nisi sit amet rutrum. Nam elementum tortor nec mauris mollis, nec suscipit augue tempor. Vestibulum faucibus erat vel ex hendrerit, ut facilisis libero tempor. Nam sodales iaculis dignissim. Ut sed nulla in ante condimentum dictum. In hac habitasse platea dictumst. Cras pulvinar molestie libero, at cursus diam gravida eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a lorem erat. Nam quis felis sit amet dolor volutpat facilisis.",
+//         tipoNotificacao: {
+//             prioridade: 2,
+//             codigo: 'Q',
+//             descricao: 'Queda'
+//         }
+//     },
+//     {
+//         id: 4,
+//         audio: false,
+//         descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat dictum ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Nunc imperdiet turpis at metus suscipit tristique. Donec eu rhoncus arcu. Nulla sed cursus velit, nec dapibus ligula. Suspendisse accumsan vel nisi sit amet rutrum. Nam elementum tortor nec mauris mollis, nec suscipit augue tempor. Vestibulum faucibus erat vel ex hendrerit, ut facilisis libero tempor. Nam sodales iaculis dignissim. Ut sed nulla in ante condimentum dictum. In hac habitasse platea dictumst. Cras pulvinar molestie libero, at cursus diam gravida eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a lorem erat. Nam quis felis sit amet dolor volutpat facilisis.",
+//         tipoNotificacao: {
+//             prioridade: 1,
+//             codigo: 'H',
+//             descricao: 'Hospitalização'
+//         }
+//     }];
+// }
 
 function include(destination) {
     var e=window.document.createElement('script');
