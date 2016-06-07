@@ -5,28 +5,45 @@
  */
 package br.com.una.pa.condominio.mobile.controller;
 
+import br.com.una.pa.condominio.mobile.dao.impl.PessoaDAOImpl;
 import br.com.una.pa.condominio.mobile.entidades.Condominio;
 import br.com.una.pa.condominio.mobile.entidades.Pessoa;
+import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author breno
  */
 public class PessoaController {
-    
+
+    PessoaDAOImpl pessoaDAOImpl = new PessoaDAOImpl();
+
     public PessoaController() {
     }
 
-    public Condominio salvarPessoa(Pessoa pessoa) {
+    public Pessoa salvarPessoa(Pessoa pessoa) {
         if (validarDuplicidadePessoa(pessoa)) {
-            
+            try {
+                pessoa.setInclusao(Calendar.getInstance().getTime());
+                return pessoaDAOImpl.saveOrUpdate(pessoa);
+            } catch (DAOException ex) {
+                Logger.getLogger(PessoaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        
+
         return null;
     }
 
     public Boolean validarDuplicidadePessoa(Pessoa pessoa) {
+        try {
+            return !pessoaDAOImpl.verificarSeJaExiste(pessoa);
+        } catch (DAOException ex) {
+            Logger.getLogger(PessoaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return false;
     }
-    
+
 }

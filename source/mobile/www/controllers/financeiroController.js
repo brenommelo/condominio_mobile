@@ -20,7 +20,15 @@ cadController.controller("financeiroController", function ($scope, $http){
             });
     }
     $scope.gravarDespesa = function(){
-        console.log($scope.despesa);
+        // console.log($scope.despesa);
+         $scope.despesa.condominio.id =idCondominio;
+           $http.post(urlPrincipal+"financeiro/salvar_despesa", $scope.despesa)
+            .success(function(data) {
+                // $scope.introducao_data = data;
+                console.log('sucesso');
+             }).error(function(data,status,error,config){
+                console.log("erro");
+            });
     }
 
 

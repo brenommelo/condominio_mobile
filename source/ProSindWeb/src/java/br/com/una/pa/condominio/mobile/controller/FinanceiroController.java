@@ -46,6 +46,7 @@ public class FinanceiroController {
     public Despesa salvarDespesa(Despesa despesa) {
         try {
             if (!despesaDAOImpl.validarDuplicidade(despesa)) {
+                despesa.setInclusao(Calendar.getInstance().getTime());
                 return despesaDAOImpl.saveOrUpdate(despesa);
             }
         } catch (DAOException ex) {

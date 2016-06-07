@@ -7,6 +7,9 @@ package br.com.una.pa.condominio.mobile.dao.impl;
 
 import br.com.una.pa.condominio.mobile.dao.UnidadeDAO;
 import br.com.una.pa.condominio.mobile.entidades.Unidade;
+import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
+import java.util.List;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -16,6 +19,14 @@ public class UnidadeDAOImpl extends DaoBase<Unidade> implements UnidadeDAO {
 
     public UnidadeDAOImpl() {
         super(Unidade.class);
+    }
+
+    public Boolean verificarSeJaExiste(Unidade unidade) throws DAOException {
+        List<Unidade> lista = this.findByRestrictions(0,
+                Restrictions.eq("condominio.id", unidade.getCondominio().getId()),
+                Restrictions.ilike("nome", unidade.getNome())
+        );
+        return lista != null && lista.size() > 0;
     }
 
 }

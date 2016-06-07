@@ -4,6 +4,7 @@ import br.com.una.pa.condominio.mobile.dao.GenericDao;
 import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -33,6 +34,14 @@ public class DaoBase<T> implements GenericDao<T>, Serializable {
     public DaoBase(Class c) {
         this.c = c;
     }
+        @Override
+    public ProjectionList getProjectList(String... properties) {
+        final ProjectionList listProj = Projections.projectionList();
+        for (String projection : properties) {
+            listProj.add(Projections.property(projection));
+        }
+        return listProj;
+    }
 
     /**
      *
@@ -55,6 +64,61 @@ public class DaoBase<T> implements GenericDao<T>, Serializable {
             this.closeSession();
         }
     }
+    
+      public List<Object[]> consultarPorRestricoes(final int start, final int maxResults, final Order[] order, Map<String, String> alias, final ProjectionList projections, final Criterion... criterions) throws DAOException {
+        try {
+            return getCriteria(start, maxResults, projections, alias, order, criterions).list();
+        } catch (HibernateException ex) {
+            throw new DAOException(ex.getMessage(), ex);
+        } finally {
+            this.closeSession();
+        }
+    }
+       public Criteria getCriteria(final int start, final int maxResults, final ProjectionList projecoes, final Map<String, String> alias, final Order[] order, final Criterion... criterions) throws DAOException  {
+        try {
+            final DetachedCriteria crit = DetachedCriteria.forClass(c);
+            final Criteria criteria = crit.getExecutableCriteria(HibernateUtil.currentSession());
+
+            if (alias != null && !alias.isEmpty()) {
+                for (String key : alias.keySet()) {
+                    criteria.createAlias(key, alias.get(key));
+                }
+            }
+
+            if (projecoes != null) {
+                criteria.setProjection(projecoes);
+            }
+
+            if (order != null) {
+                for (Order ord : order) {
+                    if (ord != null) {
+                        criteria.addOrder(ord);
+                    }
+                }
+            }
+
+            if (criterions != null) {
+                for (final Criterion cri : criterions) {
+                    if (cri != null) {
+                        criteria.add(cri);
+                    }
+                }
+            }
+
+            if (start > 0) {
+                criteria.setFirstResult(start);
+            }
+            if (maxResults != 0) {
+                criteria.setMaxResults(maxResults);
+            }
+
+            return (criteria);
+        } catch (HibernateException ex) {
+            throw new DAOException(ex.getMessage(), ex);
+        }
+
+    }
+
 
     /**
      *

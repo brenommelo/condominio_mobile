@@ -1,6 +1,6 @@
 var cadController = angular.module("cadastroController", [] );
 cadController.controller("cadastroController", function ($scope, $http){
-    var urlPrincipal ="//150.164.192.63:8080/ProSindWeb/condominioservices/";
+     var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
     $scope.id_profissional = 1;
     $scope.pessoa =novaPessoa();
     $scope.condominio =novaCondominio();
@@ -8,14 +8,38 @@ cadController.controller("cadastroController", function ($scope, $http){
     $scope.apartamento = novoApartamento();
 
     $scope.salvarPessoa = function(){
-        console.log($scope.pessoa)
+        // console.log($scope.pessoa);
+        $scope.receita.condominio.id =idCondominio;
+           $http.post(urlPrincipal+"cadastro/salvar_pessoa", $scope.pessoa)
+            .success(function(data) {
+                // $scope.introducao_data = data;
+                console.log('sucesso');
+             }).error(function(data,status,error,config){
+                console.log("erro");
+            });
     }
     $scope.salvarCondominio = function(){
-        console.log($scope.condominio);
+        // console.log($scope.condominio);
+            $scope.receita.condominio.id =idCondominio;
+           $http.post(urlPrincipal+"cadastro/salvar_condominio", $scope.condominio)
+            .success(function(data) {
+                // $scope.introducao_data = data;
+                console.log('sucesso');
+             }).error(function(data,status,error,config){
+                console.log("erro");
+            });
     }
     $scope.salvarApartamentos = function(){
       
-        console.log($scope.apartamentos);
+        // console.log($scope.apartamentos);
+             $scope.receita.condominio.id =idCondominio;
+           $http.post(urlPrincipal+"cadastro/salvar_condominio", $scope.condominio)
+            .success(function(data) {
+                // $scope.introducao_data = data;
+                console.log('sucesso');
+             }).error(function(data,status,error,config){
+                console.log("erro");
+            });
     }
 
 $scope.adicionarApartametno = function(){

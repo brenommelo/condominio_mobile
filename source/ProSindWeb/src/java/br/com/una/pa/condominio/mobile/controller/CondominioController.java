@@ -5,35 +5,41 @@
  */
 package br.com.una.pa.condominio.mobile.controller;
 
+import br.com.una.pa.condominio.mobile.dao.impl.CondominioDAOImpl;
 import br.com.una.pa.condominio.mobile.entidades.Condominio;
+import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author breno
  */
 public class CondominioController {
-
+    CondominioDAOImpl condominioDAOImpl = new CondominioDAOImpl();
     public CondominioController() {
     }
 
     public Condominio salvarCondominio(Condominio condominio) {
         if (validarDuplicidadeCondominio(condominio)) {
-
+            condominio.setInclusao(Calendar.getInstance().getTime());
+            try {
+               return condominioDAOImpl.salvarCondominio(condominio);
+            } catch (DAOException ex) {
+                Logger.getLogger(CondominioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         return null;
     }
 
     public Boolean validarDuplicidadeCondominio(Condominio condominio) {
+        try {
+            return !condominioDAOImpl.verificarSeJaExiste(condominio);
+        } catch (DAOException ex) {
+            Logger.getLogger(CondominioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return false;
     }
-
-    public Boolean validarDuplicidadePessoa(Condominio condominio) {
-        return false;
-    }
-
-    public Boolean validarDuplicidadeUnidades(Condominio condominio) {
-        return false;
-    }
-
 }

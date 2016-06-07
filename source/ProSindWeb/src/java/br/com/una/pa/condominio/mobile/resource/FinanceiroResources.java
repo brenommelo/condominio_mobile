@@ -61,7 +61,7 @@ public class FinanceiroResources extends CustomResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String salvarDespesa(final String despesaJson) {
 
-        Despesa despesa = GsonUtils.getSimpleInstance().fromJson(despesaJson, Despesa.class);
+        Despesa despesa = GsonUtils.getInstanceWithStringDateAdapter().fromJson(despesaJson, Despesa.class);
         if (despesa == null || despesa.getCondominio() == null
                 || despesa.getCondominio().getId() == null || despesa.getValor() == null
                 || despesa.getNome() == null || despesa.getNome().isEmpty()) {
