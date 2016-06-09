@@ -6,9 +6,11 @@ cadController.controller("solicitacaoController", function ($scope, $http){
      var idCondominio = 1;
      var idUnidade = 1;
     $scope.solicitacao =novaSolicitacao();
-
+    $scope.menssagem = {exibir:false, texto:"Errooooooo"};
+    
 
     $scope.salvarSolicitacao = function(){
+        $scope.menssagem.exibir = true;
                   $scope.solicitacao.solicitacaoSindico = sindico;
                   $scope.solicitacao.condominio.id = idCondominio;
                   $scope.solicitacao.unidade.id = idUnidade;

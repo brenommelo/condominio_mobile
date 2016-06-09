@@ -24,6 +24,7 @@ public class CondominioController {
     public Condominio salvarCondominio(Condominio condominio) {
         if (validarDuplicidadeCondominio(condominio)) {
             condominio.setInclusao(Calendar.getInstance().getTime());
+            condominio.getEndereco().setInclusao(Calendar.getInstance().getTime());
             try {
                return condominioDAOImpl.salvarCondominio(condominio);
             } catch (DAOException ex) {

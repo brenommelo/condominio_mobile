@@ -37,10 +37,14 @@
                         </div>
                         <div class="col s12 m12">
                             <div class="input-field">
-                                <input id="Email" type="text"  ng-model="pessoa.email">
+                                <input id="Email" name="email" type="text" ng-model="email"  ng-model="pessoa.email" required>
                                 <label for="Email" class="flow-text">Email</label>
                             </div>
                         </div>
+                        <div ng-messages="exampleForm.email.$error">
+  <div ng-message="required">This field is required</div>
+  <div ng-message="email">Your email address is invalid</div>
+</div>
                         <div class="col s12 m12">
                             <div class="input-field">
                                 <input id="Senha" type="text"  ng-model="pessoa.senha">

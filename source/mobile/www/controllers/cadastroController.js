@@ -6,10 +6,10 @@ cadController.controller("cadastroController", function ($scope, $http){
     $scope.condominio =novaCondominio();
     $scope.apartamentos = [];
     $scope.apartamento = novoApartamento();
-
+    var condominioId = 1;
     $scope.salvarPessoa = function(){
         // console.log($scope.pessoa);
-        $scope.receita.condominio.id =idCondominio;
+            $scope.pessoa
            $http.post(urlPrincipal+"cadastro/salvar_pessoa", $scope.pessoa)
             .success(function(data) {
                 // $scope.introducao_data = data;
@@ -20,7 +20,7 @@ cadController.controller("cadastroController", function ($scope, $http){
     }
     $scope.salvarCondominio = function(){
         // console.log($scope.condominio);
-            $scope.receita.condominio.id =idCondominio;
+        
            $http.post(urlPrincipal+"cadastro/salvar_condominio", $scope.condominio)
             .success(function(data) {
                 // $scope.introducao_data = data;
@@ -32,8 +32,8 @@ cadController.controller("cadastroController", function ($scope, $http){
     $scope.salvarApartamentos = function(){
       
         // console.log($scope.apartamentos);
-             $scope.receita.condominio.id =idCondominio;
-           $http.post(urlPrincipal+"cadastro/salvar_condominio", $scope.condominio)
+             $scope.apartamentos.condominio.id =idCondominio;
+           $http.post(urlPrincipal+"cadastro/salvar_unidades", $scope.apartamentos)
             .success(function(data) {
                 // $scope.introducao_data = data;
                 console.log('sucesso');
@@ -101,9 +101,11 @@ function novoApartamento() {
         inclusao: null,
         nome: null,
         fracaoIdeal: null,
-        cpf: null
+        cpf: null,
+        condominio:{id:null}
     };
-}function novaPessoa() {
+}
+function novaPessoa() {
     return {
         id: null,
         idSync: null,
@@ -123,15 +125,18 @@ function novaCondominio () {
         idSync: null,
         inclusao: null,
         nome: null,
-        cep: null,
+       
+        endereco:{
+             cep: null,
         rua: null,
         numero: null,
         bairro: null,
-        cidade: null,
-        estado: null,
-        juros: null,
-        multa: null,
-        tipo:{nome:null}
+            municipio:{
+                id:null
+            }
+        },
+        estado:{id:null},
+        tipoCondominio:{id:null}
     };
 }
 
