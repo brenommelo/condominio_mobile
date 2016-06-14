@@ -1,5 +1,5 @@
-var cadController = angular.module("solicitacaoController", [] );
-cadController.controller("solicitacaoController", function ($scope, $http){
+var cadController = angular.module("configuracaoController", [] );
+cadController.controller("configuracaoController", function ($scope, $http){
      var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
      $scope.id_profissional = 1;
      var sindico = false;
@@ -13,14 +13,7 @@ cadController.controller("solicitacaoController", function ($scope, $http){
     {label:"Duvida prestação contas",value:"4"},
     {label:"Duvida calculos de taxas",value:"3"}
     ];
-   //  $scope.data = {
-   //  repeatSelect: null,
-   //  availableOptions: [
-   //    {id: '1', name: 'Option A'},
-   //    {id: '2', name: 'Option B'},
-   //    {id: '3', name: 'Option C'}
-   //  ],
-   // };
+
 
     $scope.salvarSolicitacao = function(){
         $scope.menssagem.exibir = true;
@@ -59,6 +52,7 @@ cadController.controller("solicitacaoController", function ($scope, $http){
     }
 
     $scope.load_data();
+    $scope.load_scripts_padrao();
     // Quando o angular finalizar o carregamento o metodo abaixo e executado
     $scope.$on('$viewContentLoaded', function() {});
 });

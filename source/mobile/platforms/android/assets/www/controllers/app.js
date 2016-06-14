@@ -6,7 +6,8 @@ angular.module('MainApp',
     'EspecialistaController', 
     'financeiroController',
     'solicitacaoController',
-    'notificacaoController'
+    'notificacaoController',
+    'configuracaoController'
     ])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -41,6 +42,15 @@ angular.module('MainApp',
         templateUrl: 'views/solicitacao.html',
         controller: "solicitacaoController",
            resolve:{
+            init :function(){
+                if('abrirModal' in window){abrirModal();}
+            }
+        }
+    }).state('configuracao',{
+        url: "/configuracao",
+        templateUrl: 'views/configuracao.html',
+        controller: "configuracaoController",
+         resolve:{
             init :function(){
                 if('abrirModal' in window){abrirModal();}
             }

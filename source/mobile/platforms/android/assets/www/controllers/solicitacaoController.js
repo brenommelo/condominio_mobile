@@ -7,7 +7,20 @@ cadController.controller("solicitacaoController", function ($scope, $http){
      var idUnidade = 1;
     $scope.solicitacao =novaSolicitacao();
     $scope.menssagem = {exibir:false, texto:"Errooooooo"};
-    
+    $scope.opcoes = [
+    {label:"Barulho",value:"1"},
+    {label:"Manutenção",value:"2"},
+    {label:"Duvida prestação contas",value:"4"},
+    {label:"Duvida calculos de taxas",value:"3"}
+    ];
+   //  $scope.data = {
+   //  repeatSelect: null,
+   //  availableOptions: [
+   //    {id: '1', name: 'Option A'},
+   //    {id: '2', name: 'Option B'},
+   //    {id: '3', name: 'Option C'}
+   //  ],
+   // };
 
     $scope.salvarSolicitacao = function(){
         $scope.menssagem.exibir = true;

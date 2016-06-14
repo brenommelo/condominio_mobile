@@ -1,0 +1,85 @@
+<div class="row margin-top-15">
+  <div class="col s12">
+    <div class="row" style="margin-bottom: 0;">
+      <ul class="tabs" data-collapsible="accordion">
+        <li class="tab">
+          <a data-page="1" class="light-primary-color primary-text-color">Configuração</a>
+
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <form name="userForm" ng-submit="salvarSolicitacao()" required>
+        
+        <div class="col s12 m12">
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="col s12 m12">
+                            <div class="input-field">
+                                <input id="nome" type="text"  ng-model="pessoa.cpf" 
+                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                                <label for="nome" class="flow-text">Taxa de juros (% mensal)</label>
+                            </div>
+                        </div>
+                           <div class="col s12 m12">
+                            <div class="input-field">
+                                <input id="nome" type="text"  ng-model="pessoa.cpf" 
+                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                                <label for="nome" class="flow-text">Multa (%)</label>
+                            </div>
+                        </div>
+
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <input id="nascimento" type="text" class="datepicker" ng-model="pessoa.nascimento" 
+                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                                <label for="nascimento" class="flow-text">Data de vencimento</label>
+                            </div>
+                        </div>
+                         <div class="col s12 m6">
+                            <div class="input-field">
+                                <input id="nascimento" type="text" class="datepicker" ng-model="pessoa.nascimento" 
+                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                                <label for="nascimento" class="flow-text">Desconto pagamento antecipado</label>
+                            </div>
+                        </div>
+                        <div class="col s12 m6">
+                            <div class="input-field">
+                                <input id="nascimento" type="text" class="datepicker" ng-model="pessoa.nascimento" 
+                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                                <label for="nascimento" class="flow-text">Data de pagamento antecipado</label>
+                            </div>
+                        </div>
+           <div class="row" style="padding-top:15px">
+
+         
+                  <!-- div ng-if="userForm.solicitacao.$invalid" class="isa_error">
+                   * Informe sua solicitacao!
+                 </div> -->
+                 <div ng-if="menssagem.exibir" style="color: red;" class="isa_error">
+                   {{menssagem.texto}}
+                 </div>
+                 <!-- <div ng-if="userForm.solicitacao.$minlength" style="color: red" class="error">
+                   * Informe sua solicitacao!
+                 </div> -->
+                 
+               </div>
+                    <div id="tab3" class="col s12 m12">
+        <div onload="load_scripts_padrao();">
+      </div>
+      </div>
+            
+               <div class="row" style="padding-top:15px">
+                 <button class="btn btn-large right waves-effect">
+                  Salvar
+                </button>  
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>  
+    </form>
+  </div>   
+
+</div>
+</div>

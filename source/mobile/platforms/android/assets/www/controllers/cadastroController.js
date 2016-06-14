@@ -101,7 +101,7 @@ function novoApartamento() {
         inclusao: null,
         nome: null,
         fracaoIdeal: null,
-        cpf: null,
+        email: null,
         condominio:{id:null}
     };
 }

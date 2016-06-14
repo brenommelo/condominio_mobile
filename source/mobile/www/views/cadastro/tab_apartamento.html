@@ -4,18 +4,21 @@
         <div class="collapsible-body">
             <div class="card grey lighten-4">
                 <div class="card-content">
+                   <form  ng-submit="salvarApartamentos()" >
                     <div class="row">
 
-                     <div class="col s12 m6">
+                       <div class="col s12 m6">
                         <div class="input-field">
-                            <input id="idade" type="text"  ng-model="apartamento.nome">
+                            <input id="idade" type="text"  ng-model="apartamento.nome" 
+                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
                             <label for="idade" class="flow-text">Descricao</label>
                         </div>
                     </div>
                     <div class="col s12 m6">
                         <div class="input-field">
-                            <input id="idade" type="number"  ng-model="apartamento.cpf">
-                            <label for="idade" class="flow-text">Email/CPF responsável</label>
+                            <input id="idade" type="number"  ng-model="apartamento.email" 
+                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                            <label for="idade" class="flow-text">Email</label>
                         </div>
                     </div>
                     <div class="col s12 m6">
@@ -45,12 +48,13 @@
                         <span ng-bind="tel.descricao"></span>
                     </div>
 
-                    <button class="btn btn-large right waves-effect" ng-click="salvarApartamentos()">
+                    <button class="btn btn-large right waves-effect">
                         Salvar
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 </li>
 </ul>

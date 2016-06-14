@@ -9,53 +9,47 @@
       </ul>
     </div>
     <div class="row">
-      <form name="userForm" >
+      <form name="userForm" ng-submit="salvarSolicitacao()" required>
+        
         <div class="col s12 m12">
           <ul class="collapsible" data-collapsible="accordion">
             <li>
               <div>
-                <div class="row"  style="padding-top:15px">
+               
+                <div class="col s12 m12">
 
-                  <div class="col s12 m12">
-                    <select id="slct_ordem" name="select" ng-model="solicitacao.tipoNotificacao.id" oninvalid="this.setCustomValidity('Campo obrigatório')"
-                      style="display: block;" required>
-                      <option value="" selected>Selecione</option>
-                      <option value="1">Barulho</option>
-                      <option value="2">Manutenção </option>
-                      <option value="3">Duvida calculos de taxas</option>
-                      <option value="4">Duvida prestação contas</option>
-                      <option value="5">Duvidas gerais</option>
-                    </select>
+                 <select style="display: block;" ng-model="solicitacao.tipoNotificacao.id" ng-options="o.label for o in opcoes" required
+                 oninvalid="this.setCustomValidity('Selecione um tipo de solicitação')" oninput="setCustomValidity('')"
+                 >
+                 <option value="" >Selecione</option>
+                 <option value="{{option.value}}">{{option.label}}</option>
+               </select>
+             </div>
+           </div>
+           <div class="row" style="padding-top:15px">
 
-                  </div>
-                    <div ng-if="userForm.select.$invalid" class="isa_error" class="error">
-                   * Informe o tipo da solicitação!
-                  </div>
-                  
-                </div>
-                <div class="row" style="padding-top:15px">
-
-                  <div class="col s12 m12">
-                    <div >
-                      <textarea id="solicit" name="solicitacao"
-                       placeholder="Digite sua solicitação aqui... (max. 1000 caracteres)"
-                        maxlength="1000" type="text" style="height: 150px;"
-                      ng-model="solicitacao.descricao" ng-minlength="10" required/>
-                    </div>
-                  </div>
-                  <div ng-if="userForm.solicitacao.$invalid" style="color: red" class="error">
+            <div class="col s12 m12">
+              <div >
+                <textarea id="solicit" name="solicitacao" 
+                oninvalid="this.setCustomValidity('Informe sua solicitação')" oninput="setCustomValidity('')" required
+                placeholder="Digite sua solicitação aqui... (max. 1000 caracteres)"
+                maxlength="1000" type="text" style="height: 150px;"
+                ng-model="solicitacao.descricao" ng-minlength="10" />
+              </div>
+            </div>
+                  <!-- div ng-if="userForm.solicitacao.$invalid" class="isa_error">
                    * Informe sua solicitacao!
-                  </div>
-                     <div ng-if="menssagem.exibir" class="isa_info" class="error">
+                 </div> -->
+                 <div ng-if="menssagem.exibir" style="color: red;" class="isa_error">
                    {{menssagem.texto}}
-                  </div>
+                 </div>
                  <!-- <div ng-if="userForm.solicitacao.$minlength" style="color: red" class="error">
                    * Informe sua solicitacao!
-                  </div> -->
-               
-                </div>
-                <div class="row" style="padding-top:15px">
-                 <button class="btn btn-large right waves-effect" ng-click="salvarSolicitacao()">
+                 </div> -->
+                 
+               </div>
+               <div class="row" style="padding-top:15px">
+                 <button class="btn btn-large right waves-effect">
                   Salvar
                 </button>  
               </div>
