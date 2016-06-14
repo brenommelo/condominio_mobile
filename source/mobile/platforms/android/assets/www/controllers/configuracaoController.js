@@ -5,22 +5,17 @@ cadController.controller("configuracaoController", function ($scope, $http){
      var sindico = false;
      var idCondominio = 1;
      var idUnidade = 1;
-    $scope.solicitacao =novaSolicitacao();
+
     $scope.menssagem = {exibir:false, texto:"Errooooooo"};
-    $scope.opcoes = [
-    {label:"Barulho",value:"1"},
-    {label:"Manutenção",value:"2"},
-    {label:"Duvida prestação contas",value:"4"},
-    {label:"Duvida calculos de taxas",value:"3"}
-    ];
+    $scope.configuracoes = novaConfiguracao();
 
 
-    $scope.salvarSolicitacao = function(){
+    $scope.salvarConfiguracao = function(){
         $scope.menssagem.exibir = true;
-                  $scope.solicitacao.solicitacaoSindico = sindico;
-                  $scope.solicitacao.condominio.id = idCondominio;
-                  $scope.solicitacao.unidade.id = idUnidade;
-        $http.post(urlPrincipal+"notificacao/salvar_notificacao", $scope.solicitacao)
+               
+                  $scope.configuracoes.condominio.id = idCondominio;
+               
+        $http.post(urlPrincipal+"configuracao/salvar_configuracoes", $scope.configuracoes)
             .success(function(data) {
                 // $scope.introducao_data = data;
                 console.log('sucesso');
@@ -57,15 +52,18 @@ cadController.controller("configuracaoController", function ($scope, $http){
     $scope.$on('$viewContentLoaded', function() {});
 });
 
-function novaSolicitacao() {
+
+function novaConfiguracao() {
     return {
         id: null,
         inclusao: null,
-        descricao: null,
-        solicitacaoSindico: false,
-        unidade:{id:0},
-        condominio:{id:0},
-        tipoNotificacao:{id:0}
+        vencimento: null,
+        pagamentoAntecipado: null,
+        juros:null,
+        multa:null,
+        descontoPagamentoAntecipado:null,
+        rateioDespesas:null,
+        condominio:{id:null}
     };
 }
 

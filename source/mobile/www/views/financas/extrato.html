@@ -6,41 +6,7 @@
                 <div class="card-content">
                     <div class="row">
                         <div class="col s12 m6">
-                            <div class="input-field">
-                                <input id="data_inicio" type="text" class="datepicker" ng-model="extrato.data_inicio">
-                                <label for="data_inicio" class="flow-text">De:</label>
-                            </div>
-                        </div><div class="col s12 m6">
-                            <div class="input-field">
-                                <input id="data_fim" type="text" class="datepicker" ng-model="extrato.data_fim">
-                                <label for="data_fim" class="flow-text">Até:</label>
-                            </div>
-                        </div>
-                        <div class="col s12 m6">
-                            <div class="input-field">
-                                <select id="slct_usr" ng-model="paciente.centro_saude">
-                                    <option value="" disabled selected></option>
-                                    <option value="ubs">Taxa apto 101</option>
-                                    <option value="ubs">Taxa apto 102</option>
-                                    <option value="ubs">Taxa apto 201</option>
-                                    <option value="ubs">Taxa apto 202</option>
-                                    <option value="ubs">Outros</option>
-                                </select>
-                                <label for="slct_usr" class="flow-text">Origem</label>
-                            </div>
-                        </div>
-                         <div class="col s12 m6">
-                            <div class="input-field">
-                                <select id="slct_separacao" ng-model="paciente.centro_saude">
-                                    <option value="" disabled selected></option>
-                                    <option value="ubs">Ordinárias</option>
-                                    <option value="ubs">Fundo reserva</option>
-                                    <option value="ubs">Taxa extra</option>
-                                    <option value="ubs">Provisões</option>
-                                </select>
-                                <label for="slct_separacao" class="flow-text">Separação contábil</label>
-                            </div>
-                        </div>
+
                         <div class="col s12 m12">
                             <button class="btn btn-large right waves-effect wizard" ng-click="gerar_relatorio()" >
                                 Gerar extrato
@@ -52,7 +18,8 @@
     </li>
     <li class="z-depth-2">
         <div class="card lighten-4">
-        <table class="centered striped responsive-table">
+             Receitas
+        <table class="centered striped ">
             <thead>
               <tr>
                   <th data-field="id">Data</th>
@@ -61,10 +28,31 @@
               </tr>
             </thead>
             <tbody>
-                <tr ng-repeat=" item in resultado_extrato">
-                    <td>{{item.data}}</td>
+                <tr ng-repeat=" item in resultado_receita">
+                    <td>{{item.realizacao}}</td>
                     <td>{{item.descricao}}</td>
-                    <td>{{item.valor | currency : 'R$' : 2 }}</td>
+                    <td>{{item.valor}}</td>
+                </tr>
+            </tbody>
+      </table>
+        </div>
+    </li>
+        <li class="z-depth-2">
+        <div class="card lighten-4">
+           Despesas
+        <table class="centered striped ">
+            <thead>
+              <tr>
+                  <th data-field="id">Data</th>
+                  <th data-field="name">Descrição</th>
+                  <th data-field="price">Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat=" item in resultado_despesa">
+                    <td>{{item.realizacao}}</td>
+                    <td>{{item.descricao}}</td>
+                    <td>{{item.valor}}</td>
                 </tr>
             </tbody>
       </table>

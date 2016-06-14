@@ -13,14 +13,7 @@ cadController.controller("solicitacaoController", function ($scope, $http){
     {label:"Duvida prestação contas",value:"4"},
     {label:"Duvida calculos de taxas",value:"3"}
     ];
-   //  $scope.data = {
-   //  repeatSelect: null,
-   //  availableOptions: [
-   //    {id: '1', name: 'Option A'},
-   //    {id: '2', name: 'Option B'},
-   //    {id: '3', name: 'Option C'}
-   //  ],
-   // };
+
 
     $scope.salvarSolicitacao = function(){
         $scope.menssagem.exibir = true;

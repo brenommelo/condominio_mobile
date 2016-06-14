@@ -31,6 +31,27 @@ cadController.controller("financeiroController", function ($scope, $http){
                 console.log("erro");
             });
     }
+    $scope.retornarReceitas = function(){
+         $scope.receita.condominio.id =idCondominio;
+           $http.post(urlPrincipal+"financeiro/consultar_receita", $scope.receita)
+            .success(function(data) {
+                // $scope.introducao_data = data;
+                $scope.resultado_receita=data;
+             }).error(function(data,status,error,config){
+                console.log("erro");
+            });
+    }
+    $scope.retornarDespesas = function(){
+         $scope.despesa.condominio.id =idCondominio;
+           $http.post(urlPrincipal+"financeiro/consultar_despesa", $scope.despesa)
+            .success(function(data) {
+                // $scope.introducao_data = data;
+                $scope.resultado_despesa =data;
+             }).error(function(data,status,error,config){
+                console.log("erro");
+            });
+    }
+
 
     $scope.set_scripts = function(script){
         $scope.page = script;
@@ -41,6 +62,10 @@ cadController.controller("financeiroController", function ($scope, $http){
     }
 
     $scope.gerar_relatorio = function(){
+        
+        
+        $scope.retornarReceitas();
+        $scope.retornarDespesas();
         $scope.resultado_extrato = [];
         Math.random();
         for (var i = 0; i < 10; i++) {

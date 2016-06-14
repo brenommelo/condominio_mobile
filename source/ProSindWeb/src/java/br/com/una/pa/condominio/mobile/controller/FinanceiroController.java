@@ -30,9 +30,9 @@ public class FinanceiroController {
 
     public Receita salvarReceita(Receita receita) {
         try {
-                if(receita.getRealizacao()==null){
-                    receita.setRealizacao(receita.getInclusao());
-                }
+            if (receita.getRealizacao() == null) {
+                receita.setRealizacao(receita.getInclusao());
+            }
             if (!receitaDAOImpl.validarDuplicidade(receita)) {
                 receita.setInclusao(Calendar.getInstance().getTime());
                 return receitaDAOImpl.saveOrUpdate(receita);
@@ -57,7 +57,7 @@ public class FinanceiroController {
 
     public Boolean remover(Receita receita) {
         try {
-           return  receitaDAOImpl.delete(receita.getId());
+            return receitaDAOImpl.delete(receita.getId());
         } catch (DAOException ex) {
             Logger.getLogger(FinanceiroController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -75,7 +75,19 @@ public class FinanceiroController {
 
     public List<Despesa> consultar(Despesa despesa, Date inicio, Date fim) {
         try {
-            return despesaDAOImpl.listarReceitas(despesa.getId(), inicio, fim);
+            if (inicio == null) {
+                Calendar calInicio = Calendar.getInstance();
+                calInicio.set(Calendar.DAY_OF_MONTH, 1);
+                calInicio.set(Calendar.HOUR_OF_DAY, 0);
+                calInicio.set(Calendar.MINUTE, 0);
+                calInicio.set(Calendar.SECOND, 0);
+                inicio = calInicio.getTime();
+                Calendar calFim = Calendar.getInstance();
+                calFim.setTime(calInicio.getTime());
+                calFim.add(Calendar.MONTH, 1);
+                fim = calFim.getTime();
+            }
+            return despesaDAOImpl.listarReceitas(despesa.getCondominio().getId(), inicio, fim);
         } catch (DAOException ex) {
             Logger.getLogger(FinanceiroController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -84,7 +96,19 @@ public class FinanceiroController {
 
     public List<Receita> consultar(Receita receita, Date inicio, Date fim) {
         try {
-            return receitaDAOImpl.listarReceitas(receita.getId(), inicio, fim);
+            if (inicio == null) {
+                Calendar calInicio = Calendar.getInstance();
+                calInicio.set(Calendar.DAY_OF_MONTH, 1);
+                calInicio.set(Calendar.HOUR_OF_DAY, 0);
+                calInicio.set(Calendar.MINUTE, 0);
+                calInicio.set(Calendar.SECOND, 0);
+                inicio = calInicio.getTime();
+                Calendar calFim = Calendar.getInstance();
+                calFim.setTime(calInicio.getTime());
+                calFim.add(Calendar.MONTH, 1);
+                fim = calFim.getTime();
+            }
+            return receitaDAOImpl.listarReceitas(receita.getCondominio().getId(), inicio, fim);
         } catch (DAOException ex) {
             Logger.getLogger(FinanceiroController.class.getName()).log(Level.SEVERE, null, ex);
         }

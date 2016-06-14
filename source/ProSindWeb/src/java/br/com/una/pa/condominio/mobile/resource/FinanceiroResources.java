@@ -113,13 +113,13 @@ public class FinanceiroResources extends CustomResources {
     public String consultarDespesa(final String objJson) {
         List<Despesa> listaRetorno = new ArrayList();
         Despesa objeto = GsonUtils.getSimpleInstance().fromJson(objJson, Despesa.class);
-        if (objeto == null || objeto.getId() == null || objeto.getInclusao() == null || objeto.getRealizacao() == null) {
+        if (objeto == null || objeto.getCondominio()== null || objeto.getCondominio().getId() == null ) {
             return null;
         } else {
             listaRetorno = financeiroController.consultar(objeto, objeto.getInclusao(), objeto.getRealizacao());
         }
 
-        return GsonUtils.getSimpleInstance().toJson(objeto, Receita[].class);
+        return GsonUtils.getSimpleInstance().toJson(listaRetorno.toArray(), Despesa[].class);
     }
 
     @POST
@@ -129,13 +129,12 @@ public class FinanceiroResources extends CustomResources {
     public String consultarReceita(final String objJson) {
         List<Receita> listaRetorno = new ArrayList();
         Receita objeto = GsonUtils.getSimpleInstance().fromJson(objJson, Receita.class);
-        if (objeto == null || objeto.getId() == null || objeto.getInclusao() == null || objeto.getRealizacao() == null) {
+        if (objeto == null || objeto.getCondominio()== null || objeto.getCondominio().getId() == null) {
             return null;
         } else {
             listaRetorno = financeiroController.consultar(objeto, objeto.getInclusao(), objeto.getRealizacao());
         }
-
-        return GsonUtils.getSimpleInstance().toJson(listaRetorno, Receita[].class);
+        return GsonUtils.getSimpleInstance().toJson(listaRetorno.toArray(), Receita[].class);
     }
 
 }

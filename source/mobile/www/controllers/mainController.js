@@ -6,6 +6,8 @@ mainCtrl.controller("MainController", function ($scope, $http){
     $scope.financeiro = "Financeiro";
     $scope.notificacoes = "Notificações";
     $scope.cadastros = "Cadastros";
+    $scope.configuracao = "Configuração";
+    $scope.inadimplencia = "Inadimplência";
 
     $scope.get_db = function() {
         if ($scope.db == null) {

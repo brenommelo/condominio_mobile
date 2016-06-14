@@ -9,43 +9,54 @@
       </ul>
     </div>
     <div class="row">
-      <form name="userForm" ng-submit="salvarSolicitacao()" required>
+      <form name="userForm" ng-submit="salvarConfiguracao()" required>
         
         <div class="col s12 m12">
           <ul class="collapsible" data-collapsible="accordion">
             <li>
                 <div class="col s12 m12">
                             <div class="input-field">
-                                <input id="nome" type="text"  ng-model="pessoa.cpf" 
+                                <input id="juros" type="text"  ng-model="configuracoes.juros" 
                                 oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
-                                <label for="nome" class="flow-text">Taxa de juros (% mensal)</label>
+                                <label for="juros" class="flow-text">Taxa de juros (% mensal)</label>
                             </div>
                         </div>
                            <div class="col s12 m12">
                             <div class="input-field">
-                                <input id="nome" type="text"  ng-model="pessoa.cpf" 
+                                <input id="multa" type="text"  ng-model="configuracoes.multa" 
                                 oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
-                                <label for="nome" class="flow-text">Multa (%)</label>
+                                <label for="multa" class="flow-text">Multa (%)</label>
+                            </div>
+                        </div> 
+                        <div class="col s12 m12">
+                            <div class="input-field">
+                               <select id="tipo" ng-model="configuracoes.rateioDespesas" 
+                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                                <option value="false">Taxa fixa</option>
+                                <option value="true">Rateio de despesas</option>
+                            </select>
+                                <label for="tipo" class="flow-text">Tipo</label>
                             </div>
                         </div>
 
                         <div class="col s12 m6">
                             <div class="input-field">
-                                <input id="nascimento" type="text" class="datepicker" ng-model="pessoa.nascimento" 
+                                <input id="data" type="text" class="datepicker" ng-model="configuracoes.vencimento" 
                                 oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
-                                <label for="nascimento" class="flow-text">Data de vencimento</label>
+                                <label for="data" class="flow-text">Data de vencimento</label>
                             </div>
                         </div>
                          <div class="col s12 m6">
                             <div class="input-field">
-                                <input id="nascimento" type="text" class="datepicker" ng-model="pessoa.nascimento" 
+                               <input id="desconto" type="text"  ng-model="configuracoes.descontoPagamentoAntecipado" 
                                 oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
-                                <label for="nascimento" class="flow-text">Desconto pagamento antecipado</label>
+                                
+                                <label for="desconto" class="flow-text">Desconto pagamento antecipado</label>
                             </div>
                         </div>
                         <div class="col s12 m6">
                             <div class="input-field">
-                                <input id="nascimento" type="text" class="datepicker" ng-model="pessoa.nascimento" 
+                                <input id="nascimento" type="text" class="datepicker" ng-model="configuracoes.pagamentoAntecipado" 
                                 oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
                                 <label for="nascimento" class="flow-text">Data de pagamento antecipado</label>
                             </div>

@@ -4,9 +4,10 @@ cadController.controller("financeiroController", function ($scope, $http){
       var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
     //ID PROFISSIONAL DE TESTE
     var idCondominio = 1;
-    
+
     $scope.receita= nova_receita();
     $scope.despesa = nova_despesa();
+    $scope.resultado_extrato = [];
 
     $scope.gravarReceita = function(){
         // console.log($scope.receita);
@@ -30,28 +31,26 @@ cadController.controller("financeiroController", function ($scope, $http){
                 console.log("erro");
             });
     }
-
-
-        $scope.selecionarReceita = function() {
-    $('#tab1').attr('style','display: block; padding: 0')
-    $('#tab2').attr('style','display: none')
-    $('#tab3').attr('style','display: none')
+    $scope.retornarReceitas = function(){
+         $scope.receita.condominio.id =idCondominio;
+           $http.post(urlPrincipal+"financeiro/consultar_receita", $scope.receita)
+            .success(function(data) {
+                // $scope.introducao_data = data;
+                $scope.resultado_receita=data;
+             }).error(function(data,status,error,config){
+                console.log("erro");
+            });
     }
-    $scope.selecionarDespesas = function() {
-    $('#tab1').attr('style','display: none')
-    $('#tab2').attr('style','display: block; padding: 0')
-    $('#tab3').attr('style','display: none')
+    $scope.retornarDespesas = function(){
+         $scope.despesa.condominio.id =idCondominio;
+           $http.post(urlPrincipal+"financeiro/consultar_despesa", $scope.despesa)
+            .success(function(data) {
+                // $scope.introducao_data = data;
+                $scope.resultado_despesa =data;
+             }).error(function(data,status,error,config){
+                console.log("erro");
+            });
     }
-    $scope.selecionarExtrato = function() {
-    $('#tab1').attr('style','display: none')
-    $('#tab2').attr('style','display: none')
-    $('#tab3').attr('style','display: block; padding: 0')
-    }
-
-
-
-   
-
 
 
     $scope.set_scripts = function(script){
@@ -61,7 +60,23 @@ cadController.controller("financeiroController", function ($scope, $http){
     $scope.load_scripts_padrao = function(){
         $.getScript('resources/js/scrip_padrao.js');
     }
-  
+
+    $scope.gerar_relatorio = function(){
+        
+        
+        $scope.retornarReceitas();
+        $scope.retornarDespesas();
+        $scope.resultado_extrato = [];
+        Math.random();
+        for (var i = 0; i < 10; i++) {
+            var credito = Math.random() < 0.5;
+            $scope.resultado_extrato.push({
+                descricao: credito ? 'Credito': 'Debito',
+                data: new Date(),
+                valor: (Math.random() * 100) * (credito ? 1: -1),
+            });
+        };
+    }
 
     $scope.load_data = function(){
         try{

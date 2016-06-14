@@ -34,12 +34,7 @@ public class Condominio {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(columnDefinition = "timestamp default current_timestamp")
     private Date inclusao;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(columnDefinition = "timestamp default current_timestamp")
-    private Date vencimento;
     private String nome;
-    private Float juros;
-    private Float multa;
     @JoinColumn(name = "id_tipo_condominio")
     @ManyToOne(optional = false)
     private TipoCondominio tipoCondominio;
@@ -89,29 +84,6 @@ public class Condominio {
         this.nome = nome;
     }
 
-    public Date getVencimento() {
-        return vencimento;
-    }
-
-    public void setVencimento(Date vencimento) {
-        this.vencimento = vencimento;
-    }
-
-    public Float getJuros() {
-        return juros;
-    }
-
-    public void setJuros(Float juros) {
-        this.juros = juros;
-    }
-
-    public Float getMulta() {
-        return multa;
-    }
-
-    public void setMulta(Float multa) {
-        this.multa = multa;
-    }
 
     public TipoCondominio getTipoCondominio() {
         return tipoCondominio;
