@@ -7,24 +7,23 @@
         <li class="tab">
           <a href="#tab1" id="ctrl_tab1" ng-click="selecionarReceita()" data-page="1" class="light-primary-color primary-text-color">Receitas</a>
         </li>
-   
-        <li class="tab" name="mobilidade">
-          <a href="#tab4" id="ctrl_tab2"  data-page="2" ng-click="selecionarDespesas()" class="light-primary-color primary-text-color">Despesas</a>
+        <li class="tab" name="despesas">
+          <a href="#tab2" id="ctrl_tab2"  data-page="2" ng-click="selecionarDespesas()" class="light-primary-color primary-text-color">Despesas</a>
         </li>
-        <li class="tab" name="comorbidades">
-          <a href="#tab5" id="ctrl_tab3" ng-click="selecionarExtrato()" data-page="3" class="light-primary-color primary-text-color">Extrato</a>
+        <li class="tab" name="extrato">
+          <a href="#tab3" id="ctrl_tab3" ng-click="selecionarExtrato()" data-page="3" class="light-primary-color primary-text-color active">Extrato</a>
         </li>
-     
+
       </ul>
-      <div id="tab1"  class="col s12 m12" style="padding: 0;">
+      <div id="tab1"  class="col s12 m12" >
         <div ng-include="'views/financas/receitas.html'"></div>
       </div>
       <div id="tab2" class="col s12 m12">
         <div ng-include="'views/financas/despesas.html'"></div>
       </div>
-       <div id="tab3"  class="col s12 m12" style="padding: 0 !important">
+       <div id="tab3"  class="col s12 m12" >
         <div ng-include="'views/financas/extrato.html'" onload="load_scripts_padrao(); selecionarExtrato()"></div>
       </div>
-     
+
   </div>
 </div>
