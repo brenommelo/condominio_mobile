@@ -1,9 +1,9 @@
 
-angular.module('MainApp', 
-    ['ui.router', 
-    'MainController', 
-    'cadastroController', 
-    'EspecialistaController', 
+angular.module('MainApp',
+    ['ui.router',
+    'MainController',
+    'cadastroController',
+    'EspecialistaController',
     'financeiroController',
     'solicitacaoController',
     'notificacaoController',
@@ -61,6 +61,36 @@ angular.module('MainApp',
         templateUrl: 'views/notificacoes.html',
         controller: "notificacaoController"
 
+    }).state('login',{
+        url: "/login",
+        templateUrl: 'views/login.html',
+        controller: "MainController"
+
     });
-  $urlRouterProvider.otherwise('/');
-});
+  $urlRouterProvider.otherwise('/login');
+}).run(function($rootScope, $urlRouter, $state, $usuarioSessao) {
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            // Halt state change from even starting
+            // console.log(toState);
+            if (toState.name != 'login' && toState.name != 'cadastro') {
+                if ($usuarioSessao.usuarioLogado() == null) {
+                    event.preventDefault();
+                    $state.go('login', {});
+                };
+            }
+        });
+}).factory('$usuarioSessao', function(){
+    return{
+        usuarioLogado: function(){
+            var user = window.sessionStorage['usuario_logado'];
+            if (user != undefined) {
+                return JSON.parse(window.sessionStorage['usuario_logado']);
+            }else{
+                return null;
+            }
+        },
+        sair: function(){
+            window.sessionStorage.removeItem('usuario_logado');
+        }
+    }
+})
