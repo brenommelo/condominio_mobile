@@ -36,7 +36,7 @@ public class ConfiguracaoResources extends CustomResources {
 
         List<Estado> lista = configuracaoController.listarEstados();
 
-        return GsonUtils.getSimpleInstance().toJson(lista, Estado[].class);
+        return formatarResposta(toJson(lista.toArray(), Estado[].class));
     }
 
     @POST
@@ -44,10 +44,10 @@ public class ConfiguracaoResources extends CustomResources {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String retornarMunicipios(final String receitaJson) {
-        Long idEstado = GsonUtils.getSimpleInstance().fromJson(receitaJson, Long.class);
+        Long idEstado = fromJson(receitaJson, Long.class);
         List<Municipio> lista = configuracaoController.listarMunicipios(idEstado);
 
-        return GsonUtils.getSimpleInstance().toJson(lista, Municipio[].class);
+        return formatarResposta(toJson(lista, Municipio[].class));
     }
 
     @POST
@@ -57,7 +57,7 @@ public class ConfiguracaoResources extends CustomResources {
     public String retornarTipoCondominio(final String objetoJson) {
         List<TipoCondominio> lista = configuracaoController.listarTipoCondominio();
 
-        return GsonUtils.getSimpleInstance().toJson(lista, TipoCondominio[].class);
+        return formatarResposta(toJson(lista, TipoCondominio[].class));
     }
 
     @POST
@@ -67,7 +67,7 @@ public class ConfiguracaoResources extends CustomResources {
     public String retornarTipoUnidade(final String objetoJson) {
         List<TipoUnidade> lista = configuracaoController.listarTipoUnidade();
 
-        return GsonUtils.getSimpleInstance().toJson(lista.toArray(), TipoUnidade[].class);
+        return formatarResposta(toJson(lista.toArray(), TipoUnidade[].class));
     }
 
     @POST
@@ -77,7 +77,7 @@ public class ConfiguracaoResources extends CustomResources {
     public String salvarConfiguracao(final String objetoJson) {
         Configuracao configuracao = GsonUtils.getInstanceWithStringDateAdapter().fromJson(objetoJson, Configuracao.class);
         configuracao = configuracaoController.salvarConfiguracaoCondominio(configuracao);
-        return GsonUtils.getSimpleInstance().toJson(configuracao, Configuracao.class);
+        return formatarResposta(toJson(configuracao, Configuracao.class));
     }
 
 }

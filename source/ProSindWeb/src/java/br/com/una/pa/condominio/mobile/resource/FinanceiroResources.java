@@ -39,14 +39,14 @@ public class FinanceiroResources extends CustomResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String salvarReceita(final String receitaJson) {
 
-        Receita receita = GsonUtils.getInstanceWithStringDateAdapter().fromJson(receitaJson, Receita.class);
+        Receita receita = fromJson(receitaJson, Receita.class);
         if (receita == null || receita.getCondominio() == null || receita.getCondominio().getId() == null || receita.getValor() == null) {
             return null;
         } else {
             financeiroController.salvarReceita(receita);
         }
 
-        return GsonUtils.getSimpleInstance().toJson(receita, Receita.class);
+        return formatarResposta(toJson(receita, Receita.class));
     }
 
     /**
@@ -61,7 +61,7 @@ public class FinanceiroResources extends CustomResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String salvarDespesa(final String despesaJson) {
 
-        Despesa despesa = GsonUtils.getInstanceWithStringDateAdapter().fromJson(despesaJson, Despesa.class);
+        Despesa despesa = fromJson(despesaJson, Despesa.class);
         if (despesa == null || despesa.getCondominio() == null
                 || despesa.getCondominio().getId() == null || despesa.getValor() == null
                 || despesa.getNome() == null || despesa.getNome().isEmpty()) {
@@ -70,7 +70,7 @@ public class FinanceiroResources extends CustomResources {
             financeiroController.salvarDespesa(despesa);
         }
 
-        return GsonUtils.getSimpleInstance().toJson(despesa, Despesa.class);
+        return formatarResposta(toJson(despesa, Despesa.class));
     }
 
     @POST
@@ -79,7 +79,7 @@ public class FinanceiroResources extends CustomResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String removerReceita(final String objJson) {
         Boolean removeu = false;
-        Receita objeto = GsonUtils.getSimpleInstance().fromJson(objJson, Receita.class);
+        Receita objeto = fromJson(objJson, Receita.class);
         if (objeto == null || objeto.getId() == null) {
 //            return null;
             removeu = false;
@@ -87,7 +87,7 @@ public class FinanceiroResources extends CustomResources {
             removeu = financeiroController.remover(objeto);
         }
 
-        return GsonUtils.getSimpleInstance().toJson(removeu, Boolean.class);
+        return formatarResposta(toJson(removeu, Boolean.class));
     }
 
     @POST
@@ -96,14 +96,14 @@ public class FinanceiroResources extends CustomResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String removerDespesa(final String objJson) {
         Boolean removeu = false;
-        Despesa objeto = GsonUtils.getSimpleInstance().fromJson(objJson, Despesa.class);
+        Despesa objeto = fromJson(objJson, Despesa.class);
         if (objeto == null || objeto.getId() == null) {
             removeu = false;
         } else {
             removeu = financeiroController.remover(objeto);
         }
 
-        return GsonUtils.getSimpleInstance().toJson(removeu, Boolean.class);
+        return formatarResposta(toJson(removeu, Boolean.class));
     }
 
     @POST
@@ -112,14 +112,14 @@ public class FinanceiroResources extends CustomResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String consultarDespesa(final String objJson) {
         List<Despesa> listaRetorno = new ArrayList();
-        Despesa objeto = GsonUtils.getSimpleInstance().fromJson(objJson, Despesa.class);
-        if (objeto == null || objeto.getCondominio()== null || objeto.getCondominio().getId() == null ) {
+        Despesa objeto = fromJson(objJson, Despesa.class);
+        if (objeto == null || objeto.getCondominio() == null || objeto.getCondominio().getId() == null) {
             return null;
         } else {
             listaRetorno = financeiroController.consultar(objeto, objeto.getInclusao(), objeto.getRealizacao());
         }
 
-        return GsonUtils.getSimpleInstance().toJson(listaRetorno.toArray(), Despesa[].class);
+        return formatarResposta(toJson(listaRetorno.toArray(), Despesa[].class));
     }
 
     @POST
@@ -128,13 +128,13 @@ public class FinanceiroResources extends CustomResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String consultarReceita(final String objJson) {
         List<Receita> listaRetorno = new ArrayList();
-        Receita objeto = GsonUtils.getSimpleInstance().fromJson(objJson, Receita.class);
-        if (objeto == null || objeto.getCondominio()== null || objeto.getCondominio().getId() == null) {
+        Receita objeto = fromJson(objJson, Receita.class);
+        if (objeto == null || objeto.getCondominio() == null || objeto.getCondominio().getId() == null) {
             return null;
         } else {
             listaRetorno = financeiroController.consultar(objeto, objeto.getInclusao(), objeto.getRealizacao());
         }
-        return GsonUtils.getSimpleInstance().toJson(listaRetorno.toArray(), Receita[].class);
+        return formatarResposta(toJson(listaRetorno.toArray(), Receita[].class));
     }
 
 }

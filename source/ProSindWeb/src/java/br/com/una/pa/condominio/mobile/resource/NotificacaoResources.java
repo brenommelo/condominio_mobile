@@ -29,15 +29,15 @@ public class NotificacaoResources extends CustomResources {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String retornarNotificacao(final String objetoJson) {
-        Notificacao notificacao = GsonUtils.getSimpleInstance().fromJson(objetoJson, Notificacao.class);
+        Notificacao notificacao = fromJson(objetoJson, Notificacao.class);
         List<Notificacao> lista = notificacaoController.retornarNotificacoes(
-                notificacao.getCondominio()!=null?notificacao.getCondominio().getId():null,
-                notificacao.getUnidade()!=null?notificacao.getUnidade().getId():null,
-                notificacao.getTipoNotificacao()!=null?notificacao.getTipoNotificacao().getId():null,
-                notificacao.getSolicitacaoSindico()!=null?notificacao.getSolicitacaoSindico():null
+                notificacao.getCondominio() != null ? notificacao.getCondominio().getId() : null,
+                notificacao.getUnidade() != null ? notificacao.getUnidade().getId() : null,
+                notificacao.getTipoNotificacao() != null ? notificacao.getTipoNotificacao().getId() : null,
+                notificacao.getSolicitacaoSindico() != null ? notificacao.getSolicitacaoSindico() : null
         );
 
-        return GsonUtils.getSimpleInstance().toJson(lista.toArray(), Notificacao[].class);
+        return formatarResposta(toJson(lista.toArray(), Notificacao[].class));
     }
 
     @POST
@@ -45,10 +45,10 @@ public class NotificacaoResources extends CustomResources {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String salvarNotificacao(final String objetoJson) {
-        Notificacao notificacao = GsonUtils.getSimpleInstance().fromJson(objetoJson, Notificacao.class);
+        Notificacao notificacao = fromJson(objetoJson, Notificacao.class);
         Notificacao retorno = notificacaoController.salvarNotificacao(notificacao);
 
-        return GsonUtils.getSimpleInstance().toJson(retorno, Notificacao.class);
+        return formatarResposta(toJson(retorno, Notificacao.class));
     }
 
 }
