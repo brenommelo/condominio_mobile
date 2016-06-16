@@ -34,27 +34,27 @@ public class CadastroResources extends CustomResources {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String cadastroCondominio(final String objetoJson) {
-        Condominio condominio = GsonUtils.getInstanceWithStringDateAdapter().fromJson(objetoJson, Condominio.class);
+        Condominio condominio = fromJson(objetoJson, Condominio.class);
         Condominio retorno = condominioController.salvarCondominio(condominio);
-        return GsonUtils.getSimpleInstance().toJson(retorno, Condominio.class);
+        return formatarResposta(toJson(retorno, Condominio.class));
     }
     @POST
     @Path("/salvar_pessoa")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String cadastroPessoa(final String objetoJson) {
-        Pessoa pessoa = GsonUtils.getInstanceWithStringDateAdapter().fromJson(objetoJson, Pessoa.class);
+        Pessoa pessoa = fromJson(objetoJson, Pessoa.class);
         Pessoa retorno = pessoaController.salvarPessoa(pessoa);
-        return GsonUtils.getSimpleInstance().toJson(retorno, Condominio.class);
+        return formatarResposta(toJson(retorno, Condominio.class));
     }
     @POST
     @Path("/salvar_unidades")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String cadastroUnidades(final String objetoJson) {
-        Unidade[] listaUnidades = GsonUtils.getInstanceWithStringDateAdapter().fromJson(objetoJson, Unidade[].class);
+        Unidade[] listaUnidades = fromJson(objetoJson, Unidade[].class);
         Unidade[] retorno = unidadeController.salvarUnidade(listaUnidades);
-        return GsonUtils.getSimpleInstance().toJson(retorno, Unidade[].class);
+        return formatarResposta(toJson(retorno, Unidade[].class));
     }
 
 }
