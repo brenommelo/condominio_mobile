@@ -7,6 +7,7 @@ cadController.controller("cadastroController", function ($scope, $http){
     $scope.apartamentos = [];
     $scope.apartamento = novoApartamento();
     var condominioId = 1;
+    $scope.codigoCondominio = 1;
     $scope.salvarPessoa = function(){
         // console.log($scope.pessoa);
             $scope.pessoa
@@ -32,7 +33,7 @@ cadController.controller("cadastroController", function ($scope, $http){
     $scope.salvarApartamentos = function(){
       
         // console.log($scope.apartamentos);
-             $scope.apartamentos.condominio.id =idCondominio;
+          
            $http.post(urlPrincipal+"cadastro/salvar_unidades", $scope.apartamentos)
             .success(function(data) {
                 // $scope.introducao_data = data;
@@ -43,6 +44,7 @@ cadController.controller("cadastroController", function ($scope, $http){
     }
 
 $scope.adicionarApartametno = function(){
+     $scope.apartamento.condominio.id =$scope.codigoCondominio;
     $scope.apartamentos.push($scope.apartamento);
      $scope.apartamento = novoApartamento();
     
@@ -107,16 +109,14 @@ function novoApartamento() {
 }
 function novaPessoa() {
     return {
-        id: null,
-        idSync: null,
-        inclusao: null,
         nome: null,
         cpf: null,
         nascimento: null,
         sexo: 'M',
-        email: null,
-        senha: null,
-        telefone: null
+        telefone: null,
+        perfil:{id:null},
+        usuario:{email:null, senha:null, cpf:null}
+
     };
 }
 function novaCondominio () {
