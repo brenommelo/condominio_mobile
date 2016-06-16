@@ -18,11 +18,11 @@
                
                 <div class="col s12 m12">
 
-                 <select style="display: block;" ng-model="solicitacao.tipoNotificacao.id" ng-options="o.label for o in opcoes" required
+                 <select style="display: block;" ng-model="solicitacao.tipoNotificacao" ng-options="o.descricao for o in opcoes" required
                  oninvalid="this.setCustomValidity('Selecione um tipo de solicitação')" oninput="setCustomValidity('')"
                  >
                  <option value="" >Selecione</option>
-                 <option value="{{option.value}}">{{option.label}}</option>
+                 <option value="{{option.id}}">{{option.descricao}}</option>
                </select>
              </div>
            </div>
@@ -40,7 +40,10 @@
                   <!-- div ng-if="userForm.solicitacao.$invalid" class="isa_error">
                    * Informe sua solicitacao!
                  </div> -->
-                 <div ng-if="menssagem.exibir" style="color: red;" class="isa_error">
+                 <div ng-if="menssagem.exibir && menssagem.status !=200" style=" color: red;" class="isa_error">
+                   {{menssagem.texto}}
+                 </div>
+                  <div ng-if="menssagem.exibir && menssagem.status ==200" style=" color: green;" class="isa_error">
                    {{menssagem.texto}}
                  </div>
                  <!-- <div ng-if="userForm.solicitacao.$minlength" style="color: red" class="error">

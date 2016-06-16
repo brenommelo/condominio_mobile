@@ -31,7 +31,7 @@ public abstract class CustomResources {
     protected static Base64 b64;
 
     static {
-        encodeResponse = true;
+        encodeResponse = false;
         gson = GsonUtils.getInstanceWithStringDateAdapter();
         b64 = new Base64();
     }

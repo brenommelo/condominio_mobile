@@ -30,6 +30,9 @@ public class CondominioController {
             } catch (DAOException ex) {
                 Logger.getLogger(CondominioController.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            condominio.setId(0l);
+            return condominio;
         }
 
         return null;

@@ -16,7 +16,7 @@
                     </div>
                     <div class="col s12 m6">
                         <div class="input-field">
-                            <input id="email"  type="text" ng-model="apartamento.email">
+                            <input id="email"  type="text" ng-model="apartamento.emailResponsavel">
                             <label for="email" class="flow-text">Email</label>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="tel in apartamentos track by tel.nome">
-                                    <td>{{tel.nome}}</td> <td>{{tel.email}}</td>
+                                    <td>{{tel.nome}}</td> <td>{{tel.emailResponsavel}}</td>
                                 </tr>
                             </tbody>
                             Unidades adicionadas
@@ -49,7 +49,12 @@
                         </table>
                         <span ng-bind="tel.nome"></span>
                     </div>
-
+   <div ng-if="menssagem.exibir && menssagem.status !=200" style=" color: red;" class="isa_error">
+                   {{menssagem.texto}}
+                 </div>
+                  <div ng-if="menssagem.exibir && menssagem.status ==200" style=" color: green;" class="isa_error">
+                   {{menssagem.texto}}
+                 </div>
                     <button class="btn btn-large right waves-effect"  ng-click="salvarApartamentos()">
                         Salvar
                     </button>

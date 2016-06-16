@@ -9,7 +9,7 @@
         <property name="hibernate.connection.username">postgres</property>
         <!--<property name="hibernate.connection.password">senha</property>-->
         <!--<property name="hibernate.connection.password">segredo</property>-->
-        <property name="hibernate.connection.password">admin</property>
+        <property name="hibernate.connection.password">segredo</property>
  
     
     

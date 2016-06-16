@@ -9,6 +9,7 @@ import br.com.una.pa.condominio.mobile.controller.CondominioController;
 import br.com.una.pa.condominio.mobile.controller.PessoaController;
 import br.com.una.pa.condominio.mobile.controller.UnidadesController;
 import br.com.una.pa.condominio.mobile.entidades.Condominio;
+import br.com.una.pa.condominio.mobile.entidades.Notificacao;
 import br.com.una.pa.condominio.mobile.entidades.Pessoa;
 import br.com.una.pa.condominio.mobile.entidades.Unidade;
 import br.ufmg.hc.telessaude.webservices.mobile.utils.GsonUtils;
@@ -36,8 +37,18 @@ public class CadastroResources extends CustomResources {
     public String cadastroCondominio(final String objetoJson) {
         Condominio condominio = fromJson(objetoJson, Condominio.class);
         Condominio retorno = condominioController.salvarCondominio(condominio);
-        return formatarResposta(toJson(retorno, Condominio.class));
+           if (retorno == null) {
+            return formatarResposta(toJson(retorno, Condominio.class), false, "Erro ao salvar! Tente novamente mais tarde!");
+        } else if (retorno.getId() != null && retorno.getId() > 0 && !retorno.getId().equals(0l)) {
+            return formatarResposta(toJson(retorno, Condominio.class), false, "Salvo com sucesso!");
+        } else if (retorno.getId().equals(0l)) {
+            return formatarResposta(toJson(retorno, Condominio.class), true, "Erro ao salvar! Condominio já cadastrado!");
+        } else {
+            return formatarResposta(toJson(retorno, Condominio.class), true, "Erro ao salvar! Tente novamente mais tarde!");
+
+        }
     }
+
     @POST
     @Path("/salvar_pessoa")
     @Produces(MediaType.APPLICATION_JSON)
@@ -45,16 +56,26 @@ public class CadastroResources extends CustomResources {
     public String cadastroPessoa(final String objetoJson) {
         Pessoa pessoa = fromJson(objetoJson, Pessoa.class);
         Pessoa retorno = pessoaController.salvarPessoa(pessoa);
-        return formatarResposta(toJson(retorno, Condominio.class));
+        if (retorno == null) {
+            return formatarResposta(toJson(retorno, Pessoa.class), false, "Erro ao salvar! Tente novamente mais tarde!");
+        } else if (retorno.getId() != null && retorno.getId() > 0 && !retorno.getId().equals(0l)) {
+            return formatarResposta(toJson(retorno, Pessoa.class), false, "Salvo com sucesso!");
+        } else if (retorno.getId().equals(0l)) {
+            return formatarResposta(toJson(retorno, Pessoa.class), true, "Erro ao salvar! Pessoa já cadastrada!");
+        } else {
+            return formatarResposta(toJson(retorno, Pessoa.class), true, "Erro ao salvar! Tente novamente mais tarde!");
+
+        }
     }
+
     @POST
     @Path("/salvar_unidades")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String cadastroUnidades(final String objetoJson) {
         Unidade[] listaUnidades = fromJson(objetoJson, Unidade[].class);
-        Unidade[] retorno = unidadeController.salvarUnidade(listaUnidades);
-        return formatarResposta(toJson(retorno, Unidade[].class));
+        String retorno = unidadeController.salvarUnidade(listaUnidades);
+         return formatarResposta("", !retorno.contains("Erro"), retorno);
     }
 
 }

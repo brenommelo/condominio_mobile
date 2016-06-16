@@ -36,6 +36,8 @@ public class Unidade {
     private String fracao;
     @Column(name = "cpf_responsavel")
     private String cpfResponsavel;
+    @Column(name = "email_responsavel")
+    private String emailResponsavel;
     @JoinColumn(name = "id_condominio")
     @ManyToOne(optional = true)
     private Condominio condominio;
@@ -112,6 +114,14 @@ public class Unidade {
 
     public void setTipoUnidade(TipoUnidade tipoUnidade) {
         this.tipoUnidade = tipoUnidade;
+    }
+
+    public String getEmailResponsavel() {
+        return emailResponsavel;
+    }
+
+    public void setEmailResponsavel(String emailResponsavel) {
+        this.emailResponsavel = emailResponsavel;
     }
 
 }

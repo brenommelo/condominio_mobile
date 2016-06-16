@@ -22,24 +22,26 @@ public class UnidadesController {
     public UnidadesController() {
     }
 
-    public Unidade[] salvarUnidade(Unidade[] unidade) {
+    public String salvarUnidade(Unidade[] unidade) {
+        String retorno = "";
+        Boolean erro = false;
         for (Unidade uni : unidade) {
             if (validarDuplicidadeUnidade(uni)) {
                 try {
                     unidadeDAOImpl.saveOrUpdate(uni);
                 } catch (DAOException ex) {
+                    erro = true;
                     Logger.getLogger(UnidadesController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
         }
-
-        return unidade;
+        return erro ? "Erro ao salvar! Tente novamente mais tarde." : "Salvo com sucesso!";
     }
 
     public Boolean validarDuplicidadeUnidade(Unidade unidade) {
         try {
-            return unidadeDAOImpl.verificarSeJaExiste(unidade);
+            return !unidadeDAOImpl.verificarSeJaExiste(unidade);
         } catch (DAOException ex) {
             Logger.getLogger(UnidadesController.class.getName()).log(Level.SEVERE, null, ex);
         }

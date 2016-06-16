@@ -47,8 +47,11 @@ public class NotificacaoResources extends CustomResources {
     public String salvarNotificacao(final String objetoJson) {
         Notificacao notificacao = fromJson(objetoJson, Notificacao.class);
         Notificacao retorno = notificacaoController.salvarNotificacao(notificacao);
-
-        return formatarResposta(toJson(retorno, Notificacao.class));
+        if(retorno.getId()!=null&&retorno.getId()>0){
+            return formatarResposta(toJson(retorno, Notificacao.class), false, "Salvo com sucesso!");
+        } else {
+            return formatarResposta(toJson(retorno, Notificacao.class), true, "Erro ao salvar! ");
+        }
     }
 
 }

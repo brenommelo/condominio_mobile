@@ -9,6 +9,7 @@ import br.com.una.pa.condominio.mobile.dao.PessoaDAO;
 import br.com.una.pa.condominio.mobile.entidades.Pessoa;
 import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -29,6 +30,23 @@ public class PessoaDAOImpl extends DaoBase<Pessoa> implements PessoaDAO {
         );
 
         return lista != null && lista.size() > 0;
+    }
+    public Pessoa salvarPessoa(Pessoa pessoa) throws DAOException{
+        try {
+            session = HibernateUtil.currentSession();
+            transaction = session.beginTransaction();
+            transaction.begin();
+            session.saveOrUpdate(pessoa.getUsuario());
+            session.saveOrUpdate(pessoa);
+            transaction.commit();
+            return pessoa;
+        } catch (HibernateException ex) {
+            transaction.rollback();
+            throw new DAOException(ex.getMessage());
+        } finally {
+            this.closeSession();
+        }
+        
     }
 
 }

@@ -28,10 +28,13 @@ public class PessoaController {
         if (validarDuplicidadePessoa(pessoa)) {
             try {
                 pessoa.setInclusao(Calendar.getInstance().getTime());
-                return pessoaDAOImpl.saveOrUpdate(pessoa);
+                return pessoaDAOImpl.salvarPessoa(pessoa);
             } catch (DAOException ex) {
                 Logger.getLogger(PessoaController.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            pessoa.setId(0l);
+            return pessoa;
         }
 
         return null;

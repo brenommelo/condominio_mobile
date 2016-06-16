@@ -4,20 +4,18 @@
   <div class="col s12">
     <div class="row" style="margin-bottom: 0;">
       <ul class="tabs" data-collapsible="accordion">
-        <li class="tab">
-          <a href="#tab1" id="ctrl_tab1" ng-click="selecionarPessoa()" data-page="1" 
-          class="light-primary-color primary-text-color">Dados</a>
-        </li>
-   
-        <li class="tab" name="mobilidade">
+          <li class="tab" name="mobilidade">
           <a href="#tab2" id="ctrl_tab2"  data-page="2" ng-click="selecionarCondominio()" 
           class="light-primary-color primary-text-color">Condominio</a>
         </li> 
+        <li class="tab">
+          <a href="#tab1" id="ctrl_tab1" ng-click="selecionarPessoa()" data-page="1" 
+          class="light-primary-color primary-text-color">Usuário</a>
+        </li>
         <li class="tab" name="unidades">
           <a href="#tab3" id="ctrl_tab3"  data-page="3" ng-click="selecionarApartamento()" 
           class="light-primary-color primary-text-color">Unidades</a>
         </li>
-     
      
       </ul>
       <div id="tab1"  class="col s12 m12">
@@ -30,7 +28,7 @@
       </div> 
       <div id="tab3" class="col s12 m12">
         <div ng-include="'views/cadastro/tab_apartamento.html'"
-        onload="load_scripts_padrao(); selecionarPessoa()">
+        onload="load_scripts_padrao(); selecionarCondominio()">
       </div>
       </div>
       

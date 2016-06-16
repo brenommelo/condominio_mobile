@@ -72,7 +72,12 @@
                             <label for="telefone" class="flow-text">Telefone</label>
                         </div>
                     </div>
-
+  <div ng-if="menssagem.exibir && menssagem.status !=200" style=" color: red;" class="isa_error">
+                   {{menssagem.texto}}
+                 </div>
+                  <div ng-if="menssagem.exibir && menssagem.status ==200" style=" color: green;" class="isa_error">
+                   {{menssagem.texto}}
+                 </div>
                     <button class="btn btn-large right waves-effect wizard" ng-click="salvarPessoa()">
                       Salvar
                   </button>
