@@ -35,6 +35,7 @@ public class ApplicationConfig extends Application {
         resources.add(br.com.una.pa.condominio.mobile.resource.ConfiguracaoResources.class);
         resources.add(br.com.una.pa.condominio.mobile.resource.FinanceiroResources.class);
         resources.add(br.com.una.pa.condominio.mobile.resource.NotificacaoResources.class);
+        resources.add(br.com.una.pa.condominio.mobile.resource.UsuarioResources.class);
     }
 
 }

@@ -1,107 +1,108 @@
 var cadController = angular.module("cadastroController", [] );
 cadController.controller("cadastroController", function ($scope, $http){
-     var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
-    $scope.id_profissional = 1;
-    $scope.pessoa =novaPessoa();
-    $scope.condominio =novaCondominio();
-    $scope.apartamentos = [];
-    $scope.apartamento = novoApartamento();
-    var condominioId = 1;
-    $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
-    $scope.codigoCondominio = 1;
-    $scope.salvarPessoa = function(){
+   var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
+   $scope.id_profissional = 1;
+   $scope.pessoa =novaPessoa();
+   $scope.condominio =novaCondominio();
+   $scope.apartamentos = [];
+   $scope.apartamento = novoApartamento();
+   var condominioId = 1;
+   $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
+   $scope.codigoCondominio = 1;
+   $scope.salvarPessoa = function(){
         // console.log($scope.pessoa);
-            $scope.pessoa
-           $http.post(urlPrincipal+"cadastro/salvar_pessoa", $scope.pessoa)
-            .success(function(retorno) {
-        $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
-        if(retorno.status = 200){
-            $scope.pessoa =novaPessoa();
-        }
-    }).error(function(data,status,error,config){
-        $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
-    });
+        $scope.pessoa
+        $http.post(urlPrincipal+"cadastro/salvar_pessoa", $scope.pessoa)
+        .success(function(retorno) {
+            $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
+            if(retorno.status = 200){
+                $scope.pessoa =novaPessoa();
+            }
+        }).error(function(data,status,error,config){
+            $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
+        });
     }
     $scope.salvarCondominio = function(){
         // console.log($scope.condominio);
         
-           $http.post(urlPrincipal+"cadastro/salvar_condominio", $scope.condominio)
-                .success(function(retorno) {
-        $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
-        if(retorno.status = 200){
-            $scope.pessoa =novaPessoa();
-        }
-    }).error(function(data,status,error,config){
-        $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
-    });
+        $http.post(urlPrincipal+"cadastro/salvar_condominio", $scope.condominio)
+        .success(function(retorno) {
+            $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
+            if(retorno.status = 200){
+                $scope.pessoa =novaPessoa();
+            }
+        }).error(function(data,status,error,config){
+            $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
+        });
     }
     $scope.salvarApartamentos = function(){
-      
+
         // console.log($scope.apartamentos);
-          
-           $http.post(urlPrincipal+"cadastro/salvar_unidades", $scope.apartamentos)
-                .success(function(retorno) {
-        $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
-        if(retorno.status = 200){
-            $scope.pessoa =novaPessoa();
-        }
-    }).error(function(data,status,error,config){
-        $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
-    });
+
+        $http.post(urlPrincipal+"cadastro/salvar_unidades", $scope.apartamentos)
+        .success(function(retorno) {
+            $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
+            if(retorno.status = 200){
+                $scope.pessoa =novaPessoa();
+            }
+        }).error(function(data,status,error,config){
+            $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
+        });
     }
 
-$scope.adicionarApartametno = function(){
-     $scope.apartamento.condominio.id =$scope.codigoCondominio;
-    $scope.apartamentos.push($scope.apartamento);
-     $scope.apartamento = novoApartamento();
-    
-    }
-    
-    $scope.selecionarPessoa = function() {
+    $scope.adicionarApartametno = function(){
+       $scope.apartamento.condominio.id =$scope.codigoCondominio;
+       $scope.apartamentos.push($scope.apartamento);
+       $scope.apartamento = novoApartamento();
+
+   }
+
+   $scope.selecionarPessoa = function() {
     $('#tab1').attr('style','display: block; padding: 0');
     $('#tab2').attr('style','display: none');
     $('#tab3').attr('style','display: none');
     $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
 
-    }
-    $scope.selecionarApartamento = function() {
+}
+$scope.selecionarApartamento = function() {
     $('#tab1').attr('style','display: none');
     $('#tab2').attr('style','display: none');
     $('#tab3').attr('style','display: block; padding: 0');
     $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
 
-    }
-    $scope.selecionarCondominio = function() {
+}
+$scope.selecionarCondominio = function() {
     $('#tab1').attr('style','display: none');
     $('#tab2').attr('style','display: block; padding: 0');
     $('#tab3').attr('style','display: none');
+    $('#ctrl_tab1').attr
     $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
 
+}
+
+
+$scope.set_scripts = function(script){
+    $scope.page = script;
+}
+
+$scope.load_scripts_padrao = function(){
+    $.getScript('resources/js/scrip_padrao.js');
+}
+
+
+$scope.load_data = function(){
+    try{
+        $http.get('controllers/dados/dados_introducao.json')
+        .success(function(data) {
+            $scope.introducao_data = data;
+        }).error(function(data,status,error,config){
+            alert(error);
+        });
+    }catch(ex){
     }
+}
 
-
-    $scope.set_scripts = function(script){
-        $scope.page = script;
-    }
-
-    $scope.load_scripts_padrao = function(){
-        $.getScript('resources/js/scrip_padrao.js');
-    }
-  
-
-    $scope.load_data = function(){
-        try{
-            $http.get('controllers/dados/dados_introducao.json')
-            .success(function(data) {
-                $scope.introducao_data = data;
-            }).error(function(data,status,error,config){
-                alert(error);
-            });
-        }catch(ex){
-        }
-    }
-
-    $scope.load_data();
+$scope.load_data();
     // Quando o angular finalizar o carregamento o metodo abaixo e executado
     $scope.$on('$viewContentLoaded', function() {});
 });
@@ -135,19 +136,19 @@ function novaCondominio () {
         idSync: null,
         inclusao: null,
         nome: null,
-       
+
         endereco:{
-             cep: null,
-        rua: null,
-        numero: null,
-        bairro: null,
-            municipio:{
-                id:null
-            }
-        },
-        estado:{id:null},
-        tipoCondominio:{id:null}
-    };
+           cep: null,
+           rua: null,
+           numero: null,
+           bairro: null,
+           municipio:{
+            id:null
+        }
+    },
+    estado:{id:null},
+    tipoCondominio:{id:null}
+};
 }
 
 
@@ -189,50 +190,50 @@ function validaCampo (campo, success, unsuccess) {
     var result = false;
     switch ((typeof campo).toLowerCase()) {
         case 'string' :
-            result = validaString(campo);
-            if (result) {
-                if (success !== undefined) {
-                    success();
-                    break;
-                }
-            } else {
-                if (unsuccess !== undefined) {
-                    unsuccess();
-                    break;
-                }
+        result = validaString(campo);
+        if (result) {
+            if (success !== undefined) {
+                success();
+                break;
             }
-
-            return result;
-        case 'number' :
-            result = validaInteger(campo);
-            if (result) {
-                if (success !== undefined) {
-                    success();
-                    break;
-                }
-            } else {
-                if (unsuccess !== undefined) {
-                    unsuccess();
-                    break;
-                }
-            }
-
-            return result;
-        case 'object' :
-            if (campo === null) {
+        } else {
+            if (unsuccess !== undefined) {
                 unsuccess();
+                break;
             }
+        }
+
+        return result;
+        case 'number' :
+        result = validaInteger(campo);
+        if (result) {
+            if (success !== undefined) {
+                success();
+                break;
+            }
+        } else {
+            if (unsuccess !== undefined) {
+                unsuccess();
+                break;
+            }
+        }
+
+        return result;
+        case 'object' :
+        if (campo === null) {
+            unsuccess();
+        }
             //continuar metodo
 
             break;
+        }
     }
-}
 
-function habilitaTab (nome) {
-    $("li.tab[name='" + nome + "']").removeClass('disabled');
-}
+    function habilitaTab (nome) {
+        $("li.tab[name='" + nome + "']").removeClass('disabled');
+    }
 
-function exibir_mensagem_alerta(msg){
-    Materialize.toast('<span class="flow-text">'+msg+'</span>', 3000, "orange darken-3");
-}
+    function exibir_mensagem_alerta(msg){
+        Materialize.toast('<span class="flow-text">'+msg+'</span>', 3000, "orange darken-3");
+    }
 

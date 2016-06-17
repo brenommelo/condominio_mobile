@@ -5,42 +5,42 @@
             <div class="card grey lighten-4">
                 <div class="card-content">
                     <form  ng-submit="salvarPessoa()" >
-                    <div class="row">
-                        <div class="col s12 m12">
-                            <div class="input-field">
-                                <input id="nome" type="text"  ng-model="pessoa.nome" 
-                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
-                                <label for="nome" class="flow-text">Nome</label>
+                        <div class="row">
+                            <div class="col s12 m12">
+                                <div class="input-field">
+                                    <input id="nome" type="text"  ng-model="pessoa.nome" 
+                                    oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                                    <label for="nome" class="flow-text">Nome</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col s12 m12">
-                            <div class="input-field">
-                                <input id="nome" type="text"  ng-model="pessoa.usuario.cpf" 
-                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
-                                <label for="nome" class="flow-text">Cpf</label>
+                            <div class="col s12 m12">
+                                <div class="input-field">
+                                    <input id="nome" type="text"  ng-model="pessoa.usuario.cpf" 
+                                    oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                                    <label for="nome" class="flow-text">Cpf</label>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col s12 m6">
-                            <div class="input-field">
-                                <input id="nascimento" type="text" class="datepicker" ng-model="pessoa.nascimento" 
-                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
-                                <label for="nascimento" class="flow-text">Data de Nascimento</label>
+                            <div class="col s12 m6">
+                                <div class="input-field">
+                                    <input id="nascimento" type="text" class="datepicker" ng-model="pessoa.nascimento" 
+                                    oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                                    <label for="nascimento" class="flow-text">Data de Nascimento</label>
+                                </div>
+                            </div>
+
+                            <div class="col s12 m6">
+                                <div class="input-field">
+                                    <select id="slct_sexo" ng-model="pessoa.sexo" 
+                                    oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                                    <option value="">Selecione</option>
+                                    <option value="m">Masculino</option>
+                                    <option value="f">Feminino</option>
+                                </select>
+                                <label for="slct_sexo" class="flow-text">Sexo</label>
                             </div>
                         </div>
-
                         <div class="col s12 m6">
-                            <div class="input-field">
-                                <select id="slct_sexo" ng-model="pessoa.sexo" 
-                                oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
-                                <option value="">Selecione</option>
-                                <option value="m">Masculino</option>
-                                <option value="f">Feminino</option>
-                            </select>
-                            <label for="slct_sexo" class="flow-text">Sexo</label>
-                        </div>
-                    </div>
-                      <div class="col s12 m6">
                             <div class="input-field">
                                 <select id="slct_perfil" ng-model="pessoa.perfil.id" 
                                 oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
@@ -72,19 +72,19 @@
                             <label for="telefone" class="flow-text">Telefone</label>
                         </div>
                     </div>
-  <div ng-if="menssagem.exibir && menssagem.status !=200" style=" color: red;" class="isa_error">
-                   {{menssagem.texto}}
+                    <div ng-if="menssagem.exibir && menssagem.status !=200" style=" color: red;" class="isa_error">
+                     {{menssagem.texto}}
                  </div>
-                  <div ng-if="menssagem.exibir && menssagem.status ==200" style=" color: green;" class="isa_error">
-                   {{menssagem.texto}}
+                 <div ng-if="menssagem.exibir && menssagem.status ==200" style=" color: green;" class="isa_error">
+                     {{menssagem.texto}}
                  </div>
-                    <button class="btn btn-large right waves-effect wizard" ng-click="salvarPessoa()">
-                      Salvar
-                  </button>
-              </div>
-              </form>
+                 <button class="btn btn-large right waves-effect wizard" ng-click="salvarPessoa()">
+                    Próximo
+              </button>
           </div>
-      </div>
+      </form>
   </div>
+</div>
+</div>
 </li>
 </ul>
