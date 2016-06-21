@@ -7,11 +7,11 @@
                     <div class="row">
                         <div class="col s12 m12">
                             <div class="input-field">
-                                <input id="nomeCond" type="text"  ng-model="condominio.nome">
+                                <input id="nomeCond" type="text" data-required="Campo obrigatório!"  ng-model="condominio.nome">
                                 <label for="nomeCond" class="flow-text">Nome condomínio</label>
                             </div>
                         </div>
-                        
+
                         <div class="col s12 m6">
                             <div class="input-field">
                                 <input id="CEP" type="number"  ng-model="condominio.endereco.cep">
@@ -26,7 +26,7 @@
                                     <option value="2">Comercial</option>
                                     <option value="3">Misto</option>
                                 </select>
-                                
+
                             </div>
                         </div>
                         <div class="col s12 m6">
@@ -47,7 +47,7 @@
                                 <label for="bairro" class="flow-text">Bairro</label>
                             </div>
                         </div>
-                        
+
                         <div class="col s12 m6">
                             <div class="input-field">
                                 <select  ng-model="condominio.estado.id">
@@ -56,7 +56,7 @@
                                     <option value="2">São Paulo</option>
                                     <option value="3">Rio de Janeiro</option>
                                 </select>
-                                
+
                             </div>
                         </div>
                         <div class="col s12 m6">
@@ -67,7 +67,7 @@
                                     <option value="2">Contagem</option>
                                     <option value="3">Betim</option>
                                 </select>
-                                
+
                             </div>
                         </div>
                      <!--    <div class="col s12 m6">
@@ -93,8 +93,8 @@
                   <div ng-if="menssagem.exibir && menssagem.status ==200" style=" color: green;" class="isa_error">
                    {{menssagem.texto}}
                  </div>
-                        
-                        <button class="btn btn-large right waves-effect " ng-click="salvarCondominio()">
+
+                        <button class="btn btn-large right waves-effect " type='submit' ng-click="salvarCondominio()">
                             Próximo
                         </button>
                     </div>

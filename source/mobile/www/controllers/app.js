@@ -69,16 +69,17 @@ angular.module('MainApp',
     });
   $urlRouterProvider.otherwise('/login');
 }).run(function($rootScope, $urlRouter, $state, $usuarioSessao) {
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-            // Halt state change from even starting
-            // console.log(toState);
-            if (toState.name != 'login' && toState.name != 'cadastro') {
-                if ($usuarioSessao.usuarioLogado() == null) {
-                    event.preventDefault();
-                    $state.go('login', {});
-                };
-            }
-        });
+    $rootScope.servidor = "http://150.164.192.63:8080/ProSindWeb/condominioservices/";
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+        // Halt state change from even starting
+        // console.log(toState);
+        if (toState.name != 'login' && toState.name != 'cadastro') {
+            if ($usuarioSessao.usuarioLogado() == null) {
+                event.preventDefault();
+                $state.go('login', {});
+            };
+        }
+    });
 }).factory('$usuarioSessao', function(){
     return{
         usuarioLogado: function(){
@@ -92,5 +93,23 @@ angular.module('MainApp',
         sair: function(){
             window.sessionStorage.removeItem('usuario_logado');
         }
+    }
+})
+.service('api_servidor', function($rootScope, $http){
+    this.post = function(url, data, successCallback, errorCallback){
+        $http({
+            method: 'POST',
+            url: $rootScope.servidor+url,
+            data: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        }) .then(successCallback, errorCallback);
+    }
+    this.get = function(url, data, successCallback, errorCallback){
+        $http({
+            method: 'GET',
+            url: $rootScope.servidor+url,
+            data: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        }) .then(successCallback, errorCallback);
     }
 })

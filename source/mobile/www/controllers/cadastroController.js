@@ -9,13 +9,17 @@ cadController.controller("cadastroController", function ($scope, $http){
    var condominioId = 1;
    $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
    $scope.codigoCondominio = 1;
+
+   // Controla o passo do wizard
+   $scope.passo_cadastro = 2;
+
    $scope.salvarPessoa = function(){
-        // console.log($scope.pessoa);
-        $scope.pessoa
+        console.log($scope.pessoa);
         $http.post(urlPrincipal+"cadastro/salvar_pessoa", $scope.pessoa)
         .success(function(retorno) {
             $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
             if(retorno.status = 200){
+                $scope.habilitar_proximo_passo(3);
                 $scope.pessoa =novaPessoa();
             }
         }).error(function(data,status,error,config){
@@ -24,11 +28,11 @@ cadController.controller("cadastroController", function ($scope, $http){
     }
     $scope.salvarCondominio = function(){
         // console.log($scope.condominio);
-        
         $http.post(urlPrincipal+"cadastro/salvar_condominio", $scope.condominio)
         .success(function(retorno) {
             $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
             if(retorno.status = 200){
+                $scope.habilitar_proximo_passo(2);
                 $scope.pessoa =novaPessoa();
             }
         }).error(function(data,status,error,config){
@@ -36,9 +40,7 @@ cadController.controller("cadastroController", function ($scope, $http){
         });
     }
     $scope.salvarApartamentos = function(){
-
         // console.log($scope.apartamentos);
-
         $http.post(urlPrincipal+"cadastro/salvar_unidades", $scope.apartamentos)
         .success(function(retorno) {
             $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
@@ -57,28 +59,34 @@ cadController.controller("cadastroController", function ($scope, $http){
 
    }
 
-   $scope.selecionarPessoa = function() {
-    $('#tab1').attr('style','display: block; padding: 0');
-    $('#tab2').attr('style','display: none');
-    $('#tab3').attr('style','display: none');
-    $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
+   $scope.habilitar_proximo_passo = function(passo){
+        $scope.passo_cadastro = passo;
+        setTimeout(function(){
+            $('a[data-page='+passo+']').click();
+        }, 400);
+   }
 
-}
-$scope.selecionarApartamento = function() {
-    $('#tab1').attr('style','display: none');
-    $('#tab2').attr('style','display: none');
-    $('#tab3').attr('style','display: block; padding: 0');
-    $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
+   // $scope.selecionarPessoa = function() {
+   //      $('#tab1').attr('style','display: block; padding: 0');
+   //      $('#tab2').attr('style','display: none');
+   //      $('#tab3').attr('style','display: none');
+   //      $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
 
-}
-$scope.selecionarCondominio = function() {
-    $('#tab1').attr('style','display: none');
-    $('#tab2').attr('style','display: block; padding: 0');
-    $('#tab3').attr('style','display: none');
-    $('#ctrl_tab1').attr
-    $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
+   //  }
+   //  $scope.selecionarApartamento = function() {
+   //      $('#tab1').attr('style','display: none');
+   //      $('#tab2').attr('style','display: none');
+   //      $('#tab3').attr('style','display: block; padding: 0');
+   //      $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
 
-}
+   //  }
+   //  $scope.selecionarCondominio = function() {
+   //      $('#tab1').attr('style','display: none');
+   //      $('#tab2').attr('style','display: block; padding: 0');
+   //      $('#tab3').attr('style','display: none');
+   //      $('#ctrl_tab1').attr
+   //      $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
+   //  }
 
 
 $scope.set_scripts = function(script){
