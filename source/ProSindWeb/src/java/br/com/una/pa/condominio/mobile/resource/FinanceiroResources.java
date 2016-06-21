@@ -7,6 +7,7 @@ package br.com.una.pa.condominio.mobile.resource;
 
 import br.com.una.pa.condominio.mobile.controller.FinanceiroController;
 import br.com.una.pa.condominio.mobile.entidades.Despesa;
+import br.com.una.pa.condominio.mobile.entidades.Notificacao;
 import br.com.una.pa.condominio.mobile.entidades.Receita;
 import br.ufmg.hc.telessaude.webservices.mobile.exceptions.LogonException;
 import br.ufmg.hc.telessaude.webservices.mobile.utils.GsonUtils;
@@ -38,15 +39,18 @@ public class FinanceiroResources extends CustomResources {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String salvarReceita(final String receitaJson) {
-
+        Receita retorno = null;
         Receita receita = fromJson(receitaJson, Receita.class);
         if (receita == null || receita.getCondominio() == null || receita.getCondominio().getId() == null || receita.getValor() == null) {
             return null;
         } else {
-            financeiroController.salvarReceita(receita);
+            retorno = financeiroController.salvarReceita(receita);
         }
-
-        return formatarResposta(toJson(receita, Receita.class));
+        if (retorno != null && retorno.getId() != null && retorno.getId() > 0) {
+            return formatarResposta(toJson(retorno, Receita.class), false, "Salvo com sucesso!");
+        } else {
+            return formatarResposta(toJson(retorno, Receita.class), true, "Não pode salvar duas receitas iguais!");
+        }
     }
 
     /**
@@ -60,17 +64,21 @@ public class FinanceiroResources extends CustomResources {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String salvarDespesa(final String despesaJson) {
-
+        Despesa retorno = null;
         Despesa despesa = fromJson(despesaJson, Despesa.class);
         if (despesa == null || despesa.getCondominio() == null
                 || despesa.getCondominio().getId() == null || despesa.getValor() == null
                 || despesa.getNome() == null || despesa.getNome().isEmpty()) {
             return null;
         } else {
-            financeiroController.salvarDespesa(despesa);
+           retorno = financeiroController.salvarDespesa(despesa);
+        }
+        if (retorno != null && retorno.getId() != null && retorno.getId() > 0) {
+            return formatarResposta(toJson(retorno, Despesa.class), false, "Salvo com sucesso!");
+        } else {
+            return formatarResposta(toJson(retorno, Despesa.class), true, "Não pode salvar duas despesas iguais! ");
         }
 
-        return formatarResposta(toJson(despesa, Despesa.class));
     }
 
     @POST

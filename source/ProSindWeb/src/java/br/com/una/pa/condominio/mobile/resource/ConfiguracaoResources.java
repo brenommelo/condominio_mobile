@@ -6,11 +6,14 @@
 package br.com.una.pa.condominio.mobile.resource;
 
 import br.com.una.pa.condominio.mobile.controller.ConfiguracaoController;
+import br.com.una.pa.condominio.mobile.entidades.Condominio;
 import br.com.una.pa.condominio.mobile.entidades.Configuracao;
+import br.com.una.pa.condominio.mobile.entidades.Despesa;
 import br.com.una.pa.condominio.mobile.entidades.Estado;
 import br.com.una.pa.condominio.mobile.entidades.Municipio;
 import br.com.una.pa.condominio.mobile.entidades.TipoCondominio;
 import br.com.una.pa.condominio.mobile.entidades.TipoUnidade;
+import br.com.una.pa.condominio.mobile.entidades.Unidade;
 import br.ufmg.hc.telessaude.webservices.mobile.utils.GsonUtils;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -68,6 +71,17 @@ public class ConfiguracaoResources extends CustomResources {
         List<TipoUnidade> lista = configuracaoController.listarTipoUnidade();
 
         return formatarResposta(toJson(lista.toArray(), TipoUnidade[].class));
+    }
+
+    @POST
+    @Path("/retornar_unidades")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String retornarUnidades(final String objetoJson) {
+        Condominio cond = fromJson(objetoJson, Condominio.class);
+        List<Unidade> unidades = configuracaoController.listarUnidades(cond);
+
+        return formatarResposta(toJson(unidades.toArray(), Unidade[].class));
     }
 
     @POST

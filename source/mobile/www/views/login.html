@@ -24,7 +24,9 @@ form {
     <div class="row">
         <div class="card">
             <form name="form" role="form" class="col s12">
+               
                 <div class="card">
+
                     <div class="card-image">
                         <!-- <img class="logo" src=""/> -->
                     </div>
@@ -32,24 +34,40 @@ form {
                         <span class="card-title"><strong>LOGIN</strong></span>
                         <div class="input-field col s12 m12">
                             <i class="mdi mdi-account prefix"></i>
-                            <input id="usuario" type="text" class="validate" ng-model="user.usuario">
-                            <label for="usuario">Usuário</label>
+                            <input id="usuario" type="text" class="validate" ng-model="user.usuario"
+                            oninvalid="this.setCustomValidity('Informe seu e-mail ou CPF')" oninput="setCustomValidity('')"
+                            >
+                            <label for="usuario">CPF/E-mail</label>
                         </div>
                         <div class="input-field col s12 m12">
                             <i class="mdi mdi-lock prefix"></i>
-                            <input id="senha" type="password" class="validate" ng-model="user.senha">
+                            <input id="senha" type="password" class="validate" ng-model="user.senha"
+                            oninvalid="this.setCustomValidity('Informe seu e-mail ou CPF')" oninput="setCustomValidity('')"
+                            >
                             <label for="senha">Senha</label>
                         </div>
                         <div class="clearfix"></div>
+                                 <div class="col s12 m12" style="padding-top:0px">
+         <div ng-if="menssagem.exibir && menssagem.status !=200" style="text-align: center;" class="red lighten-4">
+           {{menssagem.texto}}
+         </div>
+         <div ng-if="menssagem.exibir && menssagem.status ==200" style=" color: green; text-align: center;" class="card blue lighten-4">
+           {{menssagem.texto}}
+         </div>
+       </div>
                     </div>
-                    <div class="card-action">
-                        <button class="btn-block waves-effect waves-light btn-large" ng-click="login()">LOGIN</button>
-                    </div>
-                    <div class="card-action">
-                        <a class="btn-block waves-effect waves-light btn-large" href="#/cadastro">Cadastre Aqui!</a>
-                    </div>
-                </div>
-            </form>
+          
+                 <div class="card-action">
+                    <button class="btn-block waves-effect waves-light btn-large" ng-click="login()"
+                    >
+                    LOGIN
+                </button>
+            </div>
+            <div class="card-action">
+                <a class="btn-block waves-effect waves-light btn-large" href="#/cadastro">Cadastre Aqui!</a>
+            </div>
         </div>
-    </div>
+    </form>
+</div>
+</div>
 </div>

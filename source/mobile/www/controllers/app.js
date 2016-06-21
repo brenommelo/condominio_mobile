@@ -7,7 +7,8 @@ angular.module('MainApp',
     'financeiroController',
     'solicitacaoController',
     'notificacaoController',
-    'configuracaoController'
+    'configuracaoController',
+    'ngDialog'
     ])
 
 .config(function($stateProvider, $urlRouterProvider) {

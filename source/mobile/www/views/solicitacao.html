@@ -10,42 +10,45 @@
     </div>
     <div class="row">
       <form name="userForm" ng-submit="salvarSolicitacao()" required>
-        
-        <div class="col s12 m12">
-          <ul class="collapsible" data-collapsible="accordion">
-            <li>
-              <div>
-               
-                <div class="col s12 m12">
+        <div class="col s12 m12" style="padding-top:5px">
+         <div ng-if="menssagem.exibir && menssagem.status !=200" style="text-align: center;" class="red lighten-4">
+           {{menssagem.texto}}
+         </div>
+         <div ng-if="menssagem.exibir && menssagem.status ==200" style=" color: green; text-align: center;" class="card blue lighten-4">
+           {{menssagem.texto}}
+         </div>
+       </div>
+       <div class="col s12 m12">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div>
+             
+              <div class="col s12 m12">
 
-                 <select style="display: block;" ng-model="solicitacao.tipoNotificacao" ng-options="o.descricao for o in opcoes" required
-                 oninvalid="this.setCustomValidity('Selecione um tipo de solicitação')" oninput="setCustomValidity('')"
-                 >
-                 <option value="" >Selecione</option>
-                 <option value="{{option.id}}">{{option.descricao}}</option>
-               </select>
-             </div>
+               <select style="display: block;" ng-model="solicitacao.tipoNotificacao" ng-options="o.descricao for o in opcoes" required
+               oninvalid="this.setCustomValidity('Selecione um tipo de solicitação')" oninput="setCustomValidity('')"
+               >
+               <option value="" >Selecione</option>
+               <option value="{{option.id}}">{{option.descricao}}</option>
+             </select>
            </div>
-           <div class="row" style="padding-top:15px">
+         </div>
+         <div class="row" style="padding-top:15px">
 
-            <div class="col s12 m12">
-              <div >
-                <textarea id="solicit" name="solicitacao" 
-                oninvalid="this.setCustomValidity('Informe sua solicitação')" oninput="setCustomValidity('')" required
-                placeholder="Digite sua solicitação aqui... (max. 1000 caracteres)"
-                maxlength="1000" type="text" style="height: 150px;"
-                ng-model="solicitacao.descricao" ng-minlength="10" />
-              </div>
+          <div class="col s12 m12">
+            <div >
+              <textarea id="solicit" name="solicitacao" 
+              oninvalid="this.setCustomValidity('Informe sua solicitação')" oninput="setCustomValidity('')" required
+              placeholder="Digite sua solicitação aqui... (max. 1000 caracteres)"
+              maxlength="1000" type="text" style="height: 150px;"
+              ng-model="solicitacao.descricao" ng-minlength="10" />
             </div>
+          </div>
                   <!-- div ng-if="userForm.solicitacao.$invalid" class="isa_error">
                    * Informe sua solicitacao!
                  </div> -->
-                 <div ng-if="menssagem.exibir && menssagem.status !=200" style=" color: red;" class="isa_error">
-                   {{menssagem.texto}}
-                 </div>
-                  <div ng-if="menssagem.exibir && menssagem.status ==200" style=" color: green;" class="isa_error">
-                   {{menssagem.texto}}
-                 </div>
+                 
+                 
                  <!-- <div ng-if="userForm.solicitacao.$minlength" style="color: red" class="error">
                    * Informe sua solicitacao!
                  </div> -->

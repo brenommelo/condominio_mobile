@@ -6,6 +6,7 @@
 package br.com.una.pa.condominio.mobile.resource;
 
 import br.com.una.pa.condominio.mobile.controller.UsuarioController;
+import br.com.una.pa.condominio.mobile.entidades.Pessoa;
 import br.com.una.pa.condominio.mobile.entidades.Usuario;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -28,9 +29,9 @@ public class UsuarioResources extends CustomResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String retornarNotificacao(final String objetoJson) {
         Usuario usuario = fromJson(objetoJson, Usuario.class);
-        Usuario retorno = usuarioController.login(usuario);
+        Pessoa retorno = usuarioController.login(usuario);
         if (retorno != null && retorno.getId() != null && retorno.getId() > 0) {
-            return formatarResposta(toJson(retorno, Usuario.class), false, "Sucesso!");
+            return formatarResposta(toJson(retorno, Pessoa.class), false, "Sucesso!");
         } else {
             return formatarResposta("", true, "Usuário/senha incorretos! ");
         }

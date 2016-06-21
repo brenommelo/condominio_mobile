@@ -5,7 +5,10 @@
  */
 package br.com.una.pa.condominio.mobile.controller;
 
+import br.com.una.pa.condominio.mobile.dao.impl.PessoaDAOImpl;
+import br.com.una.pa.condominio.mobile.dao.impl.PessoaUnidadeDAOImpl;
 import br.com.una.pa.condominio.mobile.dao.impl.UsuarioDAOImpl;
+import br.com.una.pa.condominio.mobile.entidades.Pessoa;
 import br.com.una.pa.condominio.mobile.entidades.Usuario;
 import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
 import java.util.logging.Level;
@@ -18,13 +21,20 @@ import java.util.logging.Logger;
 public class UsuarioController {
 
     UsuarioDAOImpl usuarioDAOImpl = new UsuarioDAOImpl();
+    PessoaUnidadeDAOImpl pessoaUnidadeDAOImpl = new PessoaUnidadeDAOImpl();
+    PessoaDAOImpl pessoaDAOImpl = new PessoaDAOImpl();
 
     public UsuarioController() {
     }
 
-    public Usuario login(Usuario usuario) {
+    public Pessoa login(Usuario usuario) {
         try {
-            return usuarioDAOImpl.login(usuario);
+            Pessoa pessoa = pessoaDAOImpl.login(usuario);
+            if (pessoa != null && pessoa.getId() != null) {
+                pessoa.setUnidade(pessoaUnidadeDAOImpl.listaUnidades(pessoa.getId()));
+                return pessoa;
+            }
+
         } catch (DAOException ex) {
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }

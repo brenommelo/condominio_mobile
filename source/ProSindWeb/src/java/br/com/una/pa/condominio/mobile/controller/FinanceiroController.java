@@ -9,6 +9,7 @@ import br.com.una.pa.condominio.mobile.dao.impl.DespesaDAOImpl;
 import br.com.una.pa.condominio.mobile.dao.impl.ReceitaDAOImpl;
 import br.com.una.pa.condominio.mobile.entidades.Despesa;
 import br.com.una.pa.condominio.mobile.entidades.Receita;
+import br.com.una.pa.condominio.mobile.entidades.SeparacaoContabil;
 import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,6 +34,9 @@ public class FinanceiroController {
             if (receita.getRealizacao() == null) {
                 receita.setRealizacao(receita.getInclusao());
             }
+            if(receita.getSeparacaoContabil()==null||receita.getSeparacaoContabil().getId()==null){
+                receita.setSeparacaoContabil(new SeparacaoContabil(1l));
+            }
             if (!receitaDAOImpl.validarDuplicidade(receita)) {
                 receita.setInclusao(Calendar.getInstance().getTime());
                 return receitaDAOImpl.saveOrUpdate(receita);
@@ -45,6 +49,12 @@ public class FinanceiroController {
 
     public Despesa salvarDespesa(Despesa despesa) {
         try {
+            if(despesa.getSeparacaoContabil()==null||despesa.getSeparacaoContabil().getId()==null){
+                despesa.setSeparacaoContabil(new SeparacaoContabil(1l));
+            }
+            if (despesa.getRealizacao() == null) {
+                despesa.setRealizacao(Calendar.getInstance().getTime());
+            }
             if (!despesaDAOImpl.validarDuplicidade(despesa)) {
                 despesa.setInclusao(Calendar.getInstance().getTime());
                 return despesaDAOImpl.saveOrUpdate(despesa);

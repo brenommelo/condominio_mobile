@@ -13,63 +13,73 @@
 	<div class="row">
 		<div class="col s12 m12">
 			<ul class="collapsible" data-collapsible="accordion">
-			    <li>
-		      		<div class="collapsible-header light-primary-color">
-		      			<div class="row">
-				      			<select id="slct_ordem">
-				      				<option value="" disabled selected>Ordernar por</option>
-				      				<option value="nome">Nome</option>
-				      				<option value="inclusao">Inclusão</option>
-				      				<option value="tp_ocorrencia">Prioridade</option>
-				      			</select>
-		      			</div>
-		      		</div>
-			    </li>
-		  	</ul>
-		</div>
-        <div class="col s12 m6" ng-repeat="not in listaNotificacoes">
-          <div class="card" ng-class="{'red lighten-4': not.tipoNotificacao.prioridade == 1, 
-           'blue lighten-4': not.tipoNotificacao.prioridade == 2}">
-            <div class="card-content">
-            	<div class="watermark">
-            		<i ng-class="{'custom-injurie': not.tipoNotificacao.prioridade == 1, 
-            		 'mdi mdi-information': not.tipoNotificacao.prioridade == 2}"></i>
-	            </div>
-	          	<div class="row">
-	          		<span class="truncate flow-text">{{not.descricao}}</span>
-	          	</div>
-            </div>
-            <div class="card-action">
-            	<button data-dialog-open="telessaude-dialog" class="btn waves-effect right" style="width: 100%;" ng-class="{'red lighten-4': not.tipoNotificacao.prioridade == 1, 
-            	'blue lighten-4': not.tipoNotificacao.prioridade == 2}">
-            		<i style="font-size: 25px; float: right;" class="mdi mdi-forward dark-primary-text-color"></i>
-          
-        		</button>
-				<div class="clearfix"></div>
-            </div>
+             <li>
+              <div class="collapsible-header light-primary-color">
+                 <div class="row">
+               <!--     <select id="slct_ordem">
+                      <option value="" disabled selected>Ordernar por</option>
+                      <option value="nome">Nome</option>
+                      <option value="inclusao">Inclusão</option>
+                      <option value="tp_ocorrencia">Prioridade</option>
+                  </select> -->
+              </div>
           </div>
-        </div>
-		<dialog id="telessaude-dialog" class="site-dialog z-depth-3">
-            <header class="dialog-header dark-primary-color center">
-                <h1 class="flow-text">Observação</h1>
-            </header>
-            <div class="dialog-content">
-                <div class="row">
-					<p class="flow-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non varius dui. Mauris a eros sodales nulla venenatis consectetur. Maecenas efficitur felis urna, vel lobortis odio consequat in. Suspendisse semper urna in eleifend euismod. Nulla hendrerit lacus sed ex egestas, ut sodales lacus tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis tempus sodales eros nec venenatis. Mauris sit amet iaculis sem, quis sollicitudin nunc. Vestibulum dignissim tincidunt sapien eget maximus. Phasellus eu euismod leo, sed dictum risus. Nam est nisi, luctus at arcu ac, ultricies ullamcorper quam. Mauris efficitur id orci ut pretium. Integer porta mi vel tortor semper, in faucibus ante dapibus. Suspendisse eros nisl, posuere nec tellus eu, eleifend accumsan purus. Aliquam ac viverra leo.</p>
-				</div>
+      </li>
+  </ul>
+</div>
+<div class="col s12 m6" ng-repeat="not in listaNotificacoes track by not.id">
+  <div class="card" ng-class="{'red lighten-4': not.tipoNotificacao.prioridade == 1, 
+  'blue lighten-4': not.tipoNotificacao.prioridade != 1}">
+  <div class="card-content">
+   <div class="watermark">
+      <i ng-class="{'mdi mdi-alert': not.tipoNotificacao.prioridade == 1, 
+      'mdi mdi-information': not.tipoNotificacao.prioridade != 1}"></i>
+  </div>
+  <div class="row">
+   <span class="truncate flow-text">{{not.descricao}}</span>
+</div>
+</div>
+<div class="card-action">
+   <button ng-click="openConfirm(not)" class="btn waves-effect right" style="width: 100%;" ng-class="{'red lighten-4': not.tipoNotificacao.prioridade == 1, 
+   'blue lighten-4': not.tipoNotificacao.prioridade != 1}">
+   <i style="font-size: 25px; float: right;" class="mdi mdi-forward dark-primary-text-color"></i>
+
+</button>
+<div class="clearfix"></div>
+</div>
+</div>
+</div>
+
+<script type="text/ng-template" id="modalDialogId">
+<div class="ngdialog-message">
+<h6 class="">Notificação:</h6>
+<p>
+{{notificacaoCompleta.descricao}}
+</p>
+
+
+<!-- 
+            // <p>Confirm can take a value. Enter one here for example and see the console output: 
+            // <input ng-model="confirmValue" />
+            </p>
+            -->
             </div>
-            <div class="divider"></div>
-            <div class="dialog-footer center">
-                <button class="btn btn-large button-color" id="enviar">Enviar</button>
-            </div>
-        </dialog>
-	</div>
-    <div class="row right">
+       
+            <div class="ngdialog-buttons">
+            <!-- 
+           // <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(confirmValue)">Salvar</button> 
+           -->
+           <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog('button')">Fechar</button>
+           </div>
+           </script>
+
+       </div>
+       <div class="row right">
         <a href="#/especialista" class="waves-effect btn-large accent-color margin-07">Voltar</a>
     </div>
 </div>
 
- <script type="text/javascript">
-// $.getScript('/resources/js/especialista/notificacoes.js');
-// $.getScript('/lib/telessaude-dialog/telessaude-dialog.js');
- </script>
+<script type="text/javascript">
+$.getScript('/resources/js/especialista/notificacoes.js');
+$.getScript('/lib/telessaude-dialog/telessaude-dialog.js');
+</script>

@@ -6,6 +6,7 @@
 package br.com.una.pa.condominio.mobile.dao.impl;
 
 import br.com.una.pa.condominio.mobile.dao.UnidadeDAO;
+import br.com.una.pa.condominio.mobile.entidades.Condominio;
 import br.com.una.pa.condominio.mobile.entidades.Unidade;
 import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
 import java.util.List;
@@ -27,6 +28,12 @@ public class UnidadeDAOImpl extends DaoBase<Unidade> implements UnidadeDAO {
                 Restrictions.ilike("nome", unidade.getNome())
         );
         return lista != null && lista.size() > 0;
+    }
+    public List<Unidade> listaUnidade(Condominio cond) throws DAOException{
+         List<Unidade> lista = this.findByRestrictions(0,
+                Restrictions.eq("condominio.id", cond.getId())
+        );
+         return lista;
     }
 
 }

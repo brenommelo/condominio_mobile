@@ -10,11 +10,14 @@ import br.com.una.pa.condominio.mobile.dao.impl.EstadoDAOImpl;
 import br.com.una.pa.condominio.mobile.dao.impl.MunicipioDAOImpl;
 import br.com.una.pa.condominio.mobile.dao.impl.TipoCondominioDAOImpl;
 import br.com.una.pa.condominio.mobile.dao.impl.TipoUnidadeDAOImpl;
+import br.com.una.pa.condominio.mobile.dao.impl.UnidadeDAOImpl;
+import br.com.una.pa.condominio.mobile.entidades.Condominio;
 import br.com.una.pa.condominio.mobile.entidades.Configuracao;
 import br.com.una.pa.condominio.mobile.entidades.Estado;
 import br.com.una.pa.condominio.mobile.entidades.Municipio;
 import br.com.una.pa.condominio.mobile.entidades.TipoCondominio;
 import br.com.una.pa.condominio.mobile.entidades.TipoUnidade;
+import br.com.una.pa.condominio.mobile.entidades.Unidade;
 import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
 import java.util.Calendar;
 import java.util.List;
@@ -32,6 +35,7 @@ public class ConfiguracaoController {
     TipoCondominioDAOImpl tipoCondominioDAOImpl = new TipoCondominioDAOImpl();
     TipoUnidadeDAOImpl tipoUnidadeDAOImpl = new TipoUnidadeDAOImpl();
     ConfiguracaoDAOImpl configuracaoDAOImpl = new ConfiguracaoDAOImpl();
+    UnidadeDAOImpl unidadeDAOImpl = new UnidadeDAOImpl();
 
     public ConfiguracaoController() {
     }
@@ -66,6 +70,14 @@ public class ConfiguracaoController {
     public List<TipoUnidade> listarTipoUnidade() {
         try {
             return tipoUnidadeDAOImpl.findAll();
+        } catch (DAOException ex) {
+            Logger.getLogger(ConfiguracaoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    public List<Unidade> listarUnidades(Condominio cond) {
+        try {
+            return unidadeDAOImpl.listaUnidade(cond);
         } catch (DAOException ex) {
             Logger.getLogger(ConfiguracaoController.class.getName()).log(Level.SEVERE, null, ex);
         }

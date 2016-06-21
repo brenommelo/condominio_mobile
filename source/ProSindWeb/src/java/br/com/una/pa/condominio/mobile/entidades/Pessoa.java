@@ -6,6 +6,7 @@
 package br.com.una.pa.condominio.mobile.entidades;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -44,7 +46,8 @@ public class Pessoa {
     @JoinColumn(name = "id_perfil")
     @ManyToOne(optional = false)
     private Perfil perfil;
-
+    @Transient
+    private List<Unidade> unidade;
     public Pessoa() {
     }
 
@@ -122,6 +125,14 @@ public class Pessoa {
 
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
+    }
+
+    public List<Unidade> getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(List<Unidade> unidade) {
+        this.unidade = unidade;
     }
 
 }

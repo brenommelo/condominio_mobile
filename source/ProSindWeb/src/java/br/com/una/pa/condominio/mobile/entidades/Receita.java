@@ -37,12 +37,14 @@ public class Receita {
     private Date realizacao;
     private String nome;
     //se o id for nulo significa que nao foi uma taxa de condominio
-    private Long unidade;
+    @JoinColumn(name = "id_unidade")
+    @ManyToOne(optional = true)
+    private Unidade unidade;
     private Float valor;
-      @JoinColumn(name = "id_separacao_contabil")
+    @JoinColumn(name = "id_separacao_contabil")
     @ManyToOne(optional = false)
     private SeparacaoContabil separacaoContabil;
-      @JoinColumn(name = "id_condominio")
+    @JoinColumn(name = "id_condominio")
     @ManyToOne(optional = false)
     private Condominio condominio;
 
@@ -117,12 +119,14 @@ public class Receita {
         this.condominio = condominio;
     }
 
-    public Long getUnidade() {
+    public Unidade getUnidade() {
         return unidade;
     }
 
-    public void setUnidade(Long unidade) {
+    public void setUnidade(Unidade unidade) {
         this.unidade = unidade;
     }
+
+
 
 }

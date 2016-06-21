@@ -1,18 +1,23 @@
 var cadController = angular.module("solicitacaoController", [] );
 cadController.controller("solicitacaoController", function ($scope, $http){
  var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
- $scope.id_profissional = 1;
- var sindico = false;
- var idCondominio = 1;
- var idUnidade = 1;
- $scope.solicitacao =novaSolicitacao();
- $scope.menssagem = {exibir:false, texto:"Errooooooo"};
+
  $scope.opcoes = [
  {descricao:"Barulho",id:"1"},
  {descricao:"Manutenção",id:"2"},
  {descricao:"Duvida prestação contas",id:"4"},
  {descricao:"Duvida calculos de taxas",id:"3"}
  ];
+
+
+var usuario = JSON.parse(window.sessionStorage['usuario_logado']);
+var sindico = usuario.perfil.sindico;
+var idCondominio = usuario.unidade[0].condominio.id;
+var idUnidade =  usuario.unidade[0].id;
+
+ $scope.solicitacao =novaSolicitacao();
+ $scope.menssagem = {exibir:false, texto:"Aguarde..."};
+
 
 
  $scope.salvarSolicitacao = function(){

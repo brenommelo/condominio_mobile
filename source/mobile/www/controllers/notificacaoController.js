@@ -1,39 +1,54 @@
-var especController = angular.module("notificacaoController", [] );
-especController.controller("notificacaoController", function ($scope, $http){
- var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
-    $scope.solicitacao = novaSolicitacao();
-    
- var sindico = true;
-     var idCondominio = 1;
-    
-retornar_notificacoes();
-    // $scope.retornarNotificacoes = retornar_notificacoes();
+var especController = angular.module("notificacaoController", ['ngDialog'] );
+especController.controller("notificacaoController", function ($scope, $http, ngDialog){
+   var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
+   $scope.solicitacao = novaSolicitacao();
+   
+   var usuario = JSON.parse(window.sessionStorage['usuario_logado']);
+   var idCondominio = usuario.unidade[0].condominio.id;
+   var sindico = usuario.perfil.sindico;
+   // $scope.notificacaoCompleta = novaSolicitacao();
 
-    function retornar_notificacoes(){
-   $scope.solicitacao.solicitacaoSindico = sindico;
-                  $scope.solicitacao.condominio.id = idCondominio;
-             
-        $http.post(urlPrincipal+"notificacao/retornar_notificacoes", $scope.solicitacao)
-            .success(function(data) {
-                console.log(data);
-                $scope.listaNotificacoes = data;
-                // $scope.introducao_data = data;
-                console.log('sucesso');
-             }).error(function(data,status,error,config){
+   retornar_notificacoes();
+
+    $scope.openConfirm = function (not) {
+        $scope.notificacaoCompleta = not;
+                ngDialog.openConfirm({
+                    template: 'modalDialogId',
+                    className: 'ngdialog-theme-default',
+                    scope: $scope
+                }).then(function (value) {
+                    console.log('Botao confirmar ', value);
+                }, function (reason) {
+                    console.log('Botao cancelar ', reason);
+                });
+            };
+
+
+   function retornar_notificacoes(){
+     $scope.solicitacao.solicitacaoSindico = sindico;
+     $scope.solicitacao.condominio.id = idCondominio;
+     
+     $http.post(urlPrincipal+"notificacao/retornar_notificacoes", $scope.solicitacao)
+     .success(function(data) {
+        var result = JSON.parse(data.data);
+
+        $scope.listaNotificacoes = result;
+
+            }).error(function(data,status,error,config){
                 console.log("erro");
             });
-    }
+        }
 
-function novaSolicitacao() {
-    return {
-        id: null,
-        inclusao: null,
-        descricao: null,
-        solicitacaoSindico: false,
-        
-        condominio:{id:0}
-    };
-}
+        function novaSolicitacao() {
+            return {
+                id: null,
+                inclusao: null,
+                descricao: null,
+                solicitacaoSindico: false,
+                
+                condominio:{id:0}
+            };
+        }
 
     // $scope.listaNotificacoes = test_notificacoes();
     // $scope.listaNotificacoes = retornar_notificacoes();
@@ -45,7 +60,7 @@ function novaSolicitacao() {
     $scope.load_scripts_padrao = function(){
         $.getScript('resources/js/scrip_padrao.js');
     }
-  
+    
 
     $scope.load_data = function(){
         try{
@@ -89,7 +104,7 @@ function novaSolicitacao() {
 //             codigo: 'Q',
 //             descricao: 'Queda'
 //         }
-        
+
 //     },
 //     {
 //         id: 3,

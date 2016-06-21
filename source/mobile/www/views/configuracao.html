@@ -10,7 +10,14 @@
     </div>
     <div class="row">
       <form name="userForm" ng-submit="salvarConfiguracao()" required>
-        
+         <div class="col s12 m12" style="padding-top:5px">
+         <div ng-if="menssagem.exibir && menssagem.status !=200" style="text-align: center;" class="red lighten-4">
+           {{menssagem.texto}}
+         </div>
+         <div ng-if="menssagem.exibir && menssagem.status ==200" style=" color: green; text-align: center;" class="card blue lighten-4">
+           {{menssagem.texto}}
+         </div>
+       </div>
         <div class="col s12 m12">
           <ul class="collapsible" data-collapsible="accordion">
             <li>
@@ -61,20 +68,7 @@
                                 <label for="nascimento" class="flow-text">Data de pagamento antecipado</label>
                             </div>
                         </div>
-           <div class="row" style="padding-top:15px">
-
-         
-                  <!-- div ng-if="userForm.solicitacao.$invalid" class="isa_error">
-                   * Informe sua solicitacao!
-                 </div> -->
-                 <div ng-if="menssagem.exibir" style="color: red;" class="isa_error">
-                   {{menssagem.texto}}
-                 </div>
-                 <!-- <div ng-if="userForm.solicitacao.$minlength" style="color: red" class="error">
-                   * Informe sua solicitacao!
-                 </div> -->
-                 
-               </div>
+       
                     <div id="tab3" class="col s12 m12">
         <div onload="load_scripts_padrao();">
       </div>

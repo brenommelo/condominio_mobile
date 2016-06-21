@@ -34,8 +34,8 @@ public class UsuarioDAOImpl extends DaoBase<Usuario> implements UsuarioDAO {
     public Usuario login(Usuario usuario) throws DAOException {
         List<Usuario> lista = this.findByRestrictions(0,
                 Restrictions.or(
-                        usuario.getEmail() != null ? Restrictions.eq("email", usuario.getEmail()) : null,
-                        usuario.getCpf() != null ? Restrictions.eq("cpf", usuario.getCpf()) : null
+                        Restrictions.eq("email", usuario.getUsuario()) ,
+                        Restrictions.eq("cpf", usuario.getUsuario())
                 ),
                 Restrictions.eq("senha", usuario.getSenha())
         );

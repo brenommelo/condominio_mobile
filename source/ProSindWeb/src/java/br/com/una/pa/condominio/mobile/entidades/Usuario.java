@@ -6,6 +6,7 @@
 package br.com.una.pa.condominio.mobile.entidades;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -34,6 +36,8 @@ public class Usuario {
     private String email;
     private String senha;
     private String cpf;
+    @Transient
+    private List<Unidade> unidade;
     public Usuario() {
     }
 
@@ -96,6 +100,16 @@ public class Usuario {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public List<Unidade> getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(List<Unidade> unidade) {
+        this.unidade = unidade;
+    }
+
+
 
   
 }

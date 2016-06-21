@@ -7,7 +7,6 @@ package br.com.una.pa.condominio.mobile.resource;
 
 import br.com.una.pa.condominio.mobile.controller.NotificacaoController;
 import br.com.una.pa.condominio.mobile.entidades.Notificacao;
-import br.ufmg.hc.telessaude.webservices.mobile.utils.GsonUtils;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;

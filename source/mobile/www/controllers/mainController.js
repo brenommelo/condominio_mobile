@@ -1,23 +1,23 @@
 var mainCtrl = angular.module("MainController", [] );
 mainCtrl.run(function($rootScope) {
     $rootScope.globalFoo = function() {
-        alert("I'm global foo!");
+        // alert("I'm global foo!");
     };
 });
-mainCtrl.controller("MainController", function ($scope, $http, $usuarioSessao){
-   var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
+mainCtrl.controller("MainController", function ($scope, $http, $usuarioSessao, $state){
+ var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
 
-   $scope.solicitacao = "Solicitações";
-   $scope.financeiro = "Financeiro";
-   $scope.notificacoes = "Notificações";
-   $scope.cadastros = "Cadastros";
-   $scope.configuracao = "Configuração";
-   $scope.inadimplencia = "Inadimplência";
-   $scope.user =get_user();
+ $scope.solicitacao = "Solicitações";
+ $scope.financeiro = "Financeiro";
+ $scope.notificacoes = "Notificações";
+ $scope.cadastros = "Cadastros";
+ $scope.configuracao = "Configuração";
+ $scope.inadimplencia = "Inadimplência";
+ $scope.user =get_user();
 
-   $scope.menssagem = {exibir:false, texto:"Errooooooo"};
+ $scope.menssagem = {exibir:false, texto:"Aguarde ..."};
 
-   $scope.get_db = function() {
+ $scope.get_db = function() {
     if ($scope.db == null) {
         $scope.db = window.sqlitePlugin.openDatabase({name:"cuidado_idoso.db", location: 'default'});
     }
@@ -52,16 +52,17 @@ $scope.login = function(){
 
         $http.post(urlPrincipal+"usuario/login", $scope.user)
         .success(function(data) {
-            if(retorno.mensagem.contains('Sucesso')){
-                
-         window.sessionStorage['usuario_logado'] = JSON.stringify(data);
-         console.log($usuarioSessao.usuarioLogado());
-            }
-          $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
-     }).error(function(data,status,error,config){
-         $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
-    });
- }
+         
+            if(data.mensagem =='Sucesso!'){
+               window.sessionStorage['usuario_logado'] = data.data;
+               $state.go('/');
+           }
+           $scope.menssagem = {exibir:true, texto:data.mensagem, status:data.status};
+     
+       }).error(function(data,status,error,config){
+           $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
+       });
+   }
 });
 
 function get_user(){

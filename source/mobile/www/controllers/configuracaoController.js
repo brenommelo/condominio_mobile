@@ -1,12 +1,17 @@
 var cadController = angular.module("configuracaoController", [] );
 cadController.controller("configuracaoController", function ($scope, $http){
      var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
-     $scope.id_profissional = 1;
-     var sindico = false;
-     var idCondominio = 1;
-     var idUnidade = 1;
 
-    $scope.menssagem = {exibir:false, texto:"Errooooooo"};
+
+
+     var usuario = JSON.parse(window.sessionStorage['usuario_logado']);
+var sindico = usuario.perfil.sindico;
+var idCondominio = usuario.unidade[0].condominio.id;
+var idUnidade =  usuario.unidade[0].id;
+
+
+
+    $scope.menssagem = {exibir:false, texto:"Aguarde ..."};
     $scope.configuracoes = novaConfiguracao();
 
 
@@ -18,9 +23,9 @@ cadController.controller("configuracaoController", function ($scope, $http){
         $http.post(urlPrincipal+"configuracao/salvar_configuracoes", $scope.configuracoes)
             .success(function(data) {
                 // $scope.introducao_data = data;
-                console.log('sucesso');
+                 $scope.menssagem = {exibir:true, texto:"Carregado com sucesso!"};
              }).error(function(data,status,error,config){
-                console.log("erro");
+                $scope.menssagem = {exibir:true, texto:"Erro! Verifique sua conexão com a internet."};
             });
        
     }
