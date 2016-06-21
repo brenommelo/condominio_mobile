@@ -21,6 +21,20 @@ public class UnidadesController {
 
     public UnidadesController() {
     }
+    
+    public Unidade salvarUnidade(Unidade uni){
+       Unidade validacao = retornarUnidade(uni);
+        if(validacao!=null&&validacao.getId()!=null){
+            return validacao;
+        }
+                try {
+                  return  unidadeDAOImpl.saveOrUpdate(uni);
+                } catch (DAOException ex) {
+                    Logger.getLogger(UnidadesController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+        return null;
+    }
 
     public String salvarUnidade(Unidade[] unidade) {
         String retorno = "";
@@ -46,6 +60,14 @@ public class UnidadesController {
             Logger.getLogger(UnidadesController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    public Unidade retornarUnidade(Unidade unidade) {
+        try {
+            return unidadeDAOImpl.retornarUnidade(unidade);
+        } catch (DAOException ex) {
+            Logger.getLogger(UnidadesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
 }

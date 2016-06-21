@@ -18,7 +18,7 @@
                 <tr ng-repeat=" item in resultado_receita | orderBy:'realizacao' ">
                     <td>{{item.realizacao| date : "dd/MM/yyyy"}}</td>
                     <td>{{item.unidade.nome!=null?item.unidade.nome:item.nome}}</td>
-                    <td>{{item.valor}}</td>
+                    <td>{{item.valor| currency:"R$ "}}</td>
                 </tr>
             </tbody>
       </table>
@@ -39,7 +39,7 @@
                 <tr ng-repeat=" item in resultado_despesa | orderBy:'realizacao'">
                     <td>{{item.realizacao| date : "dd/MM/yyyy"}}</td>
                     <td>{{item.nome}}</td>
-                    <td>{{item.valor}}</td>
+                    <td>{{item.valor| currency:"R$ "}}</td>
                 </tr>
             </tbody>
       </table>

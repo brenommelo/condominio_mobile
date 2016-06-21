@@ -43,7 +43,9 @@ public class PessoaDAOImpl extends DaoBase<Pessoa> implements PessoaDAO {
             session = HibernateUtil.currentSession();
             transaction = session.beginTransaction();
             transaction.begin();
-            session.saveOrUpdate(pessoa.getUsuario());
+            if (pessoa.getUsuario().getId() == null) {
+                session.saveOrUpdate(pessoa.getUsuario());
+            }
             session.saveOrUpdate(pessoa);
             transaction.commit();
             return pessoa;

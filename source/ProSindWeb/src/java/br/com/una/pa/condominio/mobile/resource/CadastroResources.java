@@ -5,14 +5,13 @@
  */
 package br.com.una.pa.condominio.mobile.resource;
 
+import br.com.una.pa.condominio.mobile.controller.CadastroController;
 import br.com.una.pa.condominio.mobile.controller.CondominioController;
 import br.com.una.pa.condominio.mobile.controller.PessoaController;
 import br.com.una.pa.condominio.mobile.controller.UnidadesController;
 import br.com.una.pa.condominio.mobile.entidades.Condominio;
-import br.com.una.pa.condominio.mobile.entidades.Notificacao;
 import br.com.una.pa.condominio.mobile.entidades.Pessoa;
 import br.com.una.pa.condominio.mobile.entidades.Unidade;
-import br.ufmg.hc.telessaude.webservices.mobile.utils.GsonUtils;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -29,6 +28,7 @@ public class CadastroResources extends CustomResources {
     CondominioController condominioController = new CondominioController();
     PessoaController pessoaController = new PessoaController();
     UnidadesController unidadeController = new UnidadesController();
+    CadastroController cadastroController = new CadastroController();
 
     @POST
     @Path("/salvar_condominio")
@@ -36,7 +36,7 @@ public class CadastroResources extends CustomResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public String cadastroCondominio(final String objetoJson) {
         Condominio condominio = fromJson(objetoJson, Condominio.class);
-        Condominio retorno = condominioController.salvarCondominio(condominio);
+        Condominio retorno = cadastroController.salvarCadastro(condominio);
            if (retorno == null) {
             return formatarResposta(toJson(retorno, Condominio.class), false, "Erro ao salvar! Tente novamente mais tarde!");
         } else if (retorno.getId() != null && retorno.getId() > 0 && !retorno.getId().equals(0l)) {

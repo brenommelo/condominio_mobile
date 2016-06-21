@@ -8,6 +8,7 @@ package br.com.una.pa.condominio.mobile.controller;
 import br.com.una.pa.condominio.mobile.dao.impl.PessoaDAOImpl;
 import br.com.una.pa.condominio.mobile.entidades.Condominio;
 import br.com.una.pa.condominio.mobile.entidades.Pessoa;
+import br.com.una.pa.condominio.mobile.entidades.Usuario;
 import br.ufmg.hc.telessaude.webservices.mobile.exceptions.DAOException;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -20,6 +21,7 @@ import java.util.logging.Logger;
 public class PessoaController {
 
     PessoaDAOImpl pessoaDAOImpl = new PessoaDAOImpl();
+    UsuarioController usuarioController = new UsuarioController();
 
     public PessoaController() {
     }
@@ -47,6 +49,9 @@ public class PessoaController {
             Logger.getLogger(PessoaController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    public Usuario retornarUsuario(Usuario usuario){
+        return usuarioController.retornarUsuario(usuario);
     }
 
 }

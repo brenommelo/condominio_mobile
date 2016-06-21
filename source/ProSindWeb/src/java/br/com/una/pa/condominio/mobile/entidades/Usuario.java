@@ -109,7 +109,5 @@ public class Usuario {
         this.unidade = unidade;
     }
 
-
-
   
 }

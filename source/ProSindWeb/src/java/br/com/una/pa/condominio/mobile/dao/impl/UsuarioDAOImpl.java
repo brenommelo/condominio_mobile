@@ -45,5 +45,18 @@ public class UsuarioDAOImpl extends DaoBase<Usuario> implements UsuarioDAO {
         }
         return null;
     }
+    public Usuario retornarUsuario(Usuario usuario) throws DAOException {
+        List<Usuario> lista = this.findByRestrictions(0,
+                Restrictions.or(
+                        Restrictions.eq("email", usuario.getUsuario()) ,
+                        Restrictions.eq("cpf", usuario.getUsuario())
+                )
+        );
+
+        if(lista != null && lista.size() > 0){
+            return lista.get(0);
+        }
+        return null;
+    }
 
 }

@@ -29,11 +29,20 @@ public class UnidadeDAOImpl extends DaoBase<Unidade> implements UnidadeDAO {
         );
         return lista != null && lista.size() > 0;
     }
-    public List<Unidade> listaUnidade(Condominio cond) throws DAOException{
-         List<Unidade> lista = this.findByRestrictions(0,
+
+    public Unidade retornarUnidade(Unidade unidade) throws DAOException {
+        List<Unidade> lista = this.findByRestrictions(0,
+                Restrictions.eq("condominio.id", unidade.getCondominio().getId()),
+                Restrictions.ilike("nome", unidade.getNome())
+        );
+        return lista != null && lista.size() > 0 ? lista.get(0) : null;
+    }
+
+    public List<Unidade> listaUnidade(Condominio cond) throws DAOException {
+        List<Unidade> lista = this.findByRestrictions(0,
                 Restrictions.eq("condominio.id", cond.getId())
         );
-         return lista;
+        return lista;
     }
 
 }
