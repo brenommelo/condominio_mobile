@@ -26,6 +26,14 @@ public class UsuarioController {
 
     public UsuarioController() {
     }
+    public Usuario salvarUsuario(Usuario usuario){
+        try {
+            return usuarioDAOImpl.saveOrUpdate(usuario);
+        } catch (DAOException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
     public Pessoa login(Usuario usuario) {
         try {
@@ -35,6 +43,14 @@ public class UsuarioController {
                 return pessoa;
             }
 
+        } catch (DAOException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    public Usuario retornarUsuario(Usuario user){
+        try {
+            return usuarioDAOImpl.retornarUsuario(user);
         } catch (DAOException ex) {
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }

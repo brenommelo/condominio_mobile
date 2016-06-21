@@ -75,6 +75,7 @@ public class ConfiguracaoController {
         }
         return null;
     }
+
     public List<Unidade> listarUnidades(Condominio cond) {
         try {
             return unidadeDAOImpl.listaUnidade(cond);
@@ -87,7 +88,13 @@ public class ConfiguracaoController {
     public Configuracao salvarConfiguracaoCondominio(Configuracao confi) {
         if (confi.getCondominio() != null && confi.getCondominio().getId() != null) {
             try {
-                confi.setInclusao(Calendar.getInstance().getTime());
+                Configuracao validacao = retornarConfiguracaoCondominio(confi.getCondominio());
+                if (validacao != null && validacao.getId() != null) {
+                    confi.setId(validacao.getId());
+                    confi.setInclusao(validacao.getInclusao());
+                } else {
+                    confi.setInclusao(Calendar.getInstance().getTime());
+                }
                 return configuracaoDAOImpl.saveOrUpdate(confi);
             } catch (DAOException ex) {
                 Logger.getLogger(ConfiguracaoController.class.getName()).log(Level.SEVERE, null, ex);
@@ -96,4 +103,12 @@ public class ConfiguracaoController {
         return null;
     }
 
+    public Configuracao retornarConfiguracaoCondominio(Condominio cond) {
+        try {
+            return configuracaoDAOImpl.retornarConfiguracao(cond);
+        } catch (DAOException ex) {
+            Logger.getLogger(ConfiguracaoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

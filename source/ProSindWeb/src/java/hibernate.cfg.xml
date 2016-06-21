@@ -44,5 +44,6 @@
         <mapping class="br.com.una.pa.condominio.mobile.entidades.Unidade"/>
         <mapping class="br.com.una.pa.condominio.mobile.entidades.UnidadeTaxa"/>
         <mapping class="br.com.una.pa.condominio.mobile.entidades.Usuario"/>
+        <mapping class="br.com.una.pa.condominio.mobile.entidades.Configuracao"/>
     </session-factory>
 </hibernate-configuration>

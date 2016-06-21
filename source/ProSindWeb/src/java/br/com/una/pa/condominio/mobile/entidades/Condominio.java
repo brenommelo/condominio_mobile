@@ -43,7 +43,7 @@ public class Condominio {
     private Endereco endereco;
 
     @Transient
-    private List<PessoaUnidade> listaPessoaUnidade;
+    private List<Unidade> listaUnidade;
 
     public Condominio() {
     }
@@ -101,12 +101,13 @@ public class Condominio {
         this.endereco = endereco;
     }
 
-    public List<PessoaUnidade> getListaPessoaUnidade() {
-        return listaPessoaUnidade;
+    public List<Unidade> getListaUnidade() {
+        return listaUnidade;
     }
 
-    public void setListaPessoaUnidade(List<PessoaUnidade> listaPessoaUnidade) {
-        this.listaPessoaUnidade = listaPessoaUnidade;
+    public void setListaUnidade(List<Unidade> listaUnidade) {
+        this.listaUnidade = listaUnidade;
     }
+
 
 }
