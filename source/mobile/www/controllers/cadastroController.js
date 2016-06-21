@@ -2,54 +2,63 @@ var cadController = angular.module("cadastroController", [] );
 cadController.controller("cadastroController", function ($scope, $http){
    var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
    $scope.id_profissional = 1;
-   $scope.pessoa =novaPessoa();
-   $scope.condominio =novaCondominio();
-   $scope.apartamentos = [];
-   $scope.apartamento = novoApartamento();
    var condominioId = 1;
    $scope.menssagem = {exibir:false, texto:'Erro ao salvar!', status:'400'};
    $scope.codigoCondominio = 1;
 
+   $scope.pessoa =novaPessoa();
+   $scope.condominio =novaCondominio();
+   $scope.apartamento = novoApartamento();
+   $scope.apartamentos = [];
+
    // Controla o passo do wizard
    $scope.passo_cadastro = 2;
 
+    $scope.salvarCondominio = function(){
+        console.log($scope.condominio);
+        if (!validar_campos($scope.condominio)) {
+          return false;
+        };
+        // $http.post(urlPrincipal+"cadastro/salvar_condominio", $scope.condominio)
+        // .success(function(retorno) {
+        //     $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
+        //     if(retorno.status = 200){
+                $scope.habilitar_proximo_passo(2);
+        //         $scope.pessoa =novaPessoa();
+        //     }
+        // }).error(function(data,status,error,config){
+        //     $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
+        // });
+    }
+
    $scope.salvarPessoa = function(){
         console.log($scope.pessoa);
-        $http.post(urlPrincipal+"cadastro/salvar_pessoa", $scope.pessoa)
-        .success(function(retorno) {
-            $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
-            if(retorno.status = 200){
+         if (!validar_campos($scope.pessoa)) {
+          return false;
+        };
+        // $http.post(urlPrincipal+"cadastro/salvar_pessoa", $scope.pessoa)
+        // .success(function(retorno) {
+        //     $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
+        //     if(retorno.status = 200){
                 $scope.habilitar_proximo_passo(3);
-                $scope.pessoa =novaPessoa();
-            }
-        }).error(function(data,status,error,config){
-            $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
-        });
+        //         $scope.pessoa =novaPessoa();
+        //     }
+        // }).error(function(data,status,error,config){
+        //     $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
+        // });
     }
-    $scope.salvarCondominio = function(){
-        // console.log($scope.condominio);
-        $http.post(urlPrincipal+"cadastro/salvar_condominio", $scope.condominio)
-        .success(function(retorno) {
-            $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
-            if(retorno.status = 200){
-                $scope.habilitar_proximo_passo(2);
-                $scope.pessoa =novaPessoa();
-            }
-        }).error(function(data,status,error,config){
-            $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
-        });
-    }
+
     $scope.salvarApartamentos = function(){
-        // console.log($scope.apartamentos);
-        $http.post(urlPrincipal+"cadastro/salvar_unidades", $scope.apartamentos)
-        .success(function(retorno) {
-            $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
-            if(retorno.status = 200){
-                $scope.pessoa =novaPessoa();
-            }
-        }).error(function(data,status,error,config){
-            $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
-        });
+        console.log($scope.apartamentos);
+        // $http.post(urlPrincipal+"cadastro/salvar_unidades", $scope.apartamentos)
+        // .success(function(retorno) {
+        //     $scope.menssagem = {exibir:true, texto:retorno.mensagem, status:retorno.status};
+        //     if(retorno.status = 200){
+        //         $scope.pessoa =novaPessoa();
+        //     }
+        // }).error(function(data,status,error,config){
+        //     $scope.menssagem = {exibir:true, texto:'Erro ao salvar! Verifique sua conexão com a internet!'};
+        // });
     }
 
     $scope.adicionarApartametno = function(){
@@ -134,7 +143,7 @@ function novaPessoa() {
         sexo: 'M',
         telefone: null,
         perfil:{id:null},
-        usuario:{email:null, senha:null, cpf:null}
+        usuario:{email:null, senha:null}
 
     };
 }

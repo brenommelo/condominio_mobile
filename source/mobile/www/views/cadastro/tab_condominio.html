@@ -5,98 +5,73 @@
             <div class="card grey lighten-4">
                 <div class="card-content">
                     <div class="row">
-                        <div class="col s12 m12">
-                            <div class="input-field">
-                                <input id="nomeCond" type="text" data-required="Campo obrigatório!"  ng-model="condominio.nome">
-                                <label for="nomeCond" class="flow-text">Nome condomínio</label>
+                        <form ng-submit="salvarCondominio()" name='my_form'>
+                            <div class="col s12 m12">
+                                <div class="input-field">
+                                    <input id="nomeCond" type="text" data-required="Campo obrigatório!"  ng-model="condominio.nome">
+                                    <label for="nomeCond" class="flow-text">Nome condomínio</label>
+                                </div>
                             </div>
-                        </div>
+                            <div class="col s12 m6">
+                                <div class="input-field">
+                                    <input id="CEP" type="number" ng-model="condominio.endereco.cep" required>
+                                    <label for="CEP" class="flow-text">CEP</label>
+                                </div>
+                            </div>
+                            <div class="col s12 m6">
+                                <div class="input-field">
+                                    <select id="slct_sexo" name="slct_sexo" ng-model="condominio.tipoCondominio.id" >
+                                        <option value="" disabled selected>Tipo</option>
+                                        <option value="1">Residencial</option>
+                                        <option value="2">Comercial</option>
+                                        <option value="3">Misto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col s12 m6">
+                                <div class="input-field">
+                                    <input id="Rua" type="text"  ng-model="condominio.endereco.rua" required>
+                                    <label for="Rua" class="flow-text">Rua</label>
+                                </div>
+                            </div>
+                            <div class="col s12 m6">
+                                <div class="input-field">
+                                    <input id="Numero" type="text"  ng-model="condominio.endereco.numero" required>
+                                    <label for="Numero" class="flow-text">Numero</label>
+                                </div>
+                            </div>
+                            <div class="col s12 m6">
+                                <div class="input-field">
+                                    <input id="bairro" type="text"  ng-model="condominio.endereco.bairro" required>
+                                    <label for="bairro" class="flow-text">Bairro</label>
+                                </div>
+                            </div>
+                            <div class="col s12 m6">
+                                <div class="input-field">
+                                    <select  ng-model="condominio.estado.id">
+                                        <option value="" disabled selected>Estado</option>
+                                        <option value="1">Minas Gerais</option>
+                                        <option value="2">São Paulo</option>
+                                        <option value="3">Rio de Janeiro</option>
+                                    </select>
 
-                        <div class="col s12 m6">
-                            <div class="input-field">
-                                <input id="CEP" type="number"  ng-model="condominio.endereco.cep">
-                                <label for="CEP" class="flow-text">CEP</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col s12 m6">
-                            <div class="input-field">
-                                <select id="slct_sexo" ng-model="condominio.tipoCondominio.id">
-                                    <option value="" disabled selected>Tipo</option>
-                                    <option value="1">Residencial</option>
-                                    <option value="2">Comercial</option>
-                                    <option value="3">Misto</option>
-                                </select>
+                            <div class="col s12 m6">
+                                <div class="input-field">
+                                    <select  ng-model="condominio.endereco.municipio.id" >
+                                        <option value="" disabled selected>Cidade</option>
+                                        <option value="1">Belo Horiizonte</option>
+                                        <option value="2">Contagem</option>
+                                        <option value="3">Betim</option>
+                                    </select>
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="col s12 m6">
-                            <div class="input-field">
-                                <input id="Rua" type="text"  ng-model="condominio.endereco.rua">
-                                <label for="Rua" class="flow-text">Rua</label>
-                            </div>
-                        </div>
-                        <div class="col s12 m6">
-                            <div class="input-field">
-                                <input id="Numero" type="number"  ng-model="condominio.endereco.numero">
-                                <label for="Numero" class="flow-text">Numero</label>
-                            </div>
-                        </div>
-                        <div class="col s12 m6">
-                            <div class="input-field">
-                                <input id="bairro" type="text"  ng-model="condominio.endereco.bairro">
-                                <label for="bairro" class="flow-text">Bairro</label>
-                            </div>
-                        </div>
-
-                        <div class="col s12 m6">
-                            <div class="input-field">
-                                <select  ng-model="condominio.estado.id">
-                                    <option value="" disabled selected>Estado</option>
-                                    <option value="1">Minas Gerais</option>
-                                    <option value="2">São Paulo</option>
-                                    <option value="3">Rio de Janeiro</option>
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class="col s12 m6">
-                            <div class="input-field">
-                                <select  ng-model="condominio.endereco.municipio.id">
-                                    <option value="" disabled selected>Cidade</option>
-                                    <option value="1">Belo Horiizonte</option>
-                                    <option value="2">Contagem</option>
-                                    <option value="3">Betim</option>
-                                </select>
-
-                            </div>
-                        </div>
-                     <!--    <div class="col s12 m6">
-                            <div class="input-field">
-                                <input id="idade" type="number"  ng-model="condominio.juros">
-                                <label for="idade" class="flow-text">Juros (mensal)</label>
-                            </div>
-                        </div>
-                        <div class="col s12 m6">
-                            <div class="input-field">
-                                <input id="idade" type="number"  ng-model="condominio.multa">
-                                <label for="idade" class="flow-text">Multa (mensal)</label>
-                            </div>
-                        </div> <div class="col s12 m6">
-                            <div class="input-field">
-                                <input id="idade" type="number"  ng-model="condominio.multa">
-                                <label for="idade" class="flow-text">Data vencimento boleto</label>
-                            </div>
-                        </div> -->
-                           <div ng-if="menssagem.exibir && menssagem.status !=200" style=" color: red;" class="isa_error">
-                   {{menssagem.texto}}
-                 </div>
-                  <div ng-if="menssagem.exibir && menssagem.status ==200" style=" color: green;" class="isa_error">
-                   {{menssagem.texto}}
-                 </div>
-
-                        <button class="btn btn-large right waves-effect " type='submit' ng-click="salvarCondominio()">
-                            Próximo
-                        </button>
+                            <button class="btn btn-large right waves-effect " name="enviar" type='submit' >
+                                Próximo
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -37,8 +37,10 @@
 function load_config(){
 
     $('select').material_select();
+    // $("select[required]").css({display: "inline", height: 0, padding: 0, width: 0});
     $('.modal-trigger').leanModal();
     $('ul.tabs').tabs();
+    config_campos_obrigatorios();
     // $('.wizard').on('click', function () {
     //     var tab = $('li>a.active');
     //     var pagina = $('li>a.active').attr('data-page');
@@ -49,13 +51,38 @@ function load_config(){
 }
 
 function config_campos_obrigatorios(){
-    $('[data-required]').each(function(){
+    var msg_padrao = "Campo obrigatório!";
+    $('[data-required], [required]').each(function(){
         $(this).attr('required', 'required');
         $(this).on('invalid', function(){
-            this.setCustomValidity($(this).data('required'));
+            var msg = $(this).data('required');
+            if (msg == null) {
+                msg = msg_padrao;
+            };
+            this.setCustomValidity(msg);
         });
         $(this).on('input', function(){
             this.setCustomValidity("");
         });
     })
 }
+
+    function validar_campos(object, validar_id){
+      if (validar_id == undefined) {
+        validar_id = false;
+      };
+      for(var att in object){
+        if ( att == 'id' && !validar_id ) { continue; };
+        if ( att == 'idSync' || att == 'inclusao') { continue; };
+        if ( object[att] == null || object[att] == "" ) {
+          exibir_mensagem_alerta("Preencha os campos obrigatorios");
+          return false;
+        }else if(typeof(object[att]) == 'object'){
+          var retorno = validar_campos(object[att], true);
+          if (!retorno) {
+            return false;
+          };
+        }
+      }
+      return true;
+    }
