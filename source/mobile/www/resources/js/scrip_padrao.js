@@ -27,15 +27,15 @@
     });
 
     $('#ubs_inpt').hide();
-   
 
-   
+
+
 
     init_voice_input();
 })();
 
 function load_config(){
-   
+
     $('select').material_select();
     $('.modal-trigger').leanModal();
     $('ul.tabs').tabs();
@@ -46,4 +46,16 @@ function load_config(){
     //     var nextTab = $("li>a[data-page='" + (direcao === 'right' ? parseInt(pagina)+1 : parseInt(pagina)-1) + "']");
     //     $('ul.tabs').tabs('select_tab', nextTab.attr('href').replace('#', ''));
     // });
+}
+
+function config_campos_obrigatorios(){
+    $('[data-required]').each(function(){
+        $(this).attr('required', 'required');
+        $(this).on('invalid', function(){
+            this.setCustomValidity($(this).data('required'));
+        });
+        $(this).on('input', function(){
+            this.setCustomValidity("");
+        });
+    })
 }

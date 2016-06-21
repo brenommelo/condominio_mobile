@@ -8,14 +8,13 @@
                         <div class="row">
                             <div class="col s12 m12">
                                 <div class="input-field">
-                                    <input id="nome" type="text"  ng-model="pessoa.nome" 
-                                    oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
+                                    <input id="nome" type="text"  ng-model="pessoa.nome" data-required="Campo obrigatório!">
                                     <label for="nome" class="flow-text">Nome</label>
                                 </div>
                             </div>
                             <div class="col s12 m12">
                                 <div class="input-field">
-                                    <input id="nome" type="text"  ng-model="pessoa.usuario.cpf" 
+                                    <input id="nome" type="text"  ng-model="pessoa.usuario.cpf"
                                     oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
                                     <label for="nome" class="flow-text">Cpf</label>
                                 </div>
@@ -23,7 +22,7 @@
 
                             <div class="col s12 m6">
                                 <div class="input-field">
-                                    <input id="nascimento" type="text" class="datepicker" ng-model="pessoa.nascimento" 
+                                    <input id="nascimento" type="text" class="datepicker" ng-model="pessoa.nascimento"
                                     oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
                                     <label for="nascimento" class="flow-text">Data de Nascimento</label>
                                 </div>
@@ -31,7 +30,7 @@
 
                             <div class="col s12 m6">
                                 <div class="input-field">
-                                    <select id="slct_sexo" ng-model="pessoa.sexo" 
+                                    <select id="slct_sexo" ng-model="pessoa.sexo"
                                     oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
                                     <option value="">Selecione</option>
                                     <option value="m">Masculino</option>
@@ -42,7 +41,7 @@
                         </div>
                         <div class="col s12 m6">
                             <div class="input-field">
-                                <select id="slct_perfil" ng-model="pessoa.perfil.id" 
+                                <select id="slct_perfil" ng-model="pessoa.perfil.id"
                                 oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
                                 <option value="">Selecione</option>
                                 <option value="2">Condômino</option>
@@ -53,21 +52,21 @@
                     </div>
                     <div class="col s12 m12">
                         <div class="input-field">
-                            <input id="Email" name="email" type="text" ng-model="email"  ng-model="pessoa.usuario.email"  
+                            <input id="Email" name="email" type="text" ng-model="email"  ng-model="pessoa.usuario.email"
                             oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
                             <label for="Email" class="flow-text">Email</label>
                         </div>
                     </div>
                     <div class="col s12 m12">
                         <div class="input-field">
-                            <input id="Senha" type="text"  ng-model="pessoa.usuario.senha" 
+                            <input id="Senha" type="text"  ng-model="pessoa.usuario.senha"
                             oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
                             <label for="Senha" class="flow-text">Senha</label>
                         </div>
                     </div>
                     <div class="col s12 m12">
                         <div class="input-field">
-                            <input id="telefone" type="text" ng-model="pessoa.telefone" 
+                            <input id="telefone" type="text" ng-model="pessoa.telefone"
                             oninvalid="this.setCustomValidity('Campo obrigatório!')" oninput="setCustomValidity('')" required>
                             <label for="telefone" class="flow-text">Telefone</label>
                         </div>
