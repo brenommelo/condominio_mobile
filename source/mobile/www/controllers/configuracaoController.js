@@ -1,58 +1,76 @@
 var cadController = angular.module("configuracaoController", [] );
 cadController.controller("configuracaoController", function ($scope, $http){
-     var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
+   var urlPrincipal ="http://150.164.192.63:8080/ProSindWeb/condominioservices/";
 
 
 
-     var usuario = JSON.parse(window.sessionStorage['usuario_logado']);
-var sindico = usuario.perfil.sindico;
-var idCondominio = usuario.unidade[0].condominio.id;
-var idUnidade =  usuario.unidade[0].id;
+   var usuario = JSON.parse(window.sessionStorage['usuario_logado']);
+   var sindico = usuario.perfil.sindico;
+   var idCondominio = usuario.unidade[0].condominio.id;
+   var idUnidade =  usuario.unidade[0].id;
 
 
 
-    $scope.menssagem = {exibir:false, texto:"Aguarde ..."};
-    $scope.configuracoes = novaConfiguracao();
+   $scope.menssagem = {exibir:false, texto:"Aguarde ...",status:400};
+   $scope.configuracoes = novaConfiguracao();
 
 
-    $scope.salvarConfiguracao = function(){
-        $scope.menssagem.exibir = true;
-               
-                  $scope.configuracoes.condominio.id = idCondominio;
-               
-        $http.post(urlPrincipal+"configuracao/salvar_configuracoes", $scope.configuracoes)
-            .success(function(data) {
+   $scope.salvarConfiguracao = function(){
+    $scope.menssagem.exibir = true;
+    
+    $scope.configuracoes.condominio.id = idCondominio;
+    
+    $http.post(urlPrincipal+"configuracao/salvar_configuracoes", $scope.configuracoes)
+    .success(function(data) {
                 // $scope.introducao_data = data;
-                 $scope.menssagem = {exibir:true, texto:"Carregado com sucesso!"};
-             }).error(function(data,status,error,config){
+                $scope.menssagem = {exibir:true, texto:data.mensagem, status:data.status};
+            }).error(function(data,status,error,config){
                 $scope.menssagem = {exibir:true, texto:"Erro! Verifique sua conexão com a internet."};
             });
-       
-    }
-
-    $scope.set_scripts = function(script){
-        $scope.page = script;
-    }
-
-    $scope.load_scripts_padrao = function(){
-        $.getScript('resources/js/scrip_padrao.js');
-    }
-  
-
-    $scope.load_data = function(){
-        try{
-            $http.get('controllers/dados/dados_introducao.json')
-            .success(function(data) {
-                $scope.introducao_data = data;
-            }).error(function(data,status,error,config){
-                alert(error);
-            });
-        }catch(ex){
+            
         }
-    }
+        $scope.retornarConfiguracao = function(){
+            $scope.menssagem.exibir = true;
+            
+            $scope.configuracoes.condominio.id = idCondominio;
+            
+            $http.post(urlPrincipal+"configuracao/retornar_configuracoes", $scope.configuracoes)
+            .success(function(data) {
+                if(data.erro == false){
+                    var result = JSON.parse(data.data);
+                    $scope.configuracoes = result;
+                }
+                // $scope.introducao_data = data;
+                $scope.menssagem = {exibir:true, texto:data.mensagem, status:data.status};
+            }).error(function(data,status,error,config){
+                $scope.menssagem = {exibir:true, texto:"Erro! Verifique sua conexão com a internet."};
+            });
+            
+        }
 
-    $scope.load_data();
-    $scope.load_scripts_padrao();
+        $scope.set_scripts = function(script){
+            $scope.page = script;
+        }
+
+        $scope.load_scripts_padrao = function(){
+            $.getScript('resources/js/scrip_padrao.js');
+        }
+        
+
+        $scope.load_data = function(){
+            try{
+                $http.get('controllers/dados/dados_introducao.json')
+                .success(function(data) {
+                    $scope.introducao_data = data;
+                }).error(function(data,status,error,config){
+                    alert(error);
+                });
+            }catch(ex){
+            }
+        }
+
+        $scope.load_data();
+        $scope.load_scripts_padrao();
     // Quando o angular finalizar o carregamento o metodo abaixo e executado
     $scope.$on('$viewContentLoaded', function() {});
 });
@@ -110,50 +128,50 @@ function validaCampo (campo, success, unsuccess) {
     var result = false;
     switch ((typeof campo).toLowerCase()) {
         case 'string' :
-            result = validaString(campo);
-            if (result) {
-                if (success !== undefined) {
-                    success();
-                    break;
-                }
-            } else {
-                if (unsuccess !== undefined) {
-                    unsuccess();
-                    break;
-                }
+        result = validaString(campo);
+        if (result) {
+            if (success !== undefined) {
+                success();
+                break;
             }
-
-            return result;
-        case 'number' :
-            result = validaInteger(campo);
-            if (result) {
-                if (success !== undefined) {
-                    success();
-                    break;
-                }
-            } else {
-                if (unsuccess !== undefined) {
-                    unsuccess();
-                    break;
-                }
-            }
-
-            return result;
-        case 'object' :
-            if (campo === null) {
+        } else {
+            if (unsuccess !== undefined) {
                 unsuccess();
+                break;
             }
+        }
+
+        return result;
+        case 'number' :
+        result = validaInteger(campo);
+        if (result) {
+            if (success !== undefined) {
+                success();
+                break;
+            }
+        } else {
+            if (unsuccess !== undefined) {
+                unsuccess();
+                break;
+            }
+        }
+
+        return result;
+        case 'object' :
+        if (campo === null) {
+            unsuccess();
+        }
             //continuar metodo
 
             break;
+        }
     }
-}
 
-function habilitaTab (nome) {
-    $("li.tab[name='" + nome + "']").removeClass('disabled');
-}
+    function habilitaTab (nome) {
+        $("li.tab[name='" + nome + "']").removeClass('disabled');
+    }
 
-function exibir_mensagem_alerta(msg){
-    Materialize.toast('<span class="flow-text">'+msg+'</span>', 3000, "orange darken-3");
-}
+    function exibir_mensagem_alerta(msg){
+        Materialize.toast('<span class="flow-text">'+msg+'</span>', 3000, "orange darken-3");
+    }
 

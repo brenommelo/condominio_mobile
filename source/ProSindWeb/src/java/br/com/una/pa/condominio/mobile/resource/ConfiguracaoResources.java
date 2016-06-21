@@ -8,9 +8,9 @@ package br.com.una.pa.condominio.mobile.resource;
 import br.com.una.pa.condominio.mobile.controller.ConfiguracaoController;
 import br.com.una.pa.condominio.mobile.entidades.Condominio;
 import br.com.una.pa.condominio.mobile.entidades.Configuracao;
-import br.com.una.pa.condominio.mobile.entidades.Despesa;
 import br.com.una.pa.condominio.mobile.entidades.Estado;
 import br.com.una.pa.condominio.mobile.entidades.Municipio;
+import br.com.una.pa.condominio.mobile.entidades.Receita;
 import br.com.una.pa.condominio.mobile.entidades.TipoCondominio;
 import br.com.una.pa.condominio.mobile.entidades.TipoUnidade;
 import br.com.una.pa.condominio.mobile.entidades.Unidade;
@@ -91,7 +91,26 @@ public class ConfiguracaoResources extends CustomResources {
     public String salvarConfiguracao(final String objetoJson) {
         Configuracao configuracao = GsonUtils.getInstanceWithStringDateAdapter().fromJson(objetoJson, Configuracao.class);
         configuracao = configuracaoController.salvarConfiguracaoCondominio(configuracao);
-        return formatarResposta(toJson(configuracao, Configuracao.class));
+
+        if (configuracao != null && configuracao.getId() != null && configuracao.getId() > 0) {
+            return formatarResposta(toJson(configuracao, Configuracao.class), false, "Salvo com sucesso!");
+        } else {
+            return formatarResposta(toJson(configuracao, Configuracao.class), true, "Não foi possivel salvar!Tente novamente mais tarde.");
+        }
+    }
+    @POST
+    @Path("/retornar_configuracoes")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String retornarConfiguracao(final String objetoJson) {
+        Condominio condominio = GsonUtils.getInstanceWithStringDateAdapter().fromJson(objetoJson, Condominio.class);
+        Configuracao configuracao = configuracaoController.retornarConfiguracaoCondominio(condominio);
+
+        if (configuracao != null && configuracao.getId() != null && configuracao.getId() > 0) {
+            return formatarResposta(toJson(configuracao, Configuracao.class), false, "Caregado com sucesso!");
+        } else {
+            return formatarResposta(toJson(configuracao, Configuracao.class), true, "Configuração não localizada para este condomínio!");
+        }
     }
 
 }
